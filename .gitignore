@@ -5,4 +5,4 @@
 *.log
 *.pyc
 /Suggestions.md
-/temp/
+/temp/test_google_scraper.py
