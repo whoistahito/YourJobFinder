@@ -24,6 +24,7 @@ Job Scraper is an automated job search assistant that helps users find relevant 
 - **Schedule**: Task scheduling
 - **JobSpy**: Custom job scraping module
 - **LLM Integration**: For job title and location validation
+- **Node.js**: Alternative implementation for Google Jobs scraper
 
 ## Getting Started
 
@@ -126,6 +127,27 @@ DELETE /user
 4. New, relevant jobs are formatted into HTML email cards
 5. Users receive personalized emails with job opportunities
 6. The system tracks which jobs have been sent to prevent duplicates
+
+## Additional Components
+
+### Node.js Google Jobs Scraper
+
+A Node.js implementation of the Google Jobs scraper is available in the `nodejs-scraper/` directory. This provides an alternative scraping solution with the following features:
+
+- **Pure Node.js Implementation**: Independent scraper written in JavaScript
+- **Simulated Mode**: Testing mode that generates mock job data
+- **Compatible Interface**: Designed to work with the existing Python system
+- **Comprehensive Examples**: Multiple usage examples and integration patterns
+
+To use the Node.js scraper:
+
+```bash
+cd nodejs-scraper
+npm install
+node example.js
+```
+
+See `nodejs-scraper/README.md` for detailed documentation.
 
 ## Contributing
 
