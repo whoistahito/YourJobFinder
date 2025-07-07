@@ -1,6 +1,6 @@
 import unittest
 
-from JobSpy.src.jobspy.scrapers.utils import RotatingProxySession
+from jobspy.scrapers.utils import RotatingProxySession
 
 
 class TestProxyFormatter(unittest.TestCase):
