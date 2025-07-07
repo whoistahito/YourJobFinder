@@ -1,8 +1,11 @@
 /venv/
 /.idea
-*.json
 *.csv
 *.log
 *.pyc
 /Suggestions.md
 /temp/
+
+# Exclude JSON files but allow package.json and package-lock.json
+*.json
+!nodejs-scraper/package*.json
