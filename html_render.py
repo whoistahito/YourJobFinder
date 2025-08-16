@@ -22,122 +22,93 @@ def get_welcome_message():
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to Your Personal Job Search Journey</title>
+  <title>Welcome to Your Job Finder</title>
+  <!--[if mso]>
+  <style type="text/css">body, table, td {font-family: Arial, Helvetica, sans-serif !important;}</style>
+  <![endif]-->
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #EEF2FF;">
-  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background: linear-gradient(to bottom, #EEF2FF, #FFFFFF);">
+<body style="margin:0;padding:0;background-color:#F3F4F6;-webkit-font-smoothing:antialiased;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f3f4f6;">
     <tr>
-      <td align="center" style="padding: 40px 0;">
-        <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: transparent;">
-          <!-- Hero Section -->
+      <td align="center" style="padding:32px 12px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:640px;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 8px 28px -6px rgba(0,0,0,0.08);">
+          <!-- Hero -->
           <tr>
-            <td align="center" style="padding-bottom: 40px;">
-              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <td style="background:linear-gradient(135deg,#ffffff 0%,#eef2ff 60%,#e0f7ff 100%);padding:52px 40px 40px 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                </tr>
-                <tr>
-                  <td align="center" style="padding-bottom: 20px;">
-                    <h1 style="font-family: Arial, sans-serif; font-size: 32px; line-height: 1.2; margin: 0; color: #111827;">
-                      Welcome to Your Personal<br/>
-                      <span style="color: #4F46E5;">Job Search Journey</span> 🎉
-                    </h1>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="center" style="padding-bottom: 40px;">
-                    <p style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.5; color: #4B5563; margin: 0; max-width: 480px;">
-Find your next job easily with our app. We search the internet based on what you're looking for and send the best jobs straight to your email. Let us help you find the perfect job so you can focus on what matters most—growing your career. Happy job hunting!                    </p>
+                  <td align="left" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+                    <div style="display:inline-block;background:#111827;color:#ffffff;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;padding:6px 14px;border-radius:999px;">Welcome</div>
+                    <h1 style="margin:24px 0 14px 0;font-size:32px;line-height:1.15;font-weight:700;color:#111827;letter-spacing:-0.5px;">Your Job <span style="color:#4F46E5;">Finder</span> Starts Now</h1>
+                    <p style="margin:0;font-size:16px;line-height:1.55;color:#4B5563;max-width:520px;">We scan fresh listings daily and send you a focused, noise‑free batch that matches what you told us. No dashboards to babysit. Just high‑fit leads in your inbox.</p>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
-
-          <!-- Preferences Summary Box -->
+          <!-- Criteria Summary -->
           <tr>
-            <td style="padding-top: 0px;">
-              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #EEF2FF; padding: 32px; border-radius: 16px;">
+            <td style="padding:40px 40px 8px 40px;">
+              <h2 style="margin:0 0 20px 0;font-size:20px;line-height:1.3;color:#111827;font-weight:600;">What We'll Use To Match Roles</h2>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
-                  <td>
-                    <h2 style="font-family: Arial, sans-serif; font-size: 24px; color: #111827; margin: 0 0 16px 0;">
-                      Your Job Match Criteria
-                    </h2>
-                    <p style="font-family: Arial, sans-serif; font-size: 16px; color: #4B5563; margin: 0 0 24px 0;">
-                      We'll tailor every recommendation based on your:
-                    </p>
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <td valign="top" width="50%" style="padding:0 16px 24px 0;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td width="50%" style="padding: 0 12px 16px 0;">
-                          <table border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td width="20" style="padding-right: 12px;">
-                                <span style="font-size: 20px; line-height: 1;">💼</span>
-                              </td>
-                              <td style="font-family: Arial, sans-serif; font-size: 14px; color: #374151;">
-                                Selected Role
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                        <td width="50%" style="padding: 0 0 16px 12px;">
-                          <table border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td width="20" style="padding-right: 12px;">
-                                <span style="font-size: 20px; line-height: 1;">⭐</span>
-                              </td>
-                              <td style="font-family: Arial, sans-serif; font-size: 14px; color: #374151;">
-                                Job type Preferences
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
+                        <td style="font-size:24px;line-height:1;padding-right:12px;">💼</td>
+                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Role Focus</td>
                       </tr>
+                    </table>
+                  </td>
+                  <td valign="top" width="50%" style="padding:0 0 24px 16px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td width="50%" style="padding: 0 12px 16px 0;">
-                          <table border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td width="20" style="padding-right: 12px;">
-                                <span style="font-size: 20px; line-height: 1;">📍</span>
-                              </td>
-                              <td style="font-family: Arial, sans-serif; font-size: 14px; color: #374151;">
-                                Location Requirements
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
+                        <td style="font-size:24px;line-height:1;padding-right:12px;">⭐</td>
+                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Job Type</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top" width="50%" style="padding:0 16px 24px 0;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="font-size:24px;line-height:1;padding-right:12px;">📍</td>
+                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Location / Remote</td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td valign="top" width="50%" style="padding:0 0 24px 16px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="font-size:24px;line-height:1;padding-right:12px;">⏱️</td>
+                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Freshness Window</td>
                       </tr>
                     </table>
                   </td>
                 </tr>
               </table>
+              <p style="margin:4px 0 0 0;font-size:12px;line-height:1.5;color:#6B7280;">We ignore obvious duplicates, expired listings and low quality scraps.</p>
             </td>
           </tr>
-
-          <!-- Call to Action -->
+          <!-- CTA -->
           <tr>
-            <td align="center" style="padding-top: 40px;">
-              <h2 style="font-family: Arial, sans-serif; font-size: 24px; color: #111827; margin: 0 0 24px 0;">
-                Watch your inbox tomorrow for your first personalized job matches!
-              </h2>
-              <table border="0" cellpadding="0" cellspacing="0">
+            <td align="center" style="padding:40px 40px 8px 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td align="center" style="border-radius: 6px;" bgcolor="#4F46E5">
-                    <a href="https://yourjobfinder.website" target="_blank" style="font-family: Arial, sans-serif; font-size: 16px; color: #FFFFFF; text-decoration: none; padding: 12px 24px; border: 1px solid #4F46E5; display: inline-block; border-radius: 6px;">
-                      <span style="font-size: 16px; line-height: 1; display: inline-block; vertical-align: middle; margin-right: 8px;">⚙️</span>
-                      Create New Job Alert
-                    </a>
+                  <td bgcolor="#4F46E5" style="border-radius:999px;">
+                    <a href="https://yourjobfinder.website" target="_blank" style="display:inline-block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;padding:14px 30px;">Create Another Alert →</a>
                   </td>
                 </tr>
               </table>
+              <p style="margin:28px 0 0 0;font-size:14px;line-height:1.5;color:#4B5563;max-width:520px;">First tailored batch hits your inbox within 24h. You can pause or unsubscribe any time—no questions.</p>
             </td>
           </tr>
-
           <!-- Footer -->
           <tr>
-            <td align="center" style="padding-top: 40px;">
-              <p style="font-family: Arial, sans-serif; font-size: 12px; color: #6B7280; margin: 0;">
-                © 2025 Your Job Finder. All rights reserved. This Project is for educational purposes.
-              </p>
+            <td style="padding:40px 28px 48px 28px;border-top:1px solid #E5E7EB;">
+              <p style="margin:0 0 8px 0;font-size:12px;line-height:1.5;color:#6B7280;text-align:center;">© 2025 Your Job Finder • Educational project</p>
+              <p style="margin:0;font-size:11px;line-height:1.5;color:#9CA3AF;text-align:center;">You’re receiving this because you created an alert.</p>
             </td>
           </tr>
         </table>
@@ -166,76 +137,43 @@ def create_job_card(row):
     if isinstance(row['date_posted'], datetime.date):
         posted_date = row['date_posted'].strftime("%b %d, %Y")
     else:
-        posted_date = 'this Week'
+        posted_date = 'This Week'
 
     # New badge HTML - only show if is_new is True
-    new_badge = '''
-    <tr>
-        <td style="padding-top: 8px;">
-            <span style="display: inline-block; background-color: #DCFCE7; color: #15803D; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: 600;">● New</span>
-        </td>
-    </tr>
-    ''' if row.get('new_badge', False) else ''
+    new_badge = ''
+    if row.get('new_badge', False):
+        new_badge = ('<span style="display:inline-block;background:#DCFCE7;color:#166534;font-size:11px;'
+                     'font-weight:600;line-height:1;padding:6px 12px;border-radius:999px;">NEW</span>')
 
     # Remote badge - only show if remote is True
-    remote_badge = '''
-    <tr>
-        <td style="padding-bottom: 12px;">
-            <span style="display: inline-block; background-color: #EEF2FF; color: #4F46E5; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: 500;">Remote</span>
-        </td>
-    </tr>
-    ''' if row['is_remote'] else ''
+    remote_badge = ''
+    if row['is_remote']:
+        remote_badge = ('<span style="display:inline-block;background:#EEF2FF;color:#4F46E5;font-size:11px;'
+                         'font-weight:500;line-height:1;padding:6px 12px;border-radius:999px;margin-left:8px;">Remote</span>')
 
     return f'''
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #F8FAFF; border: 1px solid #E5E7EB; border-radius: 12px; margin-bottom: 16px;">
-        <tr>
-            <td style="padding: 20px;">
-                <!-- Job Title and New Badge -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 12px;">
-                    <tr>
-                        <td>
-                            <h2 style="color: #1F2937; font-size: 18px; margin: 0; font-weight: 600;">{row['title']}</h2>
-                        </td>
-                    </tr>
-                    {new_badge}
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 20px 0;border-collapse:separate;">
+      <tr>
+        <td style="background:#F8FAFF;border:1px solid #E5E7EB;border-radius:16px;padding:20px 22px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;vertical-align:top;">
+                <h3 style="margin:0 0 8px 0;font-size:17px;line-height:1.35;color:#1F2937;font-weight:600;">{row['title']}</h3>
+                <p style="margin:0 0 6px 0;font-size:14px;line-height:1.4;color:#374151;font-weight:500;">{row['company']}</p>
+                <p style="margin:0 0 12px 0;font-size:13px;line-height:1.5;color:#6B7280;">📍 {row['location']}<br />🕒 Posted: {posted_date}</p>
+                <div style="margin:0 0 16px 0;">{new_badge}{remote_badge}</div>
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td bgcolor="#4F46E5" style="border-radius:10px;">
+                      <a href="{row['job_url']}" style="display:inline-block;padding:12px 20px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">View Details →</a>
+                    </td>
+                  </tr>
                 </table>
-
-                <!-- Company Name -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 12px;">
-                    <tr>
-                        <td>
-                            <p style="color: #4B5563; font-size: 16px; margin: 0; font-weight: 500;">{row['company']}</p>
-                        </td>
-                    </tr>
-                </table>
-
-                <!-- Location and Date -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 12px;">
-                    <tr>
-                        <td>
-                            <p style="color: #6B7280; font-size: 14px; margin: 0 0 8px 0;">📍 {row['location']}</p>
-                            <p style="color: #6B7280; font-size: 14px; margin: 0;">🕒 Posted: {posted_date}</p>
-                        </td>
-                    </tr>
-                </table>
-
-                <!-- Remote Badge and Button -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                    {remote_badge}
-                    <tr>
-                        <td>
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td>
-                                        <a href="{row['job_url']}" style="display: inline-block; background-color: #4F46E5; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; text-align: center; width: 100%; box-sizing: border-box;">View Details →</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
     </table>
     '''
 
@@ -254,72 +192,76 @@ def get_html_template(html_content, email, position, location):
     """
     unsubscribe_url = "https://yourjobfinder.website/unsubscribe/process"
     return f'''
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Job Listings</title>
-        <!--[if mso]>
-        <style type="text/css">
-        body, table, td {{font-family: Arial, Helvetica, sans-serif !important;}}
-        </style>
-        <![endif]-->
-    </head>
-    <body style="margin: 0; padding: 0; background-color: #F3F4F6; -webkit-font-smoothing: antialiased;">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #F3F4F6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-            <tr>
-                <td align="center" style="padding: 24px 12px;">
-                    <!-- Main Container -->
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 600px;">
-                        <!-- Header with Logo -->
-                        <tr>
-                            <td style="padding: 32px 24px; background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%); border-radius: 12px 12px 0 0;">
-                                <h1 style="color: #ffffff; font-size: 24px; margin: 0; font-weight: 700;">Job Alerts</h1>
-                                <p style="color: #E0E7FF; font-size: 16px; margin: 8px 0 0 0;">Latest opportunities for you</p>
-                            </td>
-                        </tr>
-
-                        <!-- Welcome Message -->
-                        <tr>
-                            <td style="padding: 24px;">
-                                <h2 style="color: #4B5563; font-size: 16px; margin: 12px 0 0 0; line-height: 1.5;">{random.choice(greetings)}</h2>
-                            </td>
-                        </tr>
-
-                        <!-- Job Cards Container -->
-                        <tr>
-                            <td style="padding: 0 24px;">
-                                {html_content}
-                            </td>
-                        </tr>
-
-                        <!-- Footer -->
-                        <tr>
-                            <td style="padding: 32px 24px; border-top: 1px solid #E5E7EB;">
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center">
-                                            <p style="color: #6B7280; font-size: 14px; margin: 0 0 16px 0;">Prefer not to receive these updates?</p>
-                                            <a href="{unsubscribe_url}?email={email}&position={position}&location={location}" style="color: #4B5563; text-decoration: underline; font-size: 14px;">Unsubscribe</a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <!-- Footer Message -->
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-                        <tr>
-                            <td align="center" style="padding: 24px 12px;">
-                                <p style="color: #6B7280; font-size: 12px; margin: 0;">This email was sent by Your Job Finder. Please do not reply to this email.</p>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Job Matches</title>
+  <!--[if mso]><style type="text/css">body, table, td {{font-family: Arial, Helvetica, sans-serif !important;}}</style><![endif]-->
+</head>
+<body style="margin:0;padding:0;background-color:#F3F4F6;-webkit-font-smoothing:antialiased;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F3F4F6;">
+    <tr>
+      <td align="center" style="padding:32px 12px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;background:#ffffff;border-radius:24px;overflow:hidden;box-shadow:0 8px 28px -8px rgba(0,0,0,0.1);">
+          <!-- Header -->
+          <tr>
+            <td style="background:linear-gradient(125deg,#4F46E5 0%,#6366F1 60%,#60A5FA 115%);padding:44px 40px 46px 40px;">
+              <h1 style="margin:0;font-size:26px;line-height:1.2;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">Your Curated Matches</h1>
+              <p style="margin:14px 0 0 0;font-size:15px;line-height:1.5;color:#E0E7FF;max-width:420px;font-weight:500;">Fresh roles filtered for <span style="color:#ffffff;">{position or 'your role'}</span> {(' · ' + location) if location else ''}</p>
+              <p style="margin:10px 0 0 0;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);font-weight:600;">Daily Batch</p>
+            </td>
+          </tr>
+          <!-- Intro -->
+          <tr>
+            <td style="padding:32px 40px 8px 40px;">
+              <p style="margin:0 0 24px 0;font-size:15px;line-height:1.55;color:#4B5563;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">{random.choice(greetings)}</p>
+            </td>
+          </tr>
+          <!-- Job Cards -->
+          <tr>
+            <td style="padding:0 40px 8px 40px;">{html_content}</td>
+          </tr>
+          <!-- Tips -->
+          <tr>
+            <td style="padding:8px 40px 32px 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFF;border:1px solid #E5E7EB;border-radius:16px;">
+                <tr>
+                  <td style="padding:18px 22px;">
+                    <p style="margin:0 0 8px 0;font-size:13px;line-height:1.5;color:#374151;font-weight:600;">Why you got these</p>
+                    <p style="margin:0;font-size:12px;line-height:1.55;color:#6B7280;">Matched on: role keywords, location/remoteness, recency & basic quality filters. Improve accuracy by narrowing your criteria or creating a second alert.</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <!-- Footer -->
+          <tr>
+            <td style="padding:32px 28px 44px 28px;border-top:1px solid #E5E7EB;">
+              <p style="margin:0 0 16px 0;font-size:13px;line-height:1.55;color:#6B7280;text-align:center;">Prefer fewer emails? Create a second alert tuned differently and compare signal.</p>
+              <p style="margin:0 0 18px 0;font-size:12px;line-height:1.5;color:#9CA3AF;text-align:center;">This was sent to {email}. If this looks wrong you can adjust by making a new alert.</p>
+              <p style="margin:0;font-size:12px;line-height:1.5;color:#9CA3AF;text-align:center;">
+                <a href="{unsubscribe_url}?email={email}&position={position}&location={location}" style="color:#4F46E5;text-decoration:none;font-weight:600;">Unsubscribe</a>
+                <span style="color:#D1D5DB;"> • </span>
+                <a href="https://yourjobfinder.website/terms" style="color:#4F46E5;text-decoration:none;font-weight:600;">Terms</a>
+                <span style="color:#D1D5DB;"> • </span>
+                <a href="https://yourjobfinder.website/contact" style="color:#4F46E5;text-decoration:none;font-weight:600;">Contact</a>
+              </p>
+            </td>
+          </tr>
         </table>
-    </body>
-    </html>
+        <!-- Legal Line -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:640px;">
+          <tr>
+            <td style="padding:20px 8px 10px 8px;" align="center">
+              <p style="margin:0;font-size:11px;line-height:1.5;color:#9CA3AF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">© 2025 Your Job Finder. Educational project – do not reply.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
     '''
