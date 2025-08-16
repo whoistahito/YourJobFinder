@@ -1,22 +1,36 @@
 import datetime
 import random
 
+# Design tokens (aligned with app theme)
+BRAND_PRIMARY = "#6366f1"  # brand-500
+BRAND_PRIMARY_DARK = "#4f46e5"  # brand-600
+DARK_TEXT = "#111827"
+SUBTEXT = "#4b5563"
+SOFT_BG = "#f5f4f8"  # site soft-ui background
+CARD_BG = "#ffffff"
+BORDER = "#e2e8f0"
+DOT_COLOR = "#d4d4dd"
+
+# Small 6x6 dot grid png (1px dot) base64 to mimic site subtle dot pattern (safe fallback: background-color only)
+DOT_GRID_DATA_URI = (
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVQoU2NkYGD4z0AEYBxVSFUBAQB1TgmdOQk2kQAAAABJRU5ErkJggg=="
+)
+
+# Friendly dynamic greetings (kept minimal emoji for deliverability)
 greetings = [
-    "Here are some exciting job opportunities we found for you! 🚀",
-    "Great news! Check out these potential job matches for you! 🎉",
-    "We’ve found some jobs that might interest you. Take a look! 👀",
-    "Explore these job openings tailored for you! 🔍",
-    "Here's a list of jobs that could be your next big opportunity! 🌟",
-    "These jobs caught our attention. We hope they pique yours too! 📌",
-    "Discover these job possibilities that align with your criteria! 📈",
-    "Look at the career opportunities we’ve gathered for you! 🗂️",
-    "Unlock your potential with these job listings we found! 🔑",
-    "We’ve curated these job options just for you. Happy exploring! 😊"
+    "Here are some curated roles we found for you today.",
+    "Fresh matches just in – take a quick scan.",
+    "A focused batch of potential fits for your criteria.",
+    "Today’s refined set of opportunities for you.",
+    "Your monitored roles update has arrived.",
 ]
 
 
 def get_welcome_message():
-    return """
+    """Welcome email (sent immediately after user creates first alert).
+    Refactored to align with on-site soft glass aesthetic.
+    """
+    return f"""
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,109 +38,72 @@ def get_welcome_message():
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="color-scheme" content="light dark" />
   <meta name="supported-color-schemes" content="light dark" />
-  <title>Welcome to Your Job Finder</title>
-  <!--[if mso]>
-  <style type="text/css">body, table, td {font-family: Arial, Helvetica, sans-serif !important;}</style>
-  <![endif]-->
+  <title>Welcome – Your Job Finder</title>
+  <!--[if mso]><style type="text/css">body, table, td {{font-family: Arial, Helvetica, sans-serif !important;}}</style><![endif]-->
   <style>
-    :root { color-scheme: light dark; supported-color-schemes: light dark; }
-    @media (prefers-color-scheme: dark) {
-      body, .email-outer { background:#0f1115 !important; }
-      .email-card { background:#1c1f26 !important; box-shadow:0 0 0 1px #262b33 inset !important; }
-      .email-header { background:linear-gradient(135deg,#312e81,#4338ca,#6366f1) !important; }
-      .email-card h1, .email-card h2, .email-card h3 { color:#f1f5f9 !important; }
-      .email-card p, .email-text { color:#cbd5e1 !important; }
-      .job-card { background:#242a33 !important; border-color:#334155 !important; }
-      .badge-light { background:#334155 !important; color:#e2e8f0 !important; }
-      .btn-primary { background:#6366f1 !important; color:#ffffff !important; }
-      .tips-box { background:#1e2530 !important; border-color:#334155 !important; }
-      a { color:#818cf8 !important; }
-      .footer-line { color:#64748b !important; }
-    }
+    :root {{ color-scheme: light dark; supported-color-schemes: light dark; }}
+    body {{ margin:0; padding:0; background:{SOFT_BG}; -webkit-font-smoothing:antialiased; }}
+    .outer {{ background:{SOFT_BG}; }}
+    .card {{ background:{CARD_BG}; border-radius:24px; box-shadow:0 4px 18px -4px rgba(0,0,0,0.08),0 2px 4px -1px rgba(0,0,0,0.06); }}
+    .hero-bg {{ background:{CARD_BG}; background-image: radial-gradient(circle at 25% 20%, {BRAND_PRIMARY}1F, transparent 65%), radial-gradient(circle at 85% 70%, #38bdf81e, transparent 70%); }}
+    .pill {{ display:inline-block; background:{DARK_TEXT}; color:#fff !important; font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:600; padding:6px 14px; border-radius:999px; text-decoration:none; }}
+    .btn-dark {{ display:inline-block; background:{DARK_TEXT}; color:#ffffff !important; font-weight:600; font-size:15px; padding:14px 30px; text-decoration:none; border-radius:999px; }}
+    .divider {{ height:1px; background:linear-gradient(to right, transparent, {BORDER}, transparent); line-height:1px; font-size:0; }}
+    .dot-section {{ background:{CARD_BG}; background-image:url({DOT_GRID_DATA_URI}); background-repeat:repeat; background-size:10px 10px; }}
+    @media (prefers-color-scheme: dark) {{
+      body, .outer {{ background:#0f1115 !important; }}
+      .card {{ background:#1c1f26 !important; box-shadow:0 0 0 1px #252a33 inset !important; }}
+      .hero-bg {{ background:#1c1f26 !important; background-image:radial-gradient(circle at 25% 20%, {BRAND_PRIMARY_DARK}33, transparent 65%), radial-gradient(circle at 85% 70%, #38bdf833, transparent 70%) !important; }}
+      h1,h2,h3 {{ color:#f1f5f9 !important; }}
+      p, .muted {{ color:#cbd5e1 !important; }}
+      .btn-dark {{ background:{BRAND_PRIMARY} !important; }}
+      .pill {{ background:{BRAND_PRIMARY_DARK} !important; }}
+      .dot-section {{ background:#242a33 !important; }}
+    }}
   </style>
 </head>
-<body class="email-body" style="margin:0;padding:0;background-color:#F3F4F6;-webkit-font-smoothing:antialiased;">
-  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="email-outer" style="background:#f3f4f6;">
+<body>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="outer">
     <tr>
-      <td align="center" style="padding:32px 12px;">
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="email-card" style="max-width:640px;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 8px 28px -6px rgba(0,0,0,0.08);">
+      <td align="center" style="padding:36px 14px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;" class="card">
           <!-- Hero -->
           <tr>
-            <td class="email-header" style="background:linear-gradient(135deg,#ffffff 0%,#eef2ff 60%,#e0f7ff 100%);padding:52px 40px 40px 40px;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td align="left" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-                    <div style="display:inline-block;background:#111827;color:#ffffff;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;padding:6px 14px;border-radius:999px;">Welcome</div>
-                    <h1 style="margin:24px 0 14px 0;font-size:32px;line-height:1.15;font-weight:700;color:#111827;letter-spacing:-0.5px;">Your Job <span style="color:#4F46E5;">Finder</span> Starts Now</h1>
-                    <p style="margin:0;font-size:16px;line-height:1.55;color:#4B5563;max-width:520px;">We scan fresh listings daily and send you a focused, noise‑free batch that matches what you told us. No dashboards to babysit. Just high‑fit leads in your inbox.</p>
-                  </td>
-                </tr>
-              </table>
+            <td class="hero-bg" style="padding:54px 44px 46px 44px; border-radius:24px 24px 0 0;">
+              <span class="pill">Welcome</span>
+              <h1 style="margin:26px 0 14px 0; font-size:34px; line-height:1.08; font-weight:700; letter-spacing:-0.5px; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Let us find your job</h1>
+              <p style="margin:0; font-size:16px; line-height:1.55; max-width:520px; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">You set the intent; we monitor credible sources and surface only high‑fit openings. No noise. One concise batch at most per day.</p>
             </td>
           </tr>
-          <!-- Criteria Summary -->
+          <!-- Matching Criteria -->
           <tr>
-            <td style="padding:40px 40px 8px 40px;">
-              <h2 style="margin:0 0 20px 0;font-size:20px;line-height:1.3;color:#111827;font-weight:600;">What We'll Use To Match Roles</h2>
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+            <td style="padding:40px 44px 10px 44px;">
+              <h2 style="margin:0 0 20px 0; font-size:20px; line-height:1.3; font-weight:600; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:{DARK_TEXT};">What we track for you</h2>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td valign="top" width="50%" style="padding:0 16px 24px 0;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="font-size:24px;line-height:1;padding-right:12px;">💼</td>
-                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Role Focus</td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td valign="top" width="50%" style="padding:0 0 24px 16px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="font-size:24px;line-height:1;padding-right:12px;">⭐</td>
-                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Job Type</td>
-                      </tr>
-                    </table>
-                  </td>
+                  <td valign="top" width="50%" style="padding:0 16px 26px 0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">💼 Role Focus</td>
+                  <td valign="top" width="50%" style="padding:0 0 26px 16px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">⭐ Job Type</td>
                 </tr>
                 <tr>
-                  <td valign="top" width="50%" style="padding:0 16px 24px 0;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="font-size:24px;line-height:1;padding-right:12px;">📍</td>
-                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Location / Remote</td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td valign="top" width="50%" style="padding:0 0 24px 16px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="font-size:24px;line-height:1;padding-right:12px;">⏱️</td>
-                        <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#374151;font-weight:500;">Freshness Window</td>
-                      </tr>
-                    </table>
-                  </td>
+                  <td valign="top" width="50%" style="padding:0 16px 10px 0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">📍 Location / Remote</td>
+                  <td valign="top" width="50%" style="padding:0 0 10px 16px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">⏱️ Freshness</td>
                 </tr>
               </table>
-              <p style="margin:4px 0 0 0;font-size:12px;line-height:1.5;color:#6B7280;">We ignore obvious duplicates, expired listings and low quality scraps.</p>
+              <p style="margin:6px 0 0 0; font-size:12px; line-height:1.5; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Duplicated, expired or low‑signal listings are filtered out upstream.</p>
             </td>
           </tr>
           <!-- CTA -->
           <tr>
-            <td align="center" style="padding:40px 40px 8px 40px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td class="btn-primary" bgcolor="#4F46E5" style="border-radius:999px;">
-                    <a href="https://yourjobfinder.website" target="_blank" style="display:inline-block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;padding:14px 30px;">Create Another Alert →</a>
-                  </td>
-                </tr>
-              </table>
-              <p style="margin:28px 0 0 0;font-size:14px;line-height:1.5;color:#4B5563;max-width:520px;">First tailored batch hits your inbox within 24h. You can pause or unsubscribe any time—no questions.</p>
+            <td align="center" style="padding:38px 44px 6px 44px;">
+              <a href="https://yourjobfinder.website" class="btn-dark">Create another alert ↗</a>
+              <p style="margin:26px 0 0 0; font-size:14px; line-height:1.5; color:{SUBTEXT}; max-width:520px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Your first tailored batch arrives within 24h. Adjust or unsubscribe any time.</p>
             </td>
           </tr>
           <!-- Footer -->
           <tr>
-            <td style="padding:40px 28px 48px 28px;border-top:1px solid #E5E7EB;">
-              <p class="footer-line" style="margin:0 0 8px 0;font-size:12px;line-height:1.5;color:#6B7280;text-align:center;">© 2025 Your Job Finder • Educational project</p>
-              <p class="footer-line" style="margin:0;font-size:11px;line-height:1.5;color:#9CA3AF;text-align:center;">You’re receiving this because you created an alert.</p>
+            <td style="padding:42px 32px 48px 32px; border-top:1px solid {BORDER};">
+              <p style="margin:0 0 8px 0; font-size:12px; line-height:1.5; color:#6b7280; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">© 2025 Your Job Finder • Educational project</p>
+              <p style="margin:0; font-size:11px; line-height:1.5; color:#94a3b8; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">You’re receiving this because you created an alert.</p>
             </td>
           </tr>
         </table>
@@ -139,51 +116,42 @@ def get_welcome_message():
 
 
 def create_job_card(row):
-    """
-    Creates an HTML job card from a pandas DataFrame row.
+    """Creates an individual job card (table block) aligned with theme.
 
-    Expected columns in row:
-    - title: str
-    - company: str
-    - location: str
-    - date_posted: datetime or str
-    - is_remote: bool
-    - job_url: str
-    - new_badge: bool (optional)
+    Expected keys in row: title, company, location, date_posted, is_remote, job_url, new_badge (optional)
     """
-    # Convert date to proper format if it's a string or datetime
     if isinstance(row['date_posted'], datetime.date):
         posted_date = row['date_posted'].strftime("%b %d, %Y")
     else:
         posted_date = 'This Week'
 
-    # New badge HTML - only show if is_new is True
     new_badge = ''
     if row.get('new_badge', False):
-        new_badge = ('<span class="badge-light" style="display:inline-block;background:#DCFCE7;color:#166534;font-size:11px;'
-                     'font-weight:600;line-height:1;padding:6px 12px;border-radius:999px;">NEW</span>')
+        new_badge = (
+            f'<span style="display:inline-block;background:#ecfdf5;color:#065f46;font-size:11px;font-weight:600;line-height:1;padding:6px 10px;border-radius:999px;">NEW</span>'
+        )
 
-    # Remote badge - only show if remote is True
     remote_badge = ''
-    if row['is_remote']:
-        remote_badge = ('<span class="badge-light" style="display:inline-block;background:#EEF2FF;color:#4F46E5;font-size:11px;'
-                         'font-weight:500;line-height:1;padding:6px 12px;border-radius:999px;margin-left:8px;">Remote</span>')
+    if row.get('is_remote'):
+        remote_badge = (
+            f'<span style="display:inline-block;background:#eef2ff;color:{BRAND_PRIMARY_DARK};font-size:11px;font-weight:500;line-height:1;padding:6px 10px;border-radius:999px;margin-left:6px;">Remote</span>'
+        )
 
     return f'''
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 20px 0;border-collapse:separate;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0; border-collapse:separate;">
       <tr>
-        <td class="job-card" style="background:#F8FAFF;border:1px solid #E5E7EB;border-radius:16px;padding:20px 22px;">
+        <td style="background:#ffffff;border:1px solid {BORDER};border-radius:18px;padding:20px 22px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
               <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;vertical-align:top;">
-                <h3 style="margin:0 0 8px 0;font-size:17px;line-height:1.35;color:#1F2937;font-weight:600;">{row['title']}</h3>
-                <p style="margin:0 0 6px 0;font-size:14px;line-height:1.4;color:#374151;font-weight:500;">{row['company']}</p>
-                <p style="margin:0 0 12px 0;font-size:13px;line-height:1.5;color:#6B7280;">📍 {row['location']}<br />🕒 Posted: {posted_date}</p>
-                <div style="margin:0 0 16px 0;">{new_badge}{remote_badge}</div>
+                <h3 style="margin:0 0 6px 0;font-size:17px;line-height:1.35;color:{DARK_TEXT};font-weight:600;">{row['title']}</h3>
+                <p style="margin:0 0 6px 0;font-size:14px;line-height:1.4;color:{SUBTEXT};font-weight:500;">{row['company']}</p>
+                <p style="margin:0 0 12px 0;font-size:13px;line-height:1.55;color:#6b7280;">📍 {row['location']}<br />🕒 Posted: {posted_date}</p>
+                <div style="margin:0 0 14px 0;">{new_badge}{remote_badge}</div>
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                    <td class="btn-primary" bgcolor="#4F46E5" style="border-radius:10px;">
-                      <a href="{row['job_url']}" style="display:inline-block;padding:12px 20px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">View Details →</a>
+                    <td bgcolor="{BRAND_PRIMARY_DARK}" style="border-radius:999px;">
+                      <a href="{row['job_url']}" style="display:inline-block;padding:11px 20px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">View Details ↗</a>
                     </td>
                   </tr>
                 </table>
@@ -197,16 +165,13 @@ def create_job_card(row):
 
 
 def get_html_template(html_content, email, position, location):
-    """
-    Creates the complete HTML email template with the job cards content.
+    """Nightly / daily batch email containing job cards.
 
     Args:
-        html_content (str): The concatenated job cards HTML
-        email (str): The recipient's username/email
-        position (str) : preferred job position
-        location (str) : preferred job location
-    Returns:
-        str: Complete HTML email template
+        html_content: Concatenated job card HTML blocks.
+        email: Recipient email.
+        position: Target position string.
+        location: Target location string.
     """
     unsubscribe_url = "https://yourjobfinder.website/unsubscribe/process"
     return f'''
@@ -221,77 +186,80 @@ def get_html_template(html_content, email, position, location):
   <!--[if mso]><style type="text/css">body, table, td {{font-family: Arial, Helvetica, sans-serif !important;}}</style><![endif]-->
   <style>
     :root {{ color-scheme: light dark; supported-color-schemes: light dark; }}
-    @media (prefers-color-scheme: dark) {{{{
-      body, .email-outer {{ background:#0f1115 !important; }}
-      .email-card {{ background:#1c1f26 !important; box-shadow:0 0 0 1px #262b33 inset !important; }}
-      .email-header {{ background:linear-gradient(125deg,#312e81,#4338ca,#6366f1) !important; }}
-      .email-card h1, .email-card h2, .email-card h3 {{ color:#f1f5f9 !important; }}
-      .email-card p, .email-text {{ color:#cbd5e1 !important; }}
-      .job-card {{ background:#242a33 !important; border-color:#334155 !important; }}
-      .badge-light {{ background:#334155 !important; color:#e2e8f0 !important; }}
-      .btn-primary {{ background:#6366f1 !important; color:#ffffff !important; }}
-      .tips-box {{ background:#1e2530 !important; border-color:#334155 !important; }}
-      a {{ color:#818cf8 !important; }}
-      .footer-line {{ color:#64748b !important; }}
-    }}}}
+    body {{ margin:0; padding:0; background:{SOFT_BG}; -webkit-font-smoothing:antialiased; }}
+    .outer {{ background:{SOFT_BG}; }}
+    .card {{ background:{CARD_BG}; border-radius:28px; box-shadow:0 8px 28px -8px rgba(0,0,0,0.08); }}
+    .header {{ background:{CARD_BG}; background-image:radial-gradient(circle at 25% 22%, {BRAND_PRIMARY}22, transparent 65%), radial-gradient(circle at 80% 70%, #38bdf81e, transparent 70%); }}
+    .badge {{ display:inline-block; background:{DARK_TEXT}; color:#fff !important; font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:600; padding:6px 14px; border-radius:999px; }}
+    .tips {{ background:#ffffff; border:1px solid {BORDER}; border-radius:18px; }}
+    a {{ color:{BRAND_PRIMARY_DARK}; }}
+    @media (prefers-color-scheme: dark) {{
+      body, .outer {{ background:#0f1115 !important; }}
+      .card {{ background:#1c1f26 !important; box-shadow:0 0 0 1px #252a33 inset !important; }}
+      .header {{ background:#1c1f26 !important; background-image:radial-gradient(circle at 25% 22%, {BRAND_PRIMARY_DARK}40, transparent 65%), radial-gradient(circle at 80% 70%, #38bdf845, transparent 70%) !important; }}
+      h1,h2,h3 {{ color:#f1f5f9 !important; }}
+      p, .muted {{ color:#cbd5e1 !important; }}
+      .tips {{ background:#242a33 !important; border-color:#334155 !important; }}
+      a {{ color:{BRAND_PRIMARY} !important; }}
+    }}
   </style>
 </head>
-<body class="email-body" style="margin:0;padding:0;background-color:#F3F4F6;-webkit-font-smoothing:antialiased;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="email-outer" style="background:#F3F4F6;">
+<body>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="outer">
     <tr>
-      <td align="center" style="padding:32px 12px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="email-card" style="max-width:640px;background:#ffffff;border-radius:24px;overflow:hidden;box-shadow:0 8px 28px -8px rgba(0,0,0,0.1);">
+      <td align="center" style="padding:34px 14px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;" class="card">
           <!-- Header -->
           <tr>
-            <td class="email-header" style="background:linear-gradient(125deg,#4F46E5 0%,#6366F1 60%,#60A5FA 115%);padding:44px 40px 46px 40px;">
-              <h1 style="margin:0;font-size:26px;line-height:1.2;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">Your Curated Matches</h1>
-              <p style="margin:14px 0 0 0;font-size:15px;line-height:1.5;color:#E0E7FF;max-width:420px;font-weight:500;">Fresh roles filtered for <span style="color:#ffffff;">{position or 'your role'}</span> {(' · ' + location) if location else ''}</p>
-              <p style="margin:10px 0 0 0;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);font-weight:600;">Daily Batch</p>
+            <td class="header" style="padding:46px 46px 42px 46px; border-radius:28px 28px 0 0;">
+              <span class="badge">Daily Batch</span>
+              <h1 style="margin:26px 0 12px 0; font-size:28px; line-height:1.2; font-weight:700; letter-spacing:-0.5px; color:#111827; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Curated Matches</h1>
+              <p style="margin:0; font-size:15px; line-height:1.55; max-width:420px; font-weight:500; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Focused roles for <span style="color:{DARK_TEXT};">{position or 'your role'}</span>{(' · ' + location) if location else ''}</p>
             </td>
           </tr>
           <!-- Intro -->
           <tr>
-            <td style="padding:32px 40px 8px 40px;">
-              <p class="email-text" style="margin:0 0 24px 0;font-size:15px;line-height:1.55;color:#4B5563;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">{random.choice(greetings)}</p>
+            <td style="padding:32px 46px 12px 46px;">
+              <p style="margin:0 0 24px 0; font-size:15px; line-height:1.55; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">{random.choice(greetings)}</p>
             </td>
           </tr>
           <!-- Job Cards -->
           <tr>
-            <td style="padding:0 40px 8px 40px;">{html_content}</td>
+            <td style="padding:0 46px 4px 46px;">{html_content}</td>
           </tr>
           <!-- Tips -->
+            <tr>
+              <td style="padding:10px 46px 40px 46px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="tips">
+                  <tr>
+                    <td style="padding:18px 22px;">
+                      <p style="margin:0 0 6px 0; font-size:13px; line-height:1.5; font-weight:600; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Why you got these</p>
+                      <p style="margin:0; font-size:12px; line-height:1.55; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Matched on role semantics, location / remoteness, recency & source quality. Tune further by creating an additional alert with narrower scope.</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          <!-- Footer inside card -->
           <tr>
-            <td style="padding:8px 40px 32px 40px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="tips-box" style="background:#F8FAFF;border:1px solid #E5E7EB;border-radius:16px;">
-                <tr>
-                  <td style="padding:18px 22px;">
-                    <p style="margin:0 0 8px 0;font-size:13px;line-height:1.5;color:#374151;font-weight:600;">Why you got these</p>
-                    <p style="margin:0;font-size:12px;line-height:1.55;color:#6B7280;">Matched on: role keywords, location/remoteness, recency & basic quality filters. Improve accuracy by narrowing your criteria or creating a second alert.</p>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <!-- Footer -->
-          <tr>
-            <td style="padding:32px 28px 44px 28px;border-top:1px solid #E5E7EB;">
-              <p class="footer-line" style="margin:0 0 16px 0;font-size:13px;line-height:1.55;color:#6B7280;text-align:center;">Prefer fewer emails? Create a second alert tuned differently and compare signal.</p>
-              <p class="footer-line" style="margin:0 0 18px 0;font-size:12px;line-height:1.5;color:#9CA3AF;text-align:center;">This was sent to {email}. If this looks wrong you can adjust by making a new alert.</p>
-              <p class="footer-line" style="margin:0;font-size:12px;line-height:1.5;color:#9CA3AF;text-align:center;">
-                <a href="{unsubscribe_url}?email={email}&position={position}&location={location}" style="color:#4F46E5;text-decoration:none;font-weight:600;">Unsubscribe</a>
-                <span style="color:#D1D5DB;"> • </span>
-                <a href="https://yourjobfinder.website/terms" style="color:#4F46E5;text-decoration:none;font-weight:600;">Terms</a>
-                <span style="color:#D1D5DB;"> • </span>
-                <a href="https://yourjobfinder.website/contact" style="color:#4F46E5;text-decoration:none;font-weight:600;">Contact</a>
+            <td style="padding:34px 32px 46px 32px; border-top:1px solid {BORDER};">
+              <p style="margin:0 0 14px 0; font-size:13px; line-height:1.55; color:#6b7280; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Prefer fewer emails? Create a second alert tuned differently and compare signal.</p>
+              <p style="margin:0 0 16px 0; font-size:12px; line-height:1.5; color:#94a3b8; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Sent to {email}. If this is incorrect, adjust by making a new alert.</p>
+              <p style="margin:0; font-size:12px; line-height:1.5; color:#94a3b8; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+                <a href="{unsubscribe_url}?email={email}&position={position}&location={location}" style="color:{BRAND_PRIMARY_DARK}; text-decoration:none; font-weight:600;">Unsubscribe</a>
+                <span style="color:#cbd5e1;"> • </span>
+                <a href="https://yourjobfinder.website/terms" style="color:{BRAND_PRIMARY_DARK}; text-decoration:none; font-weight:600;">Terms</a>
+                <span style="color:#cbd5e1;"> • </span>
+                <a href="https://yourjobfinder.website/contact" style="color:{BRAND_PRIMARY_DARK}; text-decoration:none; font-weight:600;">Contact</a>
               </p>
             </td>
           </tr>
         </table>
-        <!-- Legal Line -->
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:640px;">
+        <!-- Legal line -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;">
           <tr>
-            <td style="padding:20px 8px 10px 8px;" align="center">
-              <p class="footer-line" style="margin:0;font-size:11px;line-height:1.5;color:#9CA3AF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">© 2025 Your Job Finder. Educational project – do not reply.</p>
+            <td align="center" style="padding:20px 8px 12px 8px;">
+              <p style="margin:0; font-size:11px; line-height:1.5; color:#94a3b8; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">© 2025 Your Job Finder. Educational project – do not reply.</p>
             </td>
           </tr>
         </table>
