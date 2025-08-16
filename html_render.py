@@ -29,6 +29,7 @@ greetings = [
 def get_welcome_message():
     """Welcome email (sent immediately after user creates first alert).
     Refactored to align with on-site soft glass aesthetic.
+    Adjusted copy: focuses on expectation setting (no extra alert CTA).
     """
     return f"""
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -47,18 +48,15 @@ def get_welcome_message():
     .card {{ background:{CARD_BG}; border-radius:24px; box-shadow:0 4px 18px -4px rgba(0,0,0,0.08),0 2px 4px -1px rgba(0,0,0,0.06); }}
     .hero-bg {{ background:{CARD_BG}; background-image: radial-gradient(circle at 25% 20%, {BRAND_PRIMARY}1F, transparent 65%), radial-gradient(circle at 85% 70%, #38bdf81e, transparent 70%); }}
     .pill {{ display:inline-block; background:{DARK_TEXT}; color:#fff !important; font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:600; padding:6px 14px; border-radius:999px; text-decoration:none; }}
-    .btn-dark {{ display:inline-block; background:{DARK_TEXT}; color:#ffffff !important; font-weight:600; font-size:15px; padding:14px 30px; text-decoration:none; border-radius:999px; }}
-    .divider {{ height:1px; background:linear-gradient(to right, transparent, {BORDER}, transparent); line-height:1px; font-size:0; }}
-    .dot-section {{ background:{CARD_BG}; background-image:url({DOT_GRID_DATA_URI}); background-repeat:repeat; background-size:10px 10px; }}
+    .section-h2 {{ margin:0 0 18px 0; font-size:16px; line-height:1.35; font-weight:600; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; }}
+    .list-bullet td {{ font-size:13px; line-height:1.5; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; padding:0 0 10px 0; }}
     @media (prefers-color-scheme: dark) {{
       body, .outer {{ background:#0f1115 !important; }}
       .card {{ background:#1c1f26 !important; box-shadow:0 0 0 1px #252a33 inset !important; }}
       .hero-bg {{ background:#1c1f26 !important; background-image:radial-gradient(circle at 25% 20%, {BRAND_PRIMARY_DARK}33, transparent 65%), radial-gradient(circle at 85% 70%, #38bdf833, transparent 70%) !important; }}
       h1,h2,h3 {{ color:#f1f5f9 !important; }}
-      p, .muted {{ color:#cbd5e1 !important; }}
-      .btn-dark {{ background:{BRAND_PRIMARY} !important; }}
+      p, .muted, .list-bullet td {{ color:#cbd5e1 !important; }}
       .pill {{ background:{BRAND_PRIMARY_DARK} !important; }}
-      .dot-section {{ background:#242a33 !important; }}
     }}
   </style>
 </head>
@@ -71,39 +69,51 @@ def get_welcome_message():
           <tr>
             <td class="hero-bg" style="padding:54px 44px 46px 44px; border-radius:24px 24px 0 0;">
               <span class="pill">Welcome</span>
-              <h1 style="margin:26px 0 14px 0; font-size:34px; line-height:1.08; font-weight:700; letter-spacing:-0.5px; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Let us find your job</h1>
-              <p style="margin:0; font-size:16px; line-height:1.55; max-width:520px; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">You set the intent; we monitor credible sources and surface only high‑fit openings. No noise. One concise batch at most per day.</p>
+              <h1 style="margin:26px 0 14px 0; font-size:34px; line-height:1.05; font-weight:700; letter-spacing:-0.5px; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Monitoring started</h1>
+              <p style="margin:0; font-size:16px; line-height:1.55; max-width:520px; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Your alert is active. We continuously scan credible sources and surface only roles that closely fit what you entered—at most one concise email on days a real match exists.</p>
             </td>
           </tr>
-          <!-- Matching Criteria -->
+          <!-- What we track -->
           <tr>
-            <td style="padding:40px 44px 10px 44px;">
-              <h2 style="margin:0 0 20px 0; font-size:20px; line-height:1.3; font-weight:600; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:{DARK_TEXT};">What we track for you</h2>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td valign="top" width="50%" style="padding:0 16px 26px 0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">💼 Role Focus</td>
-                  <td valign="top" width="50%" style="padding:0 0 26px 16px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">⭐ Job Type</td>
-                </tr>
-                <tr>
-                  <td valign="top" width="50%" style="padding:0 16px 10px 0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">📍 Location / Remote</td>
-                  <td valign="top" width="50%" style="padding:0 0 10px 16px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; color:{SUBTEXT}; font-weight:500;">⏱️ Freshness</td>
-                </tr>
+            <td style="padding:40px 44px 4px 44px;">
+              <h2 class="section-h2">What drives your matches</h2>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="list-bullet">
+                <tr><td>• Role focus & related titles</td></tr>
+                <tr><td>• Job type preference</td></tr>
+                <tr><td>• Location / remote setting</td></tr>
+                <tr><td>• Posting recency & basic quality filters</td></tr>
               </table>
-              <p style="margin:6px 0 0 0; font-size:12px; line-height:1.5; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Duplicated, expired or low‑signal listings are filtered out upstream.</p>
+              <p style="margin:8px 0 0 0; font-size:12px; line-height:1.5; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Duplicates, expired and obvious low‑quality listings are removed upstream.</p>
             </td>
           </tr>
-          <!-- CTA -->
+          <!-- What happens next -->
           <tr>
-            <td align="center" style="padding:38px 44px 6px 44px;">
-              <a href="https://yourjobfinder.website" class="btn-dark">Create another alert ↗</a>
-              <p style="margin:26px 0 0 0; font-size:14px; line-height:1.5; color:{SUBTEXT}; max-width:520px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Your first tailored batch arrives within 24h. Adjust or unsubscribe any time.</p>
+            <td style="padding:34px 44px 4px 44px;">
+              <h2 class="section-h2">What to expect</h2>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="list-bullet">
+                <tr><td>• First relevant batch often within 24 hours (no email if nothing fits)</td></tr>
+                <tr><td>• Each message: a small set of high‑fit roles only</td></tr>
+                <tr><td>• Frequency naturally adapts—quiet when market is quiet</td></tr>
+              </table>
+            </td>
+          </tr>
+          <!-- Control -->
+          <tr>
+            <td style="padding:34px 44px 6px 44px;">
+              <h2 class="section-h2">Your control</h2>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="list-bullet">
+                <tr><td>• Create an additional alert later to compare broader or narrower scope</td></tr>
+                <tr><td>• One‑click unsubscribe link in every email</td></tr>
+                <tr><td>• Reply paths are disabled—reach us via the site contact page</td></tr>
+              </table>
+              <p style="margin:10px 0 0 0; font-size:13px; line-height:1.55; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Tip: Keep role wording specific. Add a second alert later if you also want a broader sweep.</p>
             </td>
           </tr>
           <!-- Footer -->
           <tr>
             <td style="padding:42px 32px 48px 32px; border-top:1px solid {BORDER};">
               <p style="margin:0 0 8px 0; font-size:12px; line-height:1.5; color:#6b7280; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">© 2025 Your Job Finder • Educational project</p>
-              <p style="margin:0; font-size:11px; line-height:1.5; color:#94a3b8; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">You’re receiving this because you created an alert.</p>
+              <p style="margin:0; font-size:11px; line-height:1.5; color:#94a3b8; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">You’re receiving this because you created an alert. Adjust or unsubscribe any time.</p>
             </td>
           </tr>
         </table>
