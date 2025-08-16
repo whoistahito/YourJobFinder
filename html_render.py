@@ -27,93 +27,131 @@ greetings = [
 
 
 def get_welcome_message():
-    """Welcome email (sent immediately after user creates first alert).
-    Refactored to align with on-site soft glass aesthetic.
-    Adjusted copy: focuses on expectation setting (no extra alert CTA).
+    """Welcome email (stacked-panels variant).
+    Design shifts:
+    - Uses a single outer shell and internal stacked panels separated by subtle dividers (simulating site stacked-sections) for higher legibility.
+    - Hero succinct; panels: Inputs, How It Works, Principles & Next Steps (merged), Control.
+    - Minimal color and concise bullet lists.
     """
     return f"""
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="color-scheme" content="light dark" />
-  <meta name="supported-color-schemes" content="light dark" />
-  <title>Welcome – Your Job Finder</title>
-  <!--[if mso]><style type="text/css">body, table, td {{font-family: Arial, Helvetica, sans-serif !important;}}</style><![endif]-->
-  <style>
-    :root {{ color-scheme: light dark; supported-color-schemes: light dark; }}
-    body {{ margin:0; padding:0; background:{SOFT_BG}; -webkit-font-smoothing:antialiased; }}
-    .outer {{ background:{SOFT_BG}; }}
-    .card {{ background:{CARD_BG}; border-radius:24px; box-shadow:0 4px 18px -4px rgba(0,0,0,0.08),0 2px 4px -1px rgba(0,0,0,0.06); }}
-    .hero-bg {{ background:{CARD_BG}; background-image: radial-gradient(circle at 25% 20%, {BRAND_PRIMARY}1F, transparent 65%), radial-gradient(circle at 85% 70%, #38bdf81e, transparent 70%); }}
-    .pill {{ display:inline-block; background:{DARK_TEXT}; color:#fff !important; font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:600; padding:6px 14px; border-radius:999px; text-decoration:none; }}
-    .section-h2 {{ margin:0 0 18px 0; font-size:16px; line-height:1.35; font-weight:600; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; }}
-    .list-bullet td {{ font-size:13px; line-height:1.5; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; padding:0 0 10px 0; }}
-    @media (prefers-color-scheme: dark) {{
-      body, .outer {{ background:#0f1115 !important; }}
-      .card {{ background:#1c1f26 !important; box-shadow:0 0 0 1px #252a33 inset !important; }}
-      .hero-bg {{ background:#1c1f26 !important; background-image:radial-gradient(circle at 25% 20%, {BRAND_PRIMARY_DARK}33, transparent 65%), radial-gradient(circle at 85% 70%, #38bdf833, transparent 70%) !important; }}
-      h1,h2,h3 {{ color:#f1f5f9 !important; }}
-      p, .muted, .list-bullet td {{ color:#cbd5e1 !important; }}
-      .pill {{ background:{BRAND_PRIMARY_DARK} !important; }}
-    }}
-  </style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<meta name="supported-color-schemes" content="light dark" />
+<title>Welcome – Your Job Finder</title>
+<!--[if mso]><style type="text/css">body, table, td {{font-family: Arial, Helvetica, sans-serif !important;}}</style><![endif]-->
+<style>
+  :root {{ color-scheme:light dark; supported-color-schemes:light dark; }}
+  body {{ margin:0; padding:0; background:{SOFT_BG}; -webkit-font-smoothing:antialiased; }}
+  .outer {{ background:{SOFT_BG}; }}
+  .shell {{ background:#ffffff; border-radius:28px; box-shadow:0 8px 30px -10px rgba(0,0,0,0.12),0 4px 10px -2px rgba(0,0,0,0.05); }}
+  .hero {{ background:#ffffff; background-image:radial-gradient(circle at 22% 18%, {BRAND_PRIMARY}25, transparent 62%), radial-gradient(circle at 80% 70%, #38bdf81a, transparent 70%); }}
+  .pill {{ display:inline-block; background:#111827; color:#ffffff !important; font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:600; padding:6px 14px; border-radius:999px; text-decoration:none; }}
+  h1 {{ margin:26px 0 12px 0; font-size:30px; line-height:1.08; font-weight:700; letter-spacing:-0.5px; color:#111827; }}
+  h2 {{ margin:0 0 14px 0; font-size:16px; line-height:1.35; font-weight:600; color:#111827; }}
+  p {{ margin:0; font-size:14px; line-height:1.55; color:#4b5563; }}
+  .stack-row {{ background:#ffffff; }}
+  .stack-alt {{ background:#f8f9fc; }}
+  .divider {{ height:1px; background:linear-gradient(to right, transparent, {BORDER}, transparent); line-height:1px; font-size:0; }}
+  .accent-line {{ height:3px; background:linear-gradient(90deg, {BRAND_PRIMARY} 0%, {BRAND_PRIMARY_DARK} 55%, transparent 100%); border-radius:2px; line-height:0; font-size:0; }}
+  ul {{ padding:0; margin:0; list-style:none; }}
+  li {{ font-size:13px; line-height:1.55; margin:0 0 8px 0; color:#4b5563; }}
+  .small {{ font-size:12px; line-height:1.5; color:#6b7280; }}
+  a {{ color:{BRAND_PRIMARY_DARK}; text-decoration:none; font-weight:600; }}
+  @media (prefers-color-scheme: dark) {{
+    body, .outer {{ background:#0f1115 !important; }}
+    .shell {{ background:#1c1f26 !important; box-shadow:0 0 0 1px #262b33 inset !important; }}
+    .hero {{ background:#1c1f26 !important; background-image:radial-gradient(circle at 22% 18%, {BRAND_PRIMARY_DARK}40, transparent 62%), radial-gradient(circle at 80% 70%, #38bdf845, transparent 70%) !important; }}
+    h1,h2 {{ color:#f1f5f9 !important; }}
+    p, li, .small {{ color:#cbd5e1 !important; }}
+    .stack-alt {{ background:#242a33 !important; }}
+    .divider {{ background:linear-gradient(to right, transparent, #334155, transparent) !important; }}
+    .accent-line {{ background:linear-gradient(90deg, {BRAND_PRIMARY_DARK} 0%, {BRAND_PRIMARY} 60%, transparent 100%) !important; }}
+    .pill {{ background:{BRAND_PRIMARY_DARK} !important; }}
+  }}
+</style>
 </head>
 <body>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="outer">
     <tr>
-      <td align="center" style="padding:36px 14px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;" class="card">
+      <td align="center" style="padding:40px 14px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:660px;" class="shell">
           <!-- Hero -->
           <tr>
-            <td class="hero-bg" style="padding:54px 44px 46px 44px; border-radius:24px 24px 0 0;">
+            <td class="hero" style="padding:56px 52px 42px 52px; border-radius:28px 28px 0 0;">
               <span class="pill">Welcome</span>
-              <h1 style="margin:26px 0 14px 0; font-size:34px; line-height:1.05; font-weight:700; letter-spacing:-0.5px; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Monitoring started</h1>
-              <p style="margin:0; font-size:16px; line-height:1.55; max-width:520px; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Your alert is active. We continuously scan credible sources and surface only roles that closely fit what you entered—at most one concise email on days a real match exists.</p>
+              <h1 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Monitoring started</h1>
+              <p style="max-width:540px; font-size:15px;">We now track sources for the role, type and location you specified. You’ll receive at most one concise email on days a real match appears—silence means nothing low‑quality filled your inbox.</p>
+              <div class="accent-line" style="margin:32px 0 0 0;"></div>
             </td>
           </tr>
-          <!-- What we track -->
-          <tr>
-            <td style="padding:40px 44px 4px 44px;">
-              <h2 class="section-h2">What drives your matches</h2>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="list-bullet">
-                <tr><td>• Role focus & related titles</td></tr>
-                <tr><td>• Job type preference</td></tr>
-                <tr><td>• Location / remote setting</td></tr>
-                <tr><td>• Posting recency & basic quality filters</td></tr>
-              </table>
-              <p style="margin:8px 0 0 0; font-size:12px; line-height:1.5; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Duplicates, expired and obvious low‑quality listings are removed upstream.</p>
-            </td>
-          </tr>
-          <!-- What happens next -->
-          <tr>
-            <td style="padding:34px 44px 4px 44px;">
-              <h2 class="section-h2">What to expect</h2>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="list-bullet">
-                <tr><td>• First relevant batch often within 24 hours (no email if nothing fits)</td></tr>
-                <tr><td>• Each message: a small set of high‑fit roles only</td></tr>
-                <tr><td>• Frequency naturally adapts—quiet when market is quiet</td></tr>
-              </table>
-            </td>
-          </tr>
-          <!-- Control -->
-          <tr>
-            <td style="padding:34px 44px 6px 44px;">
-              <h2 class="section-h2">Your control</h2>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="list-bullet">
-                <tr><td>• Create an additional alert later to compare broader or narrower scope</td></tr>
-                <tr><td>• One‑click unsubscribe link in every email</td></tr>
-                <tr><td>• Reply paths are disabled—reach us via the site contact page</td></tr>
-              </table>
-              <p style="margin:10px 0 0 0; font-size:13px; line-height:1.55; color:{SUBTEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Tip: Keep role wording specific. Add a second alert later if you also want a broader sweep.</p>
-            </td>
-          </tr>
+          <!-- Panel: Inputs -->
+          <tr><td class="stack-row" style="padding:34px 52px 10px 52px;">
+            <h2 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">What powers matching</h2>
+            <ul style="margin:0;">
+              <li>Role focus & related titles</li>
+              <li>Job type preference</li>
+              <li>Location / remote setting</li>
+              <li>Posting recency & basic source quality filters</li>
+            </ul>
+            <p class="small" style="margin:10px 0 0 0;">Duplicates, expired and obvious low‑quality listings never reach you.</p>
+          </td></tr>
+          <tr><td style="padding:0 52px;"><div class="divider"></div></td></tr>
+          <!-- Panel: How it works -->
+          <tr><td class="stack-alt" style="padding:34px 52px 10px 52px;">
+            <h2 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">How it works</h2>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+              <tr>
+                <td width="25%" style="padding:0 14px 26px 0; vertical-align:top;">
+                  <p class="small" style="margin:0 0 4px 0; font-size:11px; letter-spacing:0.5px; font-weight:600; text-transform:uppercase; color:#111827;">1 • Define</p>
+                  <p style="font-size:12px; line-height:1.55; margin:0;">You set the intent.</p>
+                </td>
+                <td width="25%" style="padding:0 14px 26px 0; vertical-align:top;">
+                  <p class="small" style="margin:0 0 4px 0; font-size:11px; letter-spacing:0.5px; font-weight:600; text-transform:uppercase; color:#111827;">2 • Monitor</p>
+                  <p style="font-size:12px; line-height:1.55; margin:0;">Sources continuously scanned.</p>
+                </td>
+                <td width="25%" style="padding:0 14px 26px 0; vertical-align:top;">
+                  <p class="small" style="margin:0 0 4px 0; font-size:11px; letter-spacing:0.5px; font-weight:600; text-transform:uppercase; color:#111827;">3 • Filter</p>
+                  <p style="font-size:12px; line-height:1.55; margin:0;">Noise & weak matches dropped.</p>
+                </td>
+                <td width="25%" style="padding:0 0 26px 0; vertical-align:top;">
+                  <p class="small" style="margin:0 0 4px 0; font-size:11px; letter-spacing:0.5px; font-weight:600; text-transform:uppercase; color:#111827;">4 • Deliver</p>
+                  <p style="font-size:12px; line-height:1.55; margin:0;">Only when a strong fit appears.</p>
+                </td>
+              </tr>
+            </table>
+          </td></tr>
+          <tr><td style="padding:0 52px;"><div class="divider"></div></td></tr>
+          <!-- Panel: Principles & Next -->
+          <tr><td class="stack-row" style="padding:34px 52px 8px 52px;">
+            <h2 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Principles & what’s next</h2>
+            <ul style="margin:0;">
+              <li><strong style="color:#111827; font-weight:600;">Signal first:</strong> We prefer silence over irrelevant noise.</li>
+              <li><strong style="color:#111827; font-weight:600;">Semantics:</strong> Contextual role understanding, not blind keyword tallying.</li>
+              <li><strong style="color:#111827; font-weight:600;">Privacy:</strong> Data only used to match roles—never sold.</li>
+              <li><strong style="color:#111827; font-weight:600;">Clean delivery:</strong> No ads. If nothing fits you get no email.</li>
+            </ul>
+            <p class="small" style="margin:14px 0 0 0;">If a strong match appears within ~24h you’ll receive your first batch. Quiet means nothing qualified yet.</p>
+          </td></tr>
+          <tr><td style="padding:0 52px;"><div class="divider"></div></td></tr>
+          <!-- Panel: Control -->
+          <tr><td class="stack-alt" style="padding:34px 52px 14px 52px; border-radius:0 0 28px 28px;">
+            <h2 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Your control</h2>
+            <ul style="margin:0;">
+              <li>Create another alert later if you need broader or narrower coverage.</li>
+              <li>One‑click unsubscribe link is in every email.</li>
+              <li>Use the site contact form for support (replies aren’t monitored).</li>
+            </ul>
+            <p class="small" style="margin:14px 0 0 0;">Tip: Keep role wording specific for higher precision.</p>
+          </td></tr>
           <!-- Footer -->
           <tr>
-            <td style="padding:42px 32px 48px 32px; border-top:1px solid {BORDER};">
-              <p style="margin:0 0 8px 0; font-size:12px; line-height:1.5; color:#6b7280; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">© 2025 Your Job Finder • Educational project</p>
-              <p style="margin:0; font-size:11px; line-height:1.5; color:#94a3b8; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">You’re receiving this because you created an alert. Adjust or unsubscribe any time.</p>
+            <td style="padding:42px 36px 48px 36px; text-align:center;">
+              <p style="margin:0 0 8px 0; font-size:12px; line-height:1.5; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">© 2025 Your Job Finder • Educational project</p>
+              <p style="margin:0; font-size:11px; line-height:1.5; color:#94a3b8; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">You’re receiving this because you created an alert. Adjust or unsubscribe any time.</p>
             </td>
           </tr>
         </table>
