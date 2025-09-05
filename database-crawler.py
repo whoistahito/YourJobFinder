@@ -1,6 +1,8 @@
 import csv
 import time
 import random
+import os
+import re
 from camoufox.sync_api import Camoufox
 
 
@@ -67,7 +69,10 @@ def solve_cloudflare_challenge(page, max_wait=30):
         print("Cloudflare challenge appears to be resolved after waiting.")
         return True
 
-def visit_indeed_links_with_camoufox(input_csv_path, output_csv_path, max_links=100):
+def visit_indeed_links_with_camoufox(input_csv_path, output_csv_path, html_output_dir, max_links=100):
+    # Create the directory for HTML files if it doesn't exist
+    os.makedirs(html_output_dir, exist_ok=True)
+
     # Step 1: Read already processed URLs from the output file to avoid re-scraping
     processed_urls = set()
     try:
@@ -110,15 +115,15 @@ def visit_indeed_links_with_camoufox(input_csv_path, output_csv_path, max_links=
 
     newly_processed_urls = set()
     try:
-        # Step 3: Scrape new URLs and save descriptions to the output file
+        # Step 3: Scrape new URLs and save HTML content
         with open(output_csv_path, 'a', newline='', encoding='utf-8') as outfile:
-            output_fieldnames = ['url', 'job_description']
+            output_fieldnames = ['url', 'html_file_path']
             writer = csv.DictWriter(outfile, fieldnames=output_fieldnames)
 
             if outfile.tell() == 0:
                 writer.writeheader()
 
-            with Camoufox(humanize=2.0, headless=False) as browser:
+            with Camoufox(humanize=2.0, headless=True) as browser:
                 for i, url in enumerate(urls_to_process):
                     print(f"Processing URL {i+1}/{len(urls_to_process)}: {url}")
                     page = browser.new_page()
@@ -129,14 +134,26 @@ def visit_indeed_links_with_camoufox(input_csv_path, output_csv_path, max_links=
                         if is_cloudflare_challenge(page):
                             solve_cloudflare_challenge(page, max_wait=30)
 
-                        job_desc = ''
+                        html_file_path = ''
                         try:
-                            job_desc_elem = page.wait_for_selector('div#jobDescriptionText', timeout=10000)
-                            job_desc = job_desc_elem.inner_text() if job_desc_elem else ''
-                        except Exception as e:
-                            print(f"Could not extract job description for {url}: {e}")
+                            # Check if the job description element exists
+                            job_desc_elem = page.query_selector('div#jobDescriptionText')
+                            if job_desc_elem:
+                                # Sanitize URL to create a valid filename
+                                sanitized_filename = re.sub(r'[<>:"/\\|?*]', '_', url) + '.html'
+                                html_file_path = os.path.join(html_output_dir, sanitized_filename)
 
-                        writer.writerow({'url': url, 'job_description': job_desc})
+                                # Save the full HTML content
+                                with open(html_file_path, 'w', encoding='utf-8') as f:
+                                    f.write(page.content())
+                                print(f"Saved HTML to {html_file_path}")
+                            else:
+                                print(f"Selector 'div#jobDescriptionText' not found for {url}. Skipping HTML save.")
+
+                        except Exception as e:
+                            print(f"Could not process page content for {url}: {e}")
+
+                        writer.writerow({'url': url, 'html_file_path': html_file_path})
                         outfile.flush()  # Save progress immediately
                         newly_processed_urls.add(url)
 
@@ -174,5 +191,6 @@ if __name__ == "__main__":
     visit_indeed_links_with_camoufox(
         input_csv_path='valid_indeed_links.csv',
         output_csv_path='indeed_job_descriptions.csv',
+        html_output_dir='indeed_html',
         max_links=100
     )
