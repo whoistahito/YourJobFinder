@@ -1,14 +1,15 @@
 import csv
-import time
-import random
 import os
+import random
 import re
-from camoufox.sync_api import Camoufox
+import time
 
+from camoufox.sync_api import Camoufox
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
 }
+
 
 def is_cloudflare_challenge(page):
     # Check for common Cloudflare challenge indicators
@@ -28,6 +29,7 @@ def is_cloudflare_challenge(page):
     except Exception:
         pass
     return False
+
 
 def solve_cloudflare_challenge(page, max_wait=30):
     print("Cloudflare challenge detected. Attempting to solve...")
@@ -51,7 +53,8 @@ def solve_cloudflare_challenge(page, max_wait=30):
                 print("Found Cloudflare Turnstile/Checkbox, clicking...")
                 checkbox.click()
                 # Wait for the challenge to be considered solved by observing the page
-                page.wait_for_function("!document.querySelector('iframe[src*=\"challenges.cloudflare.com\"]')", timeout=10000)
+                page.wait_for_function("!document.querySelector('iframe[src*=\"challenges.cloudflare.com\"]')",
+                                       timeout=10000)
                 print("Challenge appears to be solved after click.")
                 return True
 
@@ -68,6 +71,7 @@ def solve_cloudflare_challenge(page, max_wait=30):
     else:
         print("Cloudflare challenge appears to be resolved after waiting.")
         return True
+
 
 def visit_google_links_with_camoufox(input_csv_path, output_csv_path, html_output_dir, max_links=100):
     # Create the directory for HTML files if it doesn't exist
@@ -123,9 +127,9 @@ def visit_google_links_with_camoufox(input_csv_path, output_csv_path, html_outpu
             if outfile.tell() == 0:
                 writer.writeheader()
 
-            with Camoufox(humanize=2.0, headless=False) as browser:
+            with Camoufox(humanize=2.0, headless=True) as browser:
                 for i, url in enumerate(urls_to_process):
-                    print(f"Processing URL {i+1}/{len(urls_to_process)}: {url}")
+                    print(f"Processing URL {i + 1}/{len(urls_to_process)}: {url}")
                     page = browser.new_page()
                     try:
                         page.goto(url, wait_until='domcontentloaded', timeout=60000)
@@ -139,7 +143,9 @@ def visit_google_links_with_camoufox(input_csv_path, output_csv_path, html_outpu
                         # Check for error indicators before saving
                         page_title = page.title()
                         page_content = page.content()
-                        error_keywords = ['error', 'not found', 'job not found', 'listing not found', 'page not found',"nicht verfügbar"]
+                        error_keywords = ['error', 'not found', 'job not found', 'listing not found', 'page not found'
+                            , "nicht verfügbar", "nicht mehr verfügbar", "nicht gefunden", "seite nicht gefunden",
+                                          "abgelaufen", "entfernt", "nicht existiert"]
 
                         title_lower = page_title.lower()
                         content_lower = page_content.lower()
