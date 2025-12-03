@@ -20,14 +20,17 @@ def add_user():
     position = data.get('position')
     location = data.get('location')
     job_type = data.get('jobType')
+    skills = data.get('skills')
+    experience = data.get('experience')
+    education = data.get('education')
     try:
         if email is None or position is None or location is None or job_type is None:
             return jsonify({"message": "Invalid request"}), 400
-        user_manager.add_user(email, position, location, job_type)
+        user_manager.add_user(email, position, location, job_type, skills, experience, education)
         return jsonify({"message": "User added successfully!"}), 201
     except Exception as e:
         print(e)
-        return jsonify({"message": e}), 500
+        return jsonify({"message": str(e)}), 500
 
 
 

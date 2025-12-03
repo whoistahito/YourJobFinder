@@ -1,10 +1,20 @@
-from db.models import User, SentEmail
+from db.models import User, SentEmail, Skill, Experience, Education
 from extension import db
 
 
 class UserManager:
-    def add_user(self, email, position, location, job_type):
+    def add_user(self, email, position, location, job_type, skills=None, experience=None, education=None):
         user = User(email=email, position=position, location=location, job_type=job_type)
+        if skills:
+            for s in skills:
+                user.skills.append(Skill(skill=s))
+        if experience:
+            for e in experience:
+                user.experiences.append(Experience(experience=e))
+        if education:
+            for ed in education:
+                user.educations.append(Education(education=ed))
+
         if not self.user_exists(email, position, location):
             db.session.add(user)
             db.session.commit()
