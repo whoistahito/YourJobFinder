@@ -1,10 +1,12 @@
 from db.models import User, SentEmail, Skill, Experience, Education
 from extension import db
+import uuid
 
 
 class UserManager:
     def add_user(self, email, position, location, job_type, skills=None, experience=None, education=None):
-        user = User(email=email, position=position, location=location, job_type=job_type)
+        token = str(uuid.uuid4())
+        user = User(email=email, position=position, location=location, job_type=job_type, confirmation_token=token)
         if skills:
             for s in skills:
                 user.skills.append(Skill(skill=s))
@@ -40,6 +42,18 @@ class UserManager:
 
     def get_all_users(self):
         return User.query.all()
+
+    def confirm_user(self, token):
+        user = User.query.filter_by(confirmation_token=token).first()
+        if user:
+            user.is_confirmed = True
+            user.confirmation_token = None
+            db.session.commit()
+            return user
+        return None
+
+    def get_confirmed_users(self):
+        return User.query.filter_by(is_confirmed=True).all()
 
 
 class UserEmailManager:

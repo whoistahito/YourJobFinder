@@ -49,6 +49,14 @@ def delete_user():
         print(e)
         return jsonify({"message": e}), 500
 
+@app.route('/confirm/<token>', methods=['GET'])
+def confirm_email(token):
+    user = user_manager.confirm_user(token)
+    if user:
+        return redirect("https://yourjobfinder.website/confirm-email")
+    else:
+        return redirect("https://yourjobfinder.website/confirm-email/error")
+
 @app.route('/', methods=['GET'])
 def index():
     return redirect("https://yourjobfinder.website")

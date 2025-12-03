@@ -26,7 +26,7 @@ greetings = [
 ]
 
 
-def get_welcome_message():
+def get_welcome_message(confirm_url):
     """Welcome email (stacked-panels variant).
     Design shifts:
     - Uses a single outer shell and internal stacked panels separated by subtle dividers (simulating site stacked-sections) for higher legibility.
@@ -61,6 +61,7 @@ def get_welcome_message():
   li {{ font-size:13px; line-height:1.55; margin:0 0 8px 0; color:#4b5563; }}
   .small {{ font-size:12px; line-height:1.5; color:#6b7280; }}
   a {{ color:{BRAND_PRIMARY_DARK}; text-decoration:none; font-weight:600; }}
+  .btn {{ display:inline-block; background:{BRAND_PRIMARY_DARK}; color:#ffffff !important; font-size:14px; font-weight:600; padding:12px 24px; border-radius:999px; text-decoration:none; margin-top: 20px; }}
   @media (prefers-color-scheme: dark) {{
     body, .outer {{ background:#0f1115 !important; }}
     .shell {{ background:#1c1f26 !important; box-shadow:0 0 0 1px #262b33 inset !important; }}
@@ -71,6 +72,7 @@ def get_welcome_message():
     .divider {{ background:linear-gradient(to right, transparent, #334155, transparent) !important; }}
     .accent-line {{ background:linear-gradient(90deg, {BRAND_PRIMARY_DARK} 0%, {BRAND_PRIMARY} 60%, transparent 100%) !important; }}
     .pill {{ background:{BRAND_PRIMARY_DARK} !important; }}
+    .btn {{ background:{BRAND_PRIMARY} !important; }}
   }}
 </style>
 </head>
@@ -85,6 +87,7 @@ def get_welcome_message():
               <span class="pill">Welcome</span>
               <h1 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Monitoring started</h1>
               <p style="max-width:540px; font-size:15px;">We now track sources for the role, type and location you specified. You’ll receive at most one concise email on days a real match appears—silence means nothing low‑quality filled your inbox.</p>
+              <a href="{confirm_url}" class="btn">Confirm Email</a>
               <div class="accent-line" style="margin:32px 0 0 0;"></div>
             </td>
           </tr>

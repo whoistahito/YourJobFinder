@@ -96,14 +96,15 @@ def notify_jobs(filtered_jobs: pd.DataFrame, email: str, position: str, location
 
 def check_for_new_users():
     """
-    Check for new users and send them a welcome email.
+    Check for new users and send them a confirmation email.
     """
     with app.app_context():
         new_users = UserManager().get_new_users()
         for user in new_users:
-            send_email(get_welcome_message(), "Welcome to Your Job Finder!", user.email, is_html=True)
+            if user.confirmation_token:
+                confirm_url = f"http://api.yourjobfinder.website:5000/confirm/{user.confirmation_token}"
+                send_email(get_welcome_message(confirm_url), "Welcome to Your Job Finder! Please Confirm Email", user.email, is_html=True)
             UserManager().mark_user_as_not_new(user.email, user.position, user.location)
-            notify_user(user)
 
 
 def notify_users() -> None:
@@ -112,7 +113,7 @@ def notify_users() -> None:
     and sending them an email with relevant job opportunities.
     """
     with app.app_context():
-        users = UserManager().get_all_users()
+        users = UserManager().get_confirmed_users()
         for user in users:
             notify_user(user)
 

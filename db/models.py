@@ -10,6 +10,8 @@ class User(db.Model):
     location = db.Column(db.String, nullable=False)
     job_type = db.Column(db.String, nullable=False)
     is_new = db.Column(db.Boolean, nullable=False, default=True)
+    is_confirmed = db.Column(db.Boolean, nullable=False, default=False)
+    confirmation_token = db.Column(db.String, nullable=True)
 
     __table_args__ = (
         db.UniqueConstraint('email', 'position', 'location', name='_user_uc'),
