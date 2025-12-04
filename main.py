@@ -102,7 +102,7 @@ def check_for_new_users():
         new_users = UserManager().get_new_users()
         for user in new_users:
             if user.confirmation_token:
-                confirm_url = f"http://api.yourjobfinder.website:5000/confirm/{user.confirmation_token}"
+                confirm_url = f"https://api.yourjobfinder.website/confirm/{user.confirmation_token}"
                 send_email(get_welcome_message(confirm_url), "Welcome to Your Job Finder! Please Confirm Email", user.email, is_html=True)
             UserManager().mark_user_as_not_new(user.email, user.position, user.location)
 
