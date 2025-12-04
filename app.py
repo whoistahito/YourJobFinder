@@ -53,7 +53,7 @@ def delete_user():
 def confirm_email(token):
     user = user_manager.confirm_user(token)
     if user:
-        return redirect("https://yourjobfinder.website/confirm-email")
+        return redirect("https://yourjobfinder.website/confirm-email/success")
     else:
         return redirect("https://yourjobfinder.website/confirm-email/error")
 
