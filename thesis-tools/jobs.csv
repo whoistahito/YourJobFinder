@@ -1,0 +1,1570 @@
+id,site,job_url,job_url_direct,title,company,location,date_posted,new_badge,job_type,salary_source,interval,has_salary,min_amount,max_amount,currency,is_remote,job_level,job_function,listing_type,emails,description,company_industry,company_url,company_logo,company_url_direct,company_addresses,company_num_employees,company_revenue,company_description
+li-4164795642,linkedin,https://www.linkedin.com/jobs/view/4164795642,,Junior Java Developer,Hanshow,"Amsterdam, North Holland, Netherlands",2025-02-25,,,,,,,,,,,,,,,,https://cn.linkedin.com/company/hanshow,,,,,,
+in-b0ab721a70f09252,indeed,https://nl.indeed.com/viewjob?jk=b0ab721a70f09252,https://werkenbijdesvb.nl?web_page_id=1142646,DevOps Integratie Engineer,SVB,"Amstelveen, NH, NL",2025-03-01,,fulltime,,,,,,,False,,,,tcuturic@svb.nl,"**3 redenen waarom dit jouw baan is**
+-------------------------------------
+
+* **Impact op de Toekomst**  
+
+Jij bouwt en optimaliseert het integratieplatform waarmee miljoenen burgers afhankelijk zijn van soepele IT\-diensten.
+* **Technisch Uitdagend**  
+
+Je werkt met moderne technologieën zoals Red Hat AMQ, Azure Service Bus, WSO2 en Quarkus, en tilt onze API’s en messaging brokers naar een hoger niveau.
+* **Samen Groeien**  
+
+Je maakt deel uit van een team waar samenwerking met ontwikkelaars, security\-experts en IT\-specialisten centraal staat, met ruimte om jouw DevOps\-expertise te verdiepen en kennis uit te wisselen.
+
+
+**Jij doet het**
+----------------
+
+
+Als **DevOps Engineer** ben jij de specialist van ons integratieplatform. Jij zorgt ervoor dat de verschillende systemen binnen onze organisatie moeiteloos met elkaar communiceren en onze IT\-diensten betrouwbaar en veilig blijven. Vanuit het Integration Competence Center ben jij verantwoordelijk voor het configureren, optimaliseren en beveiligen van ons platform. Of je nu messaging queues in Red Hat AMQ onderhoudt of API’s beheert via Azure API Management, jouw werk is essentieel voor onze dagelijkse dienstverlening.
+
+
+Je werkt aan het opzetten van CI/CD\-pipelines en automatiseert platformconfiguraties met tools als Ansible of Bicep. Daarnaast monitor je continu de prestaties van het platform en grijp je proactief in bij mogelijke knelpunten. Samen met ontwikkelaars bespreek je API\-specificaties, los je integratieproblemen op en draag je bij aan de toekomstbestendige architectuur van onze IT\-systemen.
+
+
+* **Messaging Brokers:** Configuratie, beheer en optimalisatie van Red Hat AMQ of Azure Service Bus.
+* **API Management:** Beheer van API\-gateways (WSO2 of Azure), inclusief beveiliging met OAuth2, JWT en mTLS.
+* **NGINX:** Configureren als reverse proxy of load balancer met SSL/TLS\-beveiliging.
+
+
+**Jij bent het**
+----------------
+
+
+Je bent niet alleen een technisch zwaargewicht, maar ook iemand die met een brede blik naar integratie kijkt. Je begrijpt hoe kritieke systemen samenwerken en hoe je deze efficiënt en veilig kunt laten communiceren. Dankzij jouw ervaring met Java\-applicaties en frameworks zoals Spring Boot of Quarkus weet je hoe je performance optimaliseert en integratieproblemen snel oplost.
+
+
+Je hebt een sterke DevOps\-mentaliteit en automatiseert waar mogelijk. Of het nu gaat om versiebeheer, infrastructuur\-as\-code of geautomatiseerde tests. Jij weet hoe je processen stroomlijnt en tijd bespaart.
+
+
+* **Java\-expertise:** Onderhoud en debugging van Java\-applicaties, met kennis van JVM\-monitoringtools zoals JMX of VisualVM.
+* **Certificaatbeheer:** Diepgaande kennis van SSL/TLS, PKI, certificaatketens en truststores.
+* **Monitoring \& Logging:** Ervaring met tools als Prometheus, Grafana, Splunk en Dynatrace.
+* **Een professional met minimaal 3 jaar revelante werkervaring:** Aantoonbare ervaring op het gebied van integratie.
+
+
+**Welke kansen bieden we jou?**
+-------------------------------
+
+
+Jouw uitdaging, balans en groei: het heeft onze aandacht. Kansen en mogelijkheden om te groeien als persoon en als professional zijn er genoeg. Aan jou de taak om ze te pakken. Ook kan jij bij SVB (op basis van een 36\-urige werkweek) rekenen op:
+
+
+* elke maand maximaal € 6\.029,\- brutosalaris (fulltime is bij de SVB 36 uur per week).
+* 16,33% individueel keuzebudget. Jij kiest zelf hoe je dit inzet: wil je bijvoorbeeld meer salaris, een sabbatical, meer pensioen opbouwen of meer verlofdagen? Aan jou de keuze.
+* ruim 5 weken vakantie per jaar.
+
+
+Er is nog meer. Ga voor een compleet overzicht naar http://www.werkenbijdesvb.nl/vacatures/arbeidsvoorwaarden.
+
+
+**Jouw werkomgeving**
+---------------------
+
+
+Van kinderbijslag tot AOW\-pensioen: namens de overheid en samen met 4\.500 collega’s maken we het mogelijk om de volksverzekeringen uit te betalen. Dat betekent dat we elk jaar 60 miljard euro overmaken aan zo’n 5,7 miljoen mensen. Op tijd, eerlijk en efficiënt.
+
+
+Het Integratie Competence Center (ICC) bestaat uit 12 collega’s in rollen variërend van Integratie specialisten tot Solutionarchitecten, testers, Productowners en een Scrum Master.
+
+
+Het ICC ontwikkelt en beheert de dienst Integratie(platform) waarmee de SVB op een betrouwbare en gestandaardiseerde manier, real\-time en beveiligd gegevens kan uitwisselen tussen applicaties. Zowel binnen de SVB als met ketenpartners en derden daarbuiten. Hiermee is het ICC de integratiepartner voor alle applicatie\-integratie initiatieven. Van advies en ontwerp en bouw van maatwerk integraties tot aan het faciliteren van 'self service’ integraties.
+
+
+Bij SVB werken we bewust. We kijken daarvoor met elkaar vanaf welke plek jij het beste resultaat kan bereiken. Is dat vanaf onze locatie in Amstelveen en/of vanuit huis? Sowieso werk je binnen het team IT. Hier werkt
+
+
+“Ook als je thuiswerkt is iedereen behulpzaam en respectvol naar elkaar toe. De onderlinge verbinding is zo goed, dat je soms gewoon vergeet dat je op dat moment niet samen op kantoor zit.”
+
+
+
+*De SVB wil een diverse en inclusieve organisatie zijn, waar iedereen zich thuis voelt. Een afspiegeling van de samenleving. Onze doelgroep is immers ook divers. Teams met diversiteit waar iedereen ertoe doet maken ons effectiever, creatiever en zorgen voor betere dienstverlening.*
+
+
+**Solliciteren: jij maakt het verschil**
+----------------------------------------
+
+
+Wil jij als DevOps Integratie Engineer het verschil maken binnen de SVB: een organisatie met maatschappelijke impact?
+
+
+Een VOG\-screening maakt onderdeel uit van het proces. Een assessment kan onderdeel uitmaken van het proces.  
+
+Heb je eerst nog vragen? Stel deze aan Tommi via \+ 31 6 28235992 of tcuturic@svb.nl.",Organization,https://nl.indeed.com/cmp/Svb,,https://www.svb.nl,"Je vindt ons in Amstelveen (hoofdkantoor), Breda, Deventer, Groningen, Leiden, Nijmegen, Roermond, Rotterdam, Utrecht (2x) en Zaanstad. ","1,001 to 5,000",more than $10B (USD),
+in-ba8a6782719d164b,indeed,https://nl.indeed.com/viewjob?jk=ba8a6782719d164b,https://www.sogeti.nl/jobs/a0wVg0000050OfNIAU_SALESFORCENETHERLANDSOGETI/java-programmeur/,Java programmeur,Sogeti,"Groningen, GR, NL",2025-02-28,,,,,,,,,False,,,,,"*Als Java Programmeur bij Sogeti maak je deel uit van onze vooraanstaande community van meer dan 100 gepassioneerde Java\-professionals. Samen met je team behaal je uitstekende resultaten en voeg je waarde toe voor onze topklanten. Elke werkdag biedt nieuwe uitdagingen en je bent constant bezig met het oplossen van complexe vraagstukken binnen bedrijfskritische systemen van onze klanten in de regio Noordoost.*
+
+*Bij Sogeti krijg je volop kansen om je verder te certificeren in jouw vakgebied. We organiseren regelmatig technische meetups en bevorderen kennisdeling binnen ons team. Sogetisten werken met plezier en ondersteunen elkaar, wat leidt tot de mooiste resultaten.*
+
+
+Werken als Java Programmeur bij Sogeti
+
+
+Bij Sogeti volgen we de nieuwste ontwikkelingen op de voet en delen we deze binnen onze community én daarbuiten. We organiseren regelmatig (online) events en meetups. Heb jij al deelgenomen aan onze Meetups? Je vindt ons ook vaak op grote conferenties zoals Oracle Code One, Devoxx, en JFall. Schrijven voor het Java Magazine en deelnemen aan de redactiecommissie? Dat doen we natuurlijk ook!
+
+
+Een paar keer per jaar organiseren we programma’s rond actuele thema’s. Zo maken we elkaar én de rest van de Nederlandse developers steeds slimmer.
+
+
+Werken en Wonen in de Regio Noordoost bij Sogeti
+
+
+Wil jij werken in de regio waar je woont? Bij Sogeti in Noordoost Nederland is dat mogelijk. Door slim klanten te bedienen en werken op afstand te faciliteren, beperken we jouw reistijd. We zijn ambassadeurs van hybride werken en stimuleren deels thuiswerken. Werk bij ons in een dynamische en innovatieve omgeving, dicht bij huis.
+
+
+Wie ben jij?
+
+  
+
+Ben jij iemand die graag een doel voor ogen heeft, jouw mening deelt en actief meedenkt met klanten en collega's? Werk je graag in teamverband maar kun je ook prima zelfstandig aan de slag? Dan zoeken wij jou!
+
+
+Wat breng je mee?
+
+* Aantoonbare ontwikkelervaring binnen Java\-omgevingen;
+* Grondige kennis en ervaring met CI/CD en Cloud;
+* Een afgeronde HBO\- of academische opleiding;
+* Vloeiende beheersing van de Nederlandse taal op C1\-niveau.
+
+
+Sluit je aan bij ons team in Noordoost Nederland en werk mee aan uitdagende en innovatieve projecten!
+
+
+Dit bieden wij jou
+
+
+Bij Sogeti zorgen we goed voor onze medewerkers en bieden we uitstekende voorwaarden:
+
+* Salaris tot € 5\.000,00 bruto per maand (op basis van kennis en kunde);
+* Direct een vast contract;
+* Goede secundaire arbeidsvoorwaarden;
+* Complexe opdrachten bij de top van het Nederlandse bedrijfsleven en de overheid;
+* Een actieve community die regelmatig events organiseert, waarbij we kennis en plezier combineren;
+* Een breed trainingsprogramma waarin je volop de ruimte krijgt om jezelf te ontwikkelen en certificeringen te behalen;
+* Wij stellen een inrichting voor een thuiswerkplek ter beschikking;
+* Standplaats Groningen.
+
+
+You make technology work. Solliciteer als Java Programmeur!
+
+
+Dus durf jij de uitdaging aan en wil je meehelpen het succes van onze community verder uit te bouwen? Solliciteer dan snel deze vacature sluit op 31 Maart! Een PES\-screening is onderdeel van de onboarding bij Sogeti.
+
+
+Wat kun je van ons verwachten:
+
+* Als je binnen het profiel van de vacature past of wij mogelijkheden binnen Sogeti zien, plannen we binnen drie werkdagen een kennismakingsgesprek met onze recruiters. Tijdens dit gesprek maken we kennis met jou en je achtergrond.
+* Na een positief eerste gesprek ontvang je een capaciteitentest en een persoonlijkheidsvragenlijst. Deze geven ons inzicht in jouw capaciteiten en werkstijl.
+* Binnen vier werkdagen na het eerste gesprek en de tests volgt een verdiepend gesprek met een Career Manager en een vakinhoudelijke specialist. Hierbij beoordelen we je vakkennis en de persoonlijke klik.
+* Als wij positief zijn en jij ook enthousiast bent, ontvang je binnen twee werkdagen na het tweede gesprek ons aanbod.
+
+
+Currently we are specifically looking for professionals who speak fluently Dutch at a C1 level and reside in the Netherlands.
+
+
+Heb je nog vragen over de vacature van Java Programmeur?
+
+
+Jouw recruiter, Henk Wouda, beantwoordt ze graag. Bell, app of mail gerust.
+
+
+tel: \+31627576343
+
+
+Recruiters Noordoost
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+Geplaatst op
+28 Feb 2025
+Locatie
+Groningen
+Ervaring
+Medior (2\-5 jr)
+Vakgebied
+Software development
+Solliciteer nu",,https://nl.indeed.com/cmp/Sogeti,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/1fffde36bca039cdf2546b5dfae5ea17,https://www.sogeti.com,Paris,"10,000+",$100M to $500M (USD),
+in-f4ec7dda63289d65,indeed,https://nl.indeed.com/viewjob?jk=f4ec7dda63289d65,"https://www.lightspeedhq.com/careers/job/manager-software-development-febeios-all-genders/6674098/?office=Amsterdam,%20North%20Holland,%20Netherlands","Manager, Software Development, FE/BE/iOS (all genders)",Lightspeed,"Amsterdam, NH, NL",2025-02-28,,,,,,,,,True,,,,,"Hi there! Thanks for stopping by 
+
+
+Are you actively looking for a new opportunity? Or just checking the market? Well… you might be in the right place!
+
+
+We're looking for a talented Software Development Manager to help us lead, mentor, and coach a high\-performing software development team while fostering an inclusive environment that inspires them to do the best work of their career to date.
+
+
+As a leader at Lightspeed, your primary responsibility is to the people you support: ensuring they are growing as engineers, doing valuable work, and generally having a great time at Lightspeed. You also lead the team's delivery, enabling productive and sustainable ways of working while focusing on the most important things that bring long\-term business value.
+
+
+As a leader of strong engineers, technical leadership and a solid background in software development are a must so that you can challenge and grow your team members. You will also be able to influence the culture, facilitate technical delivery and work with your team on strategy and execution.
+
+
+If you’re motivated by tackling technical challenges, delivering impactful solutions, and pursuing excellence within our distributed workforce, we’d love to hear from you!
+
+
+Your Mission
+
+
+Under your guidance, the team will take on the critical mission of supporting and enhancing our Restaurant Point\-of\-Sale product, helping businesses worldwide streamline their operations. You foster and strengthen a healthy, highly collaborative, and continuously learning culture across the teams.
+
+
+What you’ll be responsible for
+
+* Be the trusted lead and partner of a development team that’s responsible for two market leading products. You’ll be guiding, motivating, and developing your team to solve complex business problems.
+* Attract, hire, and onboard top talent as we aim to double the team size in the near future.
+* Enhance team growth through effective mentoring, coaching, and constructive feedback, while fostering a mutually supportive, inclusive, and collaborative environment.
+* You model lead\-by\-example excellence, provide high\-quality code reviews and design feedback, and work to drive technical alignment in challenging areas.
+* Lead the way to develop performant, scalable, and maintainable applications, ensuring high technical quality and operational excellence in your area.
+* Collaborate closely with other teams, architects, product managers, and engineering leaders to align approaches and priorities.
+* Continuously improve our software delivery processes and practices, staying updated with industry trends to influence our strategic direction and foster innovation.
+* Provide technical and process guidance to your team, and participate in recruiting top talent for the organization.
+
+
+What you’ll be bringing to the team
+
+* Proven experience leading a team of developers through successful software projects
+* Excellent written and verbal communication with the ability to convey technical information to a wide variety of audiences.
+* Solid understanding of development processes, testing, and CI/CD best practices.
+* Experience delivering horizontally scalable applications and microservices.
+* Passion for learning new things and desire to improve continuously.
+* Solution\-oriented and constructive mindset and ability to manage ambiguity.
+* If you have a Frontend Development background:
++ Advanced skills in TypeScript, React
++ Full\-stack web development familiarity is a strong plus.
+
+* If you have a Backend Development background:
++ Advanced skills in Java: Spring Framework
+
+* If you have a Mobile Development background:
++ Advanced skills in Objective\-C, Swift
+
+
+Even better if you have hands\-on experience with (but not necessary):
+
+* Interest in or experience with POS or eCommerce systems
+* Experience building scalable SaaS solutions
+* Experience working with relational and NoSQL databases
+* Experience with cloud platforms, preferably AWS
+* Bachelor's degree in Computer Science, Software Engineering, or equivalent
+
+
+Who you are:
+
+* You’re a hands\-on manager who enjoys staying involved in the codebase.
+* You are a problem solver who does not shy away from tackling complexity and critical thinking.
+* You have a strong will to learn, grow, and leave your comfort zone.
+* You have great energy and passion for technology.
+
+
+What’s in it for you?
+
+
+Come live the Lightspeed experience!
+
+* Lots of autonomy, flexible work culture with the option of working remotely or from one of our beautiful offices.
+* Genuine career growth opportunities within a company that's continuously expanding.
+* Make a meaningful impact by helping merchants grow their businesses through creating or improving products and addressing customer feedback.
+* Be part of a team large enough for growth yet agile enough for real impact.
+* Work on high\-traffic products with a global user base.
+* Opportunities to learn, develop new skills, and expand your expertise.
+* Opportunity to work alongside other highly skilled engineers, learn and expand your skill set, forge wonderful relationships and make your mark within the diverse and inclusive Lightspeed culture, a true Canadian tech success story.
+
+
+and enjoy a range of benefits that’ll keep you happy, healthy and (not) hungry:
+
+* Lightspeed equity scheme (we are all owners)
+* Health \& Wellness Credit \- expense up to 400 EUR per year towards your gym membership, yoga classes, a new bike or whatever else you do for your health
+* Mental Health Support through the Modern Health App \- whether it is meditation, coaching or counseling you need \- each employee gets access to this platform
+* People Experience \- Our PX benefit allows you to work from pretty much anywhere in the world for 60 days a year
+
+
+To all recruitment agencies: Lightspeed does not accept unsolicited agency resumes. If we have not directly engaged your company in writing to supply candidates for a specific vacancy, Lightspeed will not be responsible for any fees related to unsolicited resumes.
+
+
+Lightspeed is a proud equal opportunity employer and we are committed to creating an inclusive and barrier\-free workplace. Lightspeed welcomes and encourages applications from people with disabilities. Accommodations are available on request for candidates taking part in all aspects of the selection process.
+
+
+Where to from here?  
+
+Obviously, this has to be mutually beneficial: we want you to step into a role you love, and we want to offer you a place you’re proud to come to every day. .
+
+
+Lightspeed is building communities through commerce, and we need people from all backgrounds and lived experiences to do that. We were founded in 2005, in Montreal’s gay village and our original members were all part of the LGBTQ\+ community. The ethos of our business has been about inclusion from the very beginning, and we strive to provide a workplace where everyone belongs.
+
+
+Who we are:  
+
+Powering the businesses that are the backbone of the global economy, Lightspeed's one\-stop commerce platform helps merchants innovate to simplify, scale, and provide exceptional customer experiences. Our cloud commerce solution transforms and unifies online and physical operations, multichannel sales, expansion to new locations, global payments, financial solutions, and connection to supplier networks.
+
+
+Founded in Montréal, Canada in 2005, Lightspeed is dual\-listed on the New York Stock Exchange (NYSE: LSPD) and Toronto Stock Exchange (TSX: LSPD). With teams across North America, Europe, and Asia Pacific, the company serves retail, hospitality, and golf businesses in over 100 countries.  
+
+
+Lightspeed handles your information in accordance with our Applicant Privacy Statement.",,https://nl.indeed.com/cmp/Lightspeed-5,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/dd864ecc758cedb69d9129687a2ed498,https://www.lightspeedhq.com,"Montreal, QC","1,001 to 5,000",Decline to state,"We provide customers with a simple way to build, manage and grow their retail, restaurant or eCommerce business."
+in-a1d45f11162e87b4,indeed,https://nl.indeed.com/viewjob?jk=a1d45f11162e87b4,https://grnh.se/206d09561us,"Manager, Software Development, FE/BE/iOS (all genders)",Lightspeed,"Amsterdam, NH, NL",2025-02-28,,,,,,,,,True,,,,,"### **Hi there! Thanks for stopping by**
+
+
+
+Are you actively looking for a new opportunity? Or just checking the market? Well… you might be in the right place!
+
+
+
+We're looking for a talented Software Development Manager to help us lead, mentor, and coach a high\-performing software development team while fostering an inclusive environment that inspires them to do the best work of their career to date.
+
+
+
+As a leader at Lightspeed, your primary responsibility is to the people you support: ensuring they are growing as engineers, doing valuable work, and generally having a great time at Lightspeed. You also lead the team's delivery, enabling productive and sustainable ways of working while focusing on the most important things that bring long\-term business value.
+
+
+
+As a leader of strong engineers, technical leadership and a solid background in software development are a must so that you can challenge and grow your team members. You will also be able to influence the culture, facilitate technical delivery and work with your team on strategy and execution.
+
+
+
+If you're motivated by tackling technical challenges, delivering impactful solutions, and pursuing excellence within our distributed workforce, we'd love to hear from you!
+
+
+### **Your Mission**
+
+
+
+Under your guidance, the team will take on the critical mission of supporting and enhancing our Restaurant Point\-of\-Sale product, helping businesses worldwide streamline their operations. You foster and strengthen a healthy, highly collaborative, and continuously learning culture across the teams.
+
+
+### **What you'll be responsible for**
+
+
+* Be the trusted lead and partner of a development team that's responsible for two market leading products. You'll be guiding, motivating, and developing your team to solve complex business problems.
+* Attract, hire, and onboard top talent as we aim to double the team size in the near future.
+* Enhance team growth through effective mentoring, coaching, and constructive feedback, while fostering a mutually supportive, inclusive, and collaborative environment.
+* You model lead\-by\-example excellence, provide high\-quality code reviews and design feedback, and work to drive technical alignment in challenging areas.
+* Lead the way to develop performant, scalable, and maintainable applications, ensuring high technical quality and operational excellence in your area.
+* Collaborate closely with other teams, architects, product managers, and engineering leaders to align approaches and priorities.
+* Continuously improve our software delivery processes and practices, staying updated with industry trends to influence our strategic direction and foster innovation.
+* Provide technical and process guidance to your team, and participate in recruiting top talent for the organization.
+
+### **What you'll be bringing to the team**
+
+
+* Proven experience leading a team of developers through successful software projects
+* Excellent written and verbal communication with the ability to convey technical information to a wide variety of audiences.
+* Solid understanding of development processes, testing, and CI/CD best practices.
+* Experience delivering horizontally scalable applications and microservices.
+* Passion for learning new things and desire to improve continuously.
+* Solution\-oriented and constructive mindset and ability to manage ambiguity.
+* If you have a Frontend Development background:
+* + *Advanced skills in TypeScript, React*
+	+ Full\-stack web development familiarity is a strong plus.
+* If you have a Backend Development background:
+* + Advanced skills in Java: Spring Framework
+* If you have a Mobile Development background:
+* + Advanced skills in Objective\-C, Swift
+
+### **Even better if you have hands\-on experience with (but not necessary):**
+
+
+* Interest in or experience with POS or eCommerce systems
+* Experience building scalable SaaS solutions
+* Experience working with relational and NoSQL databases
+* Experience with cloud platforms, preferably AWS
+* Bachelor's degree in Computer Science, Software Engineering, or equivalent
+
+### **Who you are:**
+
+
+* You're a hands\-on manager who enjoys staying involved in the codebase.
+* You are a problem solver who does not shy away from tackling complexity and critical thinking.
+* You have a strong will to learn, grow, and leave your comfort zone.
+* You have great energy and passion for technology.
+
+### **What's in it for you?**
+
+
+
+Come live the Lightspeed experience!
+
+
+* Lots of autonomy, flexible work culture with the option of working remotely or from one of our beautiful offices.
+* Genuine career growth opportunities within a company that's continuously expanding.
+* Make a meaningful impact by helping merchants grow their businesses through creating or improving products and addressing customer feedback.
+* Be part of a team large enough for growth yet agile enough for real impact.
+* Work on high\-traffic products with a global user base.
+* Opportunities to learn, develop new skills, and expand your expertise.
+* Opportunity to work alongside other highly skilled engineers, learn and expand your skill set, forge wonderful relationships and make your mark within the diverse and inclusive Lightspeed culture, a true Canadian tech success story.
+
+
+*and enjoy a range of benefits that'll keep you happy, healthy and (not) hungry:*
+
+
+* Lightspeed equity scheme (we are all owners)
+* Health \& Wellness Credit \- expense up to 400 EUR per year towards your gym membership, yoga classes, a new bike or whatever else you do for your health
+* Mental Health Support through the Modern Health App \- whether it is meditation, coaching or counseling you need \- each employee gets access to this platform
+* People Experience \- Our PX benefit allows you to work from pretty much anywhere in the world for 60 days a year
+
+*To all recruitment agencies: Lightspeed does not accept unsolicited agency resumes. If we have not directly engaged your company in writing to supply candidates for a specific vacancy, Lightspeed will not be responsible for any fees related to unsolicited resumes.*
+
+
+*Lightspeed is a proud equal opportunity employer and we are committed to creating an inclusive and barrier\-free workplace. Lightspeed welcomes and encourages applications from people with disabilities. Accommodations are available on request for candidates taking part in all aspects of the selection process.*
+
+
+**Where to from here?**  
+
+Obviously, this has to be mutually beneficial: we want you to step into a role you love, and we want to offer you a place you're proud to come to every day. For a glimpse into our world check out our career page here.
+
+
+
+Lightspeed is building communities through commerce, and we need people from all backgrounds and lived experiences to do that. We were founded in 2005, in Montreal's gay village and our original members were all part of the LGBTQ\+ community. The ethos of our business has been about inclusion from the very beginning, and we strive to provide a workplace where everyone belongs.
+
+
+**Who we are:**
+  
+
+Powering the businesses that are the backbone of the global economy, Lightspeed's one\-stop commerce platform helps merchants innovate to simplify, scale, and provide exceptional customer experiences. Our cloud commerce solution transforms and unifies online and physical operations, multichannel sales, expansion to new locations, global payments, financial solutions, and connection to supplier networks.
+
+
+
+Founded in Montréal, Canada in 2005, Lightspeed is dual\-listed on the New York Stock Exchange (NYSE: LSPD) and Toronto Stock Exchange (TSX: LSPD). With teams across North America, Europe, and Asia Pacific, the company serves retail, hospitality, and golf businesses in over 100 countries.  
+
+
+
+Lightspeed handles your information in accordance with our Applicant Privacy Statement.",,https://nl.indeed.com/cmp/Lightspeed-5,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/dd864ecc758cedb69d9129687a2ed498,https://www.lightspeedhq.com,"Montreal, QC","1,001 to 5,000",Decline to state,"We provide customers with a simple way to build, manage and grow their retail, restaurant or eCommerce business."
+in-33d2c1bd864f4f0b,indeed,https://nl.indeed.com/viewjob?jk=33d2c1bd864f4f0b,https://grnh.se/489d3742teu,Full Stack Software Developer,Spektrum,"Den Haag, ZH, NL",2025-02-28,,,,,,,,,True,,,,,"Spektrum have a wide range of exciting opportunities in several global locations.
+
+
+
+We are always looking to add great new talent to our team and look forward to hearing from you.
+
+
+Spektrum supports apex purchasers (NATO, UN, EU, and National Government and Defence) and their Tier 1 supplier ecosystem with a wide range of specialist services. We provide our clients with professional services, specialised aerospace and defence sales, delivery, and operational subject matter expertise. We are looking for personnel to join our team and support key client projects.
+
+
+
+**Who we are supporting**
+
+
+
+The NATO Communication and Information Agency (NCIA) is responsible for providing secure and effective communications and information technology (IT) services to NATO's member countries and its partners. The agency was established in 2012 and is headquartered in Brussels, Belgium.
+
+
+
+The NCIA provides a wide range of services, including:
+
+
+* Cyber Security: The NCIA provides advanced cybersecurity solutions to protect NATO's communication networks and information systems against cyber threats.
+* Command and Control Systems: The NCIA develops and maintains the systems used by NATO's military commanders to plan and execute operations.
+* Satellite Communications: The NCIA provides satellite communications services to enable secure and reliable communications between NATO forces.
+* Electronic Warfare: The NCIA provides electronic warfare services to support NATO's mission to detect, deny, and defeat threats to its communication networks.
+* Information Management: The NCIA manages NATO's information technology infrastructure, including its databases, applications, and servers.
+
+
+Overall, the NCIA plays a critical role in ensuring the security and effectiveness of NATO's communication and information technology capabilities.
+
+
+**The program**
+
+**Assistance and Advisory Service (AAS)**
+
+
+
+The NATO Communications and Information Agency (NCI Agency) is NATO's principal C3 capability deliverer and CIS service provider. It provides, maintains and defends the NATO enterprise\-wide information technology infrastructure to enable Allies to consult together under Article IV, and, when required, stand together in the face of attack under Article V.
+
+
+
+To provide these critical services, in the modern evolving dynamic environment the NCI Agency needs to build and maintain high performance\-engaged workforce. The NCI Agency workforce strategically consists of three major categorise's: NATO International Civilians (NIC)'s, Military (Mil), and Interim Workforce Consultants (IWC)'s. The IWCs are a critical part of the overall NCI Agency workforce and make up approximately 15 percent of the total workforce.
+
+
+
+**Role Background**
+
+
+
+The NATO Information and Communication Agency (NCI Agency) located in The Hague, Netherlands is currently involved in the development of joint, new capabilities/services for NATO, as well as in the support of existing capabilities and services. In the light of these activities, the C2 Centre is looking for an experienced Full Stack Software Developer.
+
+
+
+Specifically, the selected contractor will work as a member of the development team on the development and maintenance of existing software modules and on the development of new software modules of the Tactical Data Link (TDL) Interoperability, Test and Assessment (IOTA) suite of tools.
+
+
+**Role Duties and Responsibilities**
+
+
+
+Under the direction of the Service Delivery Manager (SDM) and the Project Manager (PM), the Full Stack Software Developer will work closely with the project Lead Developer (LD) and develop and update the IOTA suite of tools. This includes the following activities:
+
+
+* Design, develop, test and maintain the software for the IOTA suite of tools;
+* Write, update and maintain the software documentation for the IOTA suite of tools;
+* Participate in the team meetings and document the sprints as required by Service Delivery Manager (SDM) and Project Manager (PM);
+* Update accordingly the development backlog system with progress and comments;
+
+
+**Essential Skills and Experience**
+
+
+* Proven experience and proficiency in Front\-end development. Excellent knowledge of technologies such as Angular 17 or higher, HTML5, CSS, Typescript and JavaScript;
+* Proven experience and proficiency in Back\-end development. Excellent knowledge of technologies such as Java 17 or higher, Spring Framework 5\.3 or higher and Spring Boot 3;
+* Proven experience in development of (near) real\-time RESTful web systems using the following protocols: HTTP, HTTPS, WS, WSS and SOAP;
+* Proven experience and proficiency in writing automated testing for software modules (JUnit/Component, Functional and Integration);
+* Proven knowledge of XML, JSON, Git, Maven and Jenkins;
+* Proven knowledge of TCP/UDP/IP protocols, networking concepts and ability to use networking tools (SSH, Terminal);
+
+
+**Desirable Skills and Experience**
+
+
+* Desirable but not mandatory previous experience with Tactical Data Links (TDLs);
+* Desirable but not mandatory previous experience within the NATO environment (ACO, ACT, NCIA, etc.);
+
+
+**Education**
+
+
+* Bachelor's degree in Computer Science, Information Technology or a closely related engineering field and at least 5 years of relevant experience in software development;
+
+
+**Working Location**
+
+
+* Remote
+
+
+**Working Policy**
+
+
+* Off\-Site
+
+
+**Travel**
+
+
+* Some travel to The Hague, Netherlands may be required
+
+
+**Security Clearance**
+
+
+* Valid National or NATO Secret personal security clearance
+
+
+We never know what new opportunities might be just over the horizon. If this opportunity isn't for you please feel free to send us your resume anyway and be the first to know if something suitable for your skills and experience comes up.",,https://nl.indeed.com/cmp/Spektrum,,,,,,
+in-cb9de1750dea16b5,indeed,https://nl.indeed.com/viewjob?jk=cb9de1750dea16b5,https://www.xential.com/vacatures/junior-test-automation-engineer,Junior Test Automation Engineer,Xential,"Holten, OV, NL",2025-02-28,,,,,,,,,False,,,,hr@xential.nl,"As a Junior Test Automation Engineer you will play a critical role in designing and implementing the next generation of our testing practices.
+
+  
+
+**Are you passionate about building robust, automated testing frameworks and keen on exploring a global career path in software testing?**
+
+At xential, recently acquired by Omnidocs, we are seeking a **Junior Test Automation Engineer** who will play a critical role in designing and implementing the next generation of our testing practices.
+
+
+
+You will initially join our CGX (Current Generation xential) team in Holten, The Netherlands, where you will pioneer the creation of automated test solutions to replace our existing manual test plans. While you help get our test automation up to speed, you will also support the team by conducting manual quality assurance on ongoing releases. Your successes will be closely defined and measured in collaboration with your team leader and product owner.
+
+
+
+Over time, this role will evolve from a regional focus within the Netherlands to a global function, supporting multiple product development teams across Omnidocs. You'll have the opportunity to tackle a clearly defined project first, then broaden your impact, guiding and uplifting automated test and quality assurance practices company\-wide.
+
+
+**Essential Qualifications**
+----------------------------
+
+
+* Demonstrated experience setting up automated test solutions that can run locally and within CI/CD platforms (e.g., GitLab, Azure DevOps, or similar).
+* Familiarity with one or more programming languages such as Java, C\#, or JavaScript/ TypeScript.
+* Strong communication skills in English; comfortable collaborating with international teams.
+* Keeping an overview and think creatively about new solutions and have the communication skills to spar with colleagues.
+* Exposure to automating tests for both web\-based and desktop applications is a plus.
+* Ability to adapt and learn quickly, bringing fresh ideas and perspectives to enhance test coverage and efficiency.
+**Responsibilities**
+--------------------
+
+
+* Develop, maintain, and optimize automated test frameworks to replace existing manual test procedures.
+* Creating master test plan, defined test environments, define logical and physical test cases.
+* Work closely with the CGX development team to ensure quality standards are met for each release, including performing manual QA when needed.
+* Troubleshoot, document, and report defects, ensuring quick resolution and clear communication with developers.
+* Gradually expand your scope, collaborating with multiple global product teams to standardize and elevate automated testing practices across Omnidocs.
+* Regularly provide feedback and insights on test progress, potential improvements, and best practices.
+**The xential and Omnidocs Workplace**
+--------------------------------------
+
+
+
+As part of the Omnidocs family, xential draws on the energy of a group that is consistently growing and evolving. Our collective buy\-and\-build strategy connects international teams in Denmark, the Netherlands, the UK, Cyprus, and beyond, creating a vibrant environment for professional growth and cross\-cultural collaboration.
+
+
+
+In Holten, you will experience the dedicated spirit of a smaller team while benefiting from the global network and resources of Omnidocs. We believe in open communication, encouraging each team member to share feedback and insights. Flexibility is woven into our work culture \-whether it’s working from home, or customizing schedules to fit personal needs.
+
+
+
+If you are ready to start a career that will challenge you, provide you with broad exposure to various software products, and enable you to grow into a global test automation role, we’d love to hear from you. Join our journey at xential and help shape the future of testing and quality assurance at Omnidocs.
+
+
+**We look forward to hearing from you!**
+----------------------------------------
+
+
+
+We can imagine that you would like to take a look behind the scenes of our company first, where you can ask your questions to the development team. That is why we would like to invite you (digitally) for an initial introduction. An accessible and non\-binding way to get to know each other.
+
+
+
+If you have enough information and are enthusiastic about our company, we invite you to apply. Leave your contact information (and possibly your CV) and we will contact you soon! If you have any questions, **please contact us via** **hr@xential.nl****, or contact** **Henk Kappert via \+31 6 39 62 62 88**. We look forward to hearing from you!
+
+
+*If you apply for a job with us, you agree that we store your data. We only use this for this application procedure. We store your data for a maximum of one year after you have applied. Of course, we handle the data with care.*",,https://nl.indeed.com/cmp/Xential,,,,,,
+in-3ff59c39f9ec56a6,indeed,https://nl.indeed.com/viewjob?jk=3ff59c39f9ec56a6,https://www.yelgo.nl/vacatures/platform-kubernetes-cloud-engineer/,Platform Kubernetes Cloud Engineer,Yelgo,"FR, NL",2025-02-28,,,,,,,,,False,,,,jelle@yelgo.nl,"Als Platform Engineer ondersteun je development teams bij het optimaal benutten van het interne Cloud Platform. Binnen de kaders van de organisatie werk je met de beschikbare hardware en tooling, terwijl je samen met architecten en andere specialisten bouwt aan een toekomstbestendige platform\- en cloudarchitectuur.Iets dit iets voor jou? Dan komen we graag in contact!
+
+
+* Friesland
+* Detavast
+* €4\.000 \- €5\.500
+* Hybride
+
+  
+**Platform Kubernetes Cloud Engineer**
+======================================
+
+
+**Waar ga jij aan de slag?**
+----------------------------
+
+
+
+Je komt terecht in een ambitieuze en moderne organisatie waar innovatieve ICT\-oplossingen centraal staan. In een dynamische omgeving werk je binnen een DevOps\-team aan de ontwikkeling en het beheer van hoogwaardige systemen, met volop ruimte voor samenwerking en innovatie.
+
+
+**Wat ga jij doen?**
+--------------------
+
+
+
+Je werkt aan de vernieuwing en verbetering van de IT\-omgeving met een focus op automatisering, beveiliging en schaalbaarheid. Dit betekent dat je een nieuwe API Gateway ontwikkelt en in gebruik neemt, terwijl de oude systemen zorgvuldig worden afgebouwd. Daarnaast ontwerp en implementeer je een ServiceMesh, waarmee de communicatie tussen microservices veiliger en efficiënter wordt.Ook speel je een belangrijke rol in de implementatie van Zero Trust Network Architectuur, waarbij je zorgt voor strengere beveiliging en beter toegangsbeheer. Verder werk je aan een Developer Portal om ontwikkelaars beter te ondersteunen en zet je een container runtime security platform op. Tot slot help je bij de overstap naar Infrastructure as Code, zodat de IT\-infrastructuur eenvoudiger en sneller beheerd kan worden, zowel on\-premise als in de cloud.
+
+
+**Wat vragen wij van jou als Platform Kubernetes Cloud Engineer**
+-----------------------------------------------------------------
+
+
+* Ervaring met Platform Engineering en DevOps\-methodieken
+* Kennis van Agile, Scrum, Kanban en MVP\-principes
+* Programmeervaardigheden in Java, Go en Python
+* Ervaring met Linux, Docker en Kubernetes (minimaal 4 jaar)
+* Ervaring met Ansible/Terraform en Infrastructure as Code (minimaal 3 jaar)
+* Certified Kubernetes Administrator (Linux Foundation) of gelijkwaardige ervaring
+* HBO werk\- en denkniveau (minimaal 5 jaar)
+* Uitstekende beheersing van de Nederlandse taal in woord en geschrift
+
+**Wat bieden wij jou?**
+-----------------------
+
+
+* Salaris tussen de €4\.000 en €5\.500 per maand, afhankelijk van ervaring.
+* Een uitdagende en afwisselende functie binnen een dynamisch en professioneel team.
+* De kans om jouw expertise verder uit te breiden en ervaring op te doen met een nieuw financieel systeem.
+* Een werkplek in een collegiale en betrokken werkomgeving, waar jouw input gewaardeerd wordt.
+* Flexibele werktijden en de mogelijkheid om deels vanuit huis te werken, met minimaal 2 dagen per week op kantoor.
+
+**Jouw groei en ontwikkeling is onze prioriteit**
+-------------------------------------------------
+
+
+Jouw ontwikkeling staat bij ons centraal. Met onbeperkte trainingen en persoonlijke begeleiding van onze consultants bieden we je niet alleen een solide basis, maar ook de kans om voortdurend te groeien. Zo zorgen wij ervoor dat jij het beste uit jezelf kunt halen. \#unlockyourpotential Solliciteer Direct Solliciteer direct
+  
+Jelle de Graaf
+Managing Consultant
+06 261 914 81 jelle@yelgo.nl",Human Resources And Staffing,https://nl.indeed.com/cmp/Yelgo,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/920ce1d88ac3f2da492023d529ddc33b,http://www.yelgo.nl,"Lavendelheide 7-1
+9202 PD Drachten
+info@yelgo.nl",11 to 50,,"Benut je potentieel in de digitale wereld van IT, development en marketing. Bij Yelgo sta jij aan het roer!"
+in-8738c42811c67acb,indeed,https://nl.indeed.com/viewjob?jk=8738c42811c67acb,https://123inkt.recruitee.com/l/nl/o/senior-front-end-developer-3?source=Indeed,Senior Front-end Developer,123inkt.nl,"Nederhorst den Berg, NH, NL",2025-02-28,,fulltime,,,,,,,False,,,,,"Als Senior Front\-end Developer werk je nauw samen met de UX designer, marketingafdeling en andere development teams op de IT afdeling. Onze eindgebruiker is onze focus en hiervoor nemen wij de tijd om een goed product neer te zetten. We onderhouden dus niet alleen de bestaande webshops (en dat zijn er meer dan je denkt!), maar we zijn ook continu bezig om nieuwe features te bedenken waarmee we de gebruikerservaring over alle devices kunnen verbeteren. Want we willen de beste websites bouwen die we maar kunnen bedenken**.**
+
+
+Een greep uit je werkzaamheden:
+
+* HTML/CSS via ons custom template systeem, wat we aan het migreren zijn naar twig.
+* Je deelt samen met je team de stories op in relevante en overzichtelijke taken.
+* Waar nodig, verrijk je de gebruikerservaring met (Java\|Type)script.
+* Onderhouden van bestaande features en bouwen van nieuwe features.
+* Meedenken en meebouwen aan de vooruitgang van onze development tools.
+* Begeleiden van de junioren.
+* Meedenken met de front\-end architectuur.
+* Deelnemen aan innovatieve projecten.
+* Je weet de dunne lijn tussen business value en code quality te bewandelen.
+
+### **Onze tech stack**
+
+
+Technisch gezien werk je voornamelijk aan de front\-end van de webshops en ben je bezig met HTML, (s)css en (Java\|Type)script. Echter, je zult met regelmaat dieper onder de motorkap moeten kijken. Kennis van PHP en MySQL is daarom een grote pré. Dat geldt ook voor onze build scripts, die we ook onderhouden. Zo zijn webpack en nodejs belangrijke onderdelen van onze toolset. Als laatste zijn er ook projecten op de afdeling waar Angular wordt gebruikt.
+
+**Dit krijg je van ons!**
+-------------------------
+
+* Een uitdagende en afwisselende functie in een sterk groeiend bedrijf.
+* Veel aandacht voor jouw ontwikkeling, o.a. door training en opleidingen.
+* Toegang tot 100\+ trainingen in onze Online Academy.
+* Uitstekend salaris en een aantrekkelijke pensioenregeling (wij betalen 75% van de premie).
+* Mogelijkheid tot reiskostenvergoeding, een lease fiets of zelfs een auto van de zaak.
+* Personeelskorting op onze huismerken.
+* Flexibele werktijden en de mogelijkheid om gedeeltelijk vanuit huis te werken.
+* 25 vakantiedagen o.b.v. fulltime dienstverband.
+* De mogelijkheid tot het bestellen van een gezonde lunch en gratis fruit.
+* Elke twee weken een massage.
+
+### **Wat vragen wij?**
+
+* Een afgeronde en relevante hbo/wo\-diploma.
+* Je hebt minimaal 6 jaar werkervaring met webdevelopment.
+* HTML, SCSS, (Java\|Type)script hebben geen geheimen voor jou.
+* Je kunt helder communiceren en kunt de oplossing van technische vraagstukken goed uitleggen aan minder ervaren collega’s.
+* Je bent een teamspeler, maar kan ook goed zelfstandig werken. Hebt een relaxte persoonlijkheid, waardoor je goed in het team past.
+* Ervaring met PHP, MySQL en Debian zijn een pre.",,https://nl.indeed.com/cmp/123inkt.nl,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/43a6d7507eb6848beb694f95299be9ad,http://www.werkenbij123inkt.nl,"Nieuw Walden 56
+1394 PC Nederhorst den Berg","501 to 1,000",,We zijn een van de grootste e-commerce bedrijven in binnen- en buitenland. En we blijven groeien. Daarom zijn jouw ontwikkelmogelijkheden heel groot. Echt meedenken en meebouwen. Grijp je kans!
+in-94abdd695e705549,indeed,https://nl.indeed.com/viewjob?jk=94abdd695e705549,https://www.werkenvoornederland.nl/vacatures/it-integratiespecialist-almelo-thuis-JUID-2024-0092,IT-integratiespecialist (Almelo/thuis),Justitiële Informatiedienst (Justid),"Almelo, OV, NL",2025-02-28,,"parttime, fulltime",,,,,,,False,,,,,"Functieomschrijving
+-------------------
+
+
+  
+*Je bezighouden met de nieuwste ontwikkelingen op het gebied van informatie\-uitwisseling? Meewerken aan de standaarden en voorzieningen die dit mogelijk maken? En zo jouw steentje bijdragen aan de digitale informatie\-uitwisseling binnen het Ministerie van Justitie en Veiligheid? Dan hebben wij de perfecte uitdaging voor jou als IT\-integratiespecialist!*
+
+
+**Wat ga je doen?**
+
+
+
+Veilige en betrouwbare gegevens\-uitwisseling, digitale handtekeningen, internationale samenwerking en digitale toegang. Onderwerpen waarbij onze afdeling het ministerie van Justitie en Veiligheid ondersteunt voor de strafrecht\-, migratie\- en jeugdketen.
+
+
+
+Onze afdeling is verantwoordelijk voor het technisch beheer van de infrastructuur, gegevensmodellering en semantiek, en voor het ontwerpen van (inter)nationale informatieketens. Bij veel werkzaamheden speelt de IT\-integratiespecialist een belangrijke rol. Een gezonde dosis praktische technische kennis is hierbij essentieel.
+
+
+
+Wat betekent dat concreet?
+
+
+* Je werkt je mee aan de (door\-) ontwikkeling van de ketenvoorzieningen.
+* Je initieert innovaties en geeft hierover voorlichting en uitleg aan zowel interne als ook externe stakeholders.
+* Je bent betrokken bij het dagelijks beheer van onze voorzieningen.
+* Je adviseert de technisch beheerders waar nodig in hun werkzaamheden.
+
+
+Let op als je gaat solliciteren. Wij stellen een aantal vragen om je beter te leren kennen. Je hoeft dus geen sollicitatiebrief te schrijven. Hoe makkelijk is dat?
+
+
+Dit is een functie voor de bepaalde tijd van 1 jaar.
+
+
+  
+Functie\-eisen
+--------------
+
+
+  
+Wat vragen we?
+
+
+* Je hebt ervaring met webservices, microservices en het ontwikkelen van webinterfaces met behulp van bijvoorbeeld Python, Django, Java(script), Angular, React, Node.js;
+* Je hebt ervaring met uitwisselingsprotocollen op het gebied van informatievoorziening, zoals SOAP, ebMS, REST en JSON;
+* Je hebt ervaring met XML en/of JSON en daaraan gerelateerde standaarden (bij voorkeur XSD, XSLT, Swagger, OASv3\);
+* Je hebt kennis van en ervaring met security en authenticatie in de context van informatie\-uitwisseling (TLS, signing, encryptie, OAUTH2\);
+* Je hebt interesse en ervaring met complexe IT Systemen en schrikt niet van netwerken, certificaten, Linux of TCP/IP;
+* Je hebt hbo\+ niveau;
+* Je hebt specialistische theoretische én praktische kennis van ontwikkelingen, methodieken en technieken binnen het vakgebied informatie\-uitwisseling;
+* Je bent zowel schriftelijk als mondeling communicatief vaardig en je weet een zakelijke boodschap kort en bondig maar gepast over te brengen;
+* Pré: je hebt interesse en/of ervaring met gecontaineriseerde applicatieontwikkeling en Continuous Integration and Continuous Deployment/Delivery, middels Docker, Rancher, Kubernetes en Jenkins.
+
+
+Waarmee maak jij het verschil?
+
+
+
+Als integratiespecialist ben je nieuwsgierig en naast het uitvoeren van je dagelijkse taken, ook altijd bezig met innovatie. Hoe kan het slimmer, sneller en wellicht beter. Je bent enthousiast en staat graag met je neus vooraan als het aankomt op het onderzoeken van de nieuwste technieken. Je bent in staat om goed uit te drukken waar je voor staat en waarom. Een gezonde dosis humor en een brede interesse in alles wat IT\-gerelateerd is helpt daarbij. Dus, ben jij die kundige, bevlogen en integere specialist die wij zoeken?
+
+
+**Wat bieden we?**
+
+
+* Dynamische omgeving \- Een informele en dynamische omgeving waar we werken aan een veilige samenleving met onze maatschappijkritische informatiesystemen. Je mag werken aan de complexere IT\-vraagstukken op het gebied van interoperabilteit/gegevensuitwisseling op nationaal en Europees niveau. Binnen en buiten de organisatie zijn er veel mensen om te sparren en jouw afdeling is zeer samenwerkingsgericht. We willen groeien en innoveren en we geloven dat de beste oplossingen vaak buiten de gebaande paden liggen.
+* Beloning \- Een marktconforme beloning in Schaal 12 \- maximaal € 6\.907,\- . Daar bovenop een individueel keuzebudget van 16,37% dat, op het moment van jouw keuze, in te zetten is voor bijvoorbeeld geld, verlofdagen, een fitness abonnement of een fiets. Onze goede secundaire voorwaarden, zoals onze verlofregelingen, een thuiswerkvergoeding en een goed geregeld pensioen via het ABP, zijn te vinden op https://www.caorijk.nl/
+* Flexibiliteit \- Een fulltime werkweek is 36 uur en hybride werken, met onze faciliteiten, is het uitgangspunt. We bieden veel flexibiliteit in de manier waarop je dit wilt indelen zodat je carrière en je privéleven goed op elkaar aansluiten. Samen met je collega's en leidinggevende maak je hier praktische afspraken over.
+* Informele cultuur \- Een gedreven en behulpzaam team met korte lijntjes naar leidinggevenden en/of directie.
+* Persoonlijke groei \- De mogelijkheid om te werken aan je eigen talent, persoonlijke groei en loopbaanontwikkeling vinden we bij Justid vanzelfsprekend. Zo zorgen we voor jouw duurzame inzetbaarheid en kan Justid inspelen op ontwikkelingen in de samenleving en/of technische vernieuwingen. Er zijn regelmatig loopbaanmogelijkheden omdat we een groeiende organisatie zijn.
+* Vrije tijd \- Je krijgt 208 verlofuren op basis van een 36\-urige werkweek (ruim 5,5 week).
+* Gezelligheid – Een leuk team op een leuke afdeling met leuke collega’s in een leuk bedrijf. Dus doe mee met borrels, activiteiten, uitjes. Heb je zelf leuke ideeën? Horen we ook graag!
+* Duurzaamheid \- Je krijgt een OV\-chipkaart waarmee je gratis voor je werk reist. Voor de duurzaamheden stimuleren we reizen met het OV!
+
+  
+Arbeidsvoorwaarden
+------------------
+
+
+  
+* Salarisniveau schaal 12
+* Maandsalaris Min €4\.691 – Max. €6\.907 (bruto)
+* Dienstverband Arbeidsovereenkomst voor bepaalde tijd
+* Contractduur Let op: dit betreft een tijdelijke aanstelling voor 1 jaar.
+* Minimaal aantal uren per week 32
+* Maximaal aantal uren per week 36
+
+  
+Overige arbeidsvoorwaarden
+--------------------------
+
+
+  
+Naast het salaris ontvang je een Individueel Keuzebudget (IKB). Het IKB bestaat uit geld (16,50% van je bruto jaarsalaris) en tijd. Met het IKB maak jij de keuzes die bij jou passen en kun je een deel van je arbeidsvoorwaarden zelf samenstellen. Je kunt er bijvoorbeeld voor kiezen om een deel van je maandinkomen te laten uitbetalen wanneer jij dat wenst. Ook kun je dit budget omzetten in verlof en andersom of besteden aan fiscaal vriendelijke doelen. De Rijksoverheid hecht sterk aan persoonlijke groei en loopbaanontwikkeling en biedt daarvoor tal van mogelijkheden. Tot de secundaire arbeidsvoorwaarden behoren onder meer verschillende studiefaciliteiten, bedrijfsfitness, volledige vergoeding van je OV\-reiskosten woon\-werkverkeer en gedeeltelijk betaald ouderschapsverlof.
+
+
+  
+Bijzonderheden
+--------------
+
+
+  
+* Voor deze functie is een Verklaring Omtrent Gedrag (VOG) nodig.
+* Bij Justid is de voertaal Nederlands.
+* Een social media onderzoek kan plaatsvinden.
+* Acquisitie kunnen we niet op ingaan.
+
+
+Dit is een functie voor de bepaalde tijd van 1 jaar.
+
+
+**Meer informatie?**
+
+
+
+Voor inhoudelijke vragen over de vacature kun je contact opnemen met onze collega Harald Schulten of onze recruiter Joy Valles op 088\-9989000 of via mailadres \[email protected]
+
+
+  
+**Meer over de functiegroep Expert Iv**
+---------------------------------------
+
+
+Door het Functiegebouw Rijk worden medewerkers en leidinggevenden geholpen bij het maken van resultaat\- en ontwikkelafspraken in functioneringsgesprekken en krijgt men inzicht in de loopbaanmogelijkheden binnen de Rijksoverheid.
+
+
+Meer informatie op Functiegebouw Rijksoverheid
+
+
+**Meer over jouw toekomstige afdeling**
+---------------------------------------
+
+
+
+Veilige en betrouwbare gegevens\-uitwisseling, digitale handtekeningen, internationale samenwerking, digitale toegang. Onderwerpen waarop de afdeling Verbindingen en Veiligheid (VenV) van de Justitiële Informatiedienst (Justid) haar ketenpartners binnen het ministerie van Justitie en Veiligheid ondersteunt. De afdeling Verbindingen en Veiligheid is specialist op het gebied van elektronisch berichtenverkeer en helpt ketenpartners met het optimaliseren van informatie\-uitwisseling. De afdeling onderhoudt een aantal centrale ketenvoorzieningen die een essentiële rol vervullen binnen het ICT\-landschap van Justitie en Veiligheid. Daarnaast werkt de afdeling continu aan de verbetering van de informatiearchitectuur.
+  
+
+De afdelig VenV bestaat uit 70 collega's. Dat zijn analisten, consultants, ontwikkelaars, beheerders en architecten. Het is een leuke mix van man/vrouw en allerlei leeftijden. De sfeer is te kenmerken als informeel met een platte structuur waar iedereen elkaar helpt en grote vrijheid heerst en waar vragen vrij staat.
+  
+
+Er zijn vijf vakgebieden/expertdiensten op het gebied van gegevensuitwisseling, access management, chip technologie, keteninformatisering en teken en waarmerkdiensten. Beheer van de systemen en de projecten worden vaak ""over teams heen’ uitgevoerd. Zo werk je dus met veel collega's samen en maak je gebruik van elkaars kwaliteiten.
+
+
+
+**Justitiële Informatiedienst (Justid)**
+----------------------------------------
+
+
+
+Meer dan ooit vraagt de samenleving om betrouwbare informatie en slimme (ICT) oplossingen om Nederland veilig en rechtvaardig te houden.
+
+
+
+Justid is dé specialist op het gebied van het ontvangen, verzamelen, verwerken, verrijken, bewaren en verspreiden van strikt vertrouwelijke digitale informatie. We zorgen dat onze partners in met name de strafrecht\- migratie\- en jeugdketen beschikken over cruciale informatie, op het juiste moment. Daartoe zetten we onze kennis in en werken we dagelijks met grote hoeveelheden data en slimme IT\-oplossingen. Het zorgen voor een juiste informatiepositie is immers heel belangrijk. Denk aan informatie over een strafverleden, de geldigheid van een verblijfsvergunning of om slachtoffers van misdrijven te kunnen informeren.
+
+
+
+Met onze ruim 500 professionals in Almelo, Zutphen, Leeuwarden, Den Haag of thuis, werken we aan producten met innovatieve tools en technieken, vanuit deskundigheid en vakmanschap. Zo is ons voortbrengingsproces agile ingericht en werken we continue aan verbetering van onze diensten.
+
+
+
+Op onze website lees je meer informatie over wie we zijn en ook ervaringsverhalen van collega's. Als je meer wilt weten over onze producten en diensten dan kun je dat lezen in onze Producten\- en diensten catalogus.
+
+
+
+Justitiële Informatiedienst (Justid)
+**Stel gerust je vraag**
+------------------------
+
+
+### **Meer informatie over deze vacature**
+
+Harald Schulten 088\-9989000
+### **Meer informatie over de sollicitatieprocedure**
+
+Joy Valles 088\-9989000",,https://nl.indeed.com/cmp/Justiti%C3%ABle-Informatiedienst-(justid),,,,,,
+in-a1c1d699e5a8e3c3,indeed,https://nl.indeed.com/viewjob?jk=a1c1d699e5a8e3c3,https://luminis.recruitee.com/l/nl/o/fullstack-developer?source=Indeed,Fullstack Developer,Luminis International,"Rijswijk, ZH, NL",2025-02-27,,fulltime,,,,,,,True,,,,,"Begrijp je precies wat onze klanten nodig hebben om verder te komen?
+
+
+Als Full Stack Developer bij Luminis krijg je een gevarieerde rol waarin je zowel frontend\- als backendwerkzaamheden uitvoert voor diverse klanten. Dit doe je binnen een team van geweldige collega’s. Zowel voor medior als senior Full Stack developers liggen er mooie uitdagingen klaar.
+
+### **Dit ga je doen:**
+
+
+Samen met je collega’s ontwikkel je bedrijfskritische toepassingen. Je hebt de kans om je te verdiepen in nieuwe technologieën, en jouw kennis en inzichten te delen met je directe collega's of klanten.
+
+* Je bent verantwoordelijk voor het ontwerpen en bouwen van softwaresystemen voor onze klanten
+* Je adviseert klanten over het ontwerp van hun softwaresystemen en het gebruik van geschikte technologieën om veranderingen door te voeren
+* Je deelt kennis en visie via (interne) kennissessies of blogs
+
+### **Wat vragen wij van jou?**
+
+
+Je bent een master in je vakgebied. Je vindt je werk leuk en wilt graag het beste voor de klant. Verder vinden wij het belangrijk dat jij je thuis voelt bij Luminis en in een Agile werkomgeving.
+
+
+Je bent een Full Stack Developer die zich graag uitdaagt met zowel frontend\- als backendontwikkeling in een dynamische Agile DevOps omgeving. Je maakt gebruik van React (de belangrijkste frontendtechnologie), Vue en andere JavaScript\-frameworks om gebruiksvriendelijke interfaces te bouwen.
+
+
+Ook beschik je over:
+
+* Minimaal 4 jaar ervaring als Full Stack Developer
+* Een achtergrond in Java (backend) en frontendtechnologieën zoals React en Vue.js.
+* Kennis van AWS, Kubernetes en Oracle databases.
+* Je werkt graag in een Agile DevOps\-omgeving.
+* Goede communicatievaardigheden in zowel het Nederlands als Engels.
+
+### **Dit krijg je van ons:**
+
+
+We zijn ervan overtuigd dat een gedeelde passie en plezier in ons werk leidt tot de beste resultaten. Daarom werken we graag in teams. Ook komen we regelmatig samen op kantoor, voor een gezellige lunch maar vooral voor het delen van ervaringen. Zo helpen we elkaar verder met projecten en bijbehorende uitdagingen.
+
+
+Verder kun je rekenen op:
+
+* een salaris van €4000 tot €5700 afhankelijk van kennis en ervaring én een maandelijkse netto onkostenvergoeding van € 75;
+* genoeg vakantiedagen voor die mooie reis of de goede life\-work\-balance, 27 om precies te zijn;
+* een winstdelingsregeling en een goede pensioenopbouw;
+* mogelijkheid tot thuiswerken inclusief thuiswerkbudget met een highend laptop;
+* volop ontwikkelingsmogelijkheden (en een opleidingsbudget) en ruimte om deel te nemen aan (externe)trainingen, meetups en events;
+* een gezellig, hecht team van professionele collega’s;
+* een mobiliteitsregeling of leaseauto;
+* een bruto vergoeding voor sport en ontspanning van € 50\.",,https://nl.indeed.com/cmp/Luminis-International,,,,,,
+go-tCg-ZsnChN2Hh7xQAAAAAA==,google,https://www.codeguild.nl/en/specialisaties/java-jobs/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,"Senior Java Developer Rotterdam | €84,420 + Stock Options",CodeGuild,"Rotterdam, Netherlands",2025-02-28,,,,,,,,,True,,,,r.schaper@codeguild.nl,"Senior Java Developer Rotterdam | Successful Scale-Up in GreenTech | 100% Ownership of a Mission-Critical Platform Handling Massive Data Volumes | Java 21, Spring Boot, Kafka, Docker, Kubernetes, AWS, Cassandra | €84,420 + Stock Options
+
+Vacancy: Senior Java Developer Rotterdam
+• Do you want to make a direct impact on global sustainability by joining a fast-growing tech scale-up?
+• Would you love to be the right-hand person to the CTO and take full ownership of the further development of their mission-critical platform?
+• Do you want to be part of a technically intensive environment where you and your colleagues solve a highly tangible and complex global problem through large-scale data challenges?
+• How about working in an inspiring office near Rotterdam Central Station alongside highly intelligent, high-performing engineering colleagues?
+
+Read on! This is the job for you!
+
+Your Employer: Groundbreaking Technology Enabling Data-Intensive Assets to Make Radically Better Decisions
+
+This highly ambitious, technically advanced, and fast-growing SaaS product company is one of a kind. Here, some of the brightest engineering minds each with decades of experience in building successful software products come together to simplify extreme complexity. Led by visionary technical management with a strong track record of building successful software and tech companies.
+
+You will empower the most critical environments in our global infrastructure such as energy and agriculture to make radically better decisions. What is complex becomes extremely simple and intuitive for the user, thanks to hardcore software engineering under the hood. In this way, you contribute disruptively and directly to the sustainability of the world.
+
+You’ll be part of a high-performance tech culture with highly educated and experienced engineering colleagues, built on innovation, freedom, responsibility, autonomy, and a deep passion for product development. All your colleagues are tech enthusiasts like yourself, with a mindset of ""automate as much as possible!""
+
+Joining now means making a significant impact on the further development of their mission-critical platform, shaping the organizational growth, and the opportunity to receive stock options.
+
+Your Role: Senior Java Developer Rotterdam
+
+As a Senior Java Developer in Rotterdam, you, alongside the CTO and your elite engineering squad, will take full ownership of the continued development of their advanced high-load SaaS platform. You will tackle the most complex engineering puzzles related to real-time event streaming, load forecasting, REST APIs, scaling, and more. No two days will be the same, and you will have the opportunity to work across a broad scope, allowing you to continuously learn.
+
+Additionally, you will work with open-source technologies such as Java, Kafka, Cassandra, and Kubernetes/AWS to maximize performance, drive scaling, collaborate with various stakeholders across the company, and help shape the culture, tech stack, and methodologies of this fast-growing, global tech company. Working here means every day presents non-trivial challenges that truly make you think.
+
+Career Growth Opportunities
+
+Given the company’s rapid growth, you could potentially move into an Engineering Lead role in the future if desired.
+
+What You Bring
+• 4+ years of professional experience in backend engineering
+• Professional experience with Java, Kotlin, or Scala
+• Experience with event-driven architectures using Kafka is a plus
+• Experience with Docker and/or Kubernetes is a plus
+• Experience with cloud platforms like AWS, GCP, or Azure is a plus
+• Experience running NoSQL databases (Cassandra) is a plus
+• Experience handling large-scale data is a plus
+• A completed technical Bachelor's or Master's degree is a big plus
+
+What’s Offered?
+• Salary between €65,000 and €84,420 per year, based on knowledge and impact
+• The opportunity to participate in company stock options
+• 2 to 3 days of remote work per week
+• The flexibility to work 40, 36, or 32 hours per week
+• Pension plan
+• 28 vacation days
+• An inspiring office within walking distance of Rotterdam Central Station
+• Travel cost reimbursement
+• Top-tier hardware of your choice
+• Company-sponsored lunch
+• Personal learning & development budget
+
+Are you the Senior Java Developer in Rotterdam who wants to take full ownership of the further development of this platform, making a direct impact on global sustainability?
+
+Apply now via the form below or send your CV to Roy Schaper at r.schaper@codeguild.nl.",,,,,,,,
+go--RFWNED-PPKJK6BFAAAAAA==,google,https://devitjobs.nl/jobs/Picnic-Technologies-Java-Developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,Java Developer 🏆,Picnic Technologies,"Amsterdam, Netherlands",2025-02-26,,,,,,,,,False,,,,,"Java Developer
+
+Picnic Technologies is op zoek naar een Java engineer! Ons budget is 55.000 - 85.000 EUR per jaar
+
+🛠️ Onze technologieën:
+AWS, Backend, Docker, ElasticSearch, Git, Java, Kafka, Kubernetes, Maven, MongoDB, PostgreSQL, RabbitMQ, Spring, Terraform, Cloud
+
+📝 Wat vragen wij van jou:
+⭐️ About you
+
+- You have a Bachelor’s or Master’s Degree in Computer Science, Artificial Intelligence, Information Technology, Computer Engineering or a related technical field
+- You have at least one year of professional experience in programming and software development
+- You have a profound understanding of back-end development, including Java, Spring MVC, MongoDB and PostgreSQL
+- Your English skills are on point (no Dutch required)
+
+👩‍💻👨‍💻 Wat zijn jouw verantwoordelijkheden:
+🎯 What you’ll do
+
+- Take ownership of projects, grow, and work collaboratively with your colleagues
+- Design, test, evolve, and evaluate the nuts and bolts of our operation while offering a creative and analytical approach
+- You feel at home writing platforms and display an intricate understanding of how each line of code fits into a business plan
+
+We don’t hide what we do. Instead, we open-source with the community that helped us grow. Here’s proof: http://picnic.tech
+
+💻 Technologies we use
+
+- Java 21 (Reactor and Spring 5)
+- ElasticSearch, RabbitMQ, Kafka
+- Maven and Git
+- PostgreSQL, MongoDB
+- AWS, Docker, Kubernetes, Terraform, Vault
+
+Hungry for more? Check out https://stackshare.io/picnic-technologies for an overview of our tech stack.
+
+Bekijk deze vacature en meer dan 500 andere transparante vacatures met salaris (💰💰💰) & tech stacks (🛠️) on DevITJobs
+
+Categorie: Java Developer
+Locatie adres: Van Marwijk Kooystraat 15, Amsterdam, Netherlands
+
+Salaris: 55.000 - 85.000 EUR per jaar
+
+Wat we aanbieden:
+Coachen, lesgeven, Koffie, thee, Bedrijfsparkeren, Conferenties, Cool kantoor, Flexibele werktijd, Vers fruit, Gratis lunch, Hybride Werk, Internationaal team, 40-urige werkweek, Ping-pong tafel, Huisdiervriendelijk kantoor, Startup cultuur, Sociale teamevenementen, Ondersteuning bij verhuizing, Bedrijfs OV-chipkaart, Thuiskantoor / 3 dagen per week op afstand
+
+Picnic Technologies - Over ons:
+Check out our latest blog post to learn how we’re using brand new Apple M1 Pro MacBooks to build our tech foundation! 💻🍎
+At Picnic, we’re revolutionizing the way people buy groceries with our innovative and sustainable app-only service. We do almost everything in-house, developing cutting-edge technologies and processes to ensure we continue to grow rapidly without missing a beat. If you’re a passionate Java developer we’re offering you the opportunity to join the diverse team at our Amsterdam HQ and make a real difference in our scaleup environment.
+
+🥜 In a nutshell
+Picnic has over 20 Java backend development teams, each highly involved with and essential to all parts of the company. From enabling a smooth shopping experience, to ensuring we fulfill our customers’ orders efficiently in our warehouses: there’s a wide range of products to work on. Product teams are also supported by the work of our platform teams on key technologies and infrastructure. Finding the right team to join is a breeze through a ‘Tech Safari’ that will be organized after your onboarding. You’ll get to join three different teams for a week, to find the best match.
+At Picnic your skills will be complemented with the latest tech and our diverse projects will keep you challenged and motivated. From designing, developing, and testing new user-facing features, to optimizing supply chain systems and improving the scalability and security of our platform: you’ll be managing individual project priorities, deadlines, and deliverables, while finding yourself fully immersed in an engaging startup culture.
+
+📖 Picnic Perks
+Every expert was once a beginner!
+
+You’ll get plenty of opportunities to challenge yourself and grow, including the Picnic Tech Academy, Lunch & Learn sessions, and tailored soft skills training. We also offer free professional weekly language courses.
+
+Make a difference
+
+You’ll work in an awesome startup environment with the freedom to drive your own projects and create a visible impact.
+Our fully electric vehicles and sustainable business model mean you’ll also be contributing to making the world a better place!
+
+Teamwork makes the dream work
+With more than 80 nationalities across 3 countries, you’ll be part of a diverse company with plenty of cool stuff to get involved with, from board game evenings to after-work drinks to our company ski trip and more!
+
+You are what you eat
+You’ll get freshly prepared, healthy lunches and snacks (with plenty of vegetarian, vegan, and halal options). Coffee snob? Don’t worry, our amazing Picnic barista has you covered.
+
+Stay healthy
+Mental health is important. As well as having the option to speak with Picnic colleagues who act as confidential advisors, our collaboration with OpenUp gives you easy access to professional psychologists, along with workshops and materials.
+There are plenty of sports communities and events to get involved with, from tennis to yoga, to climbing!
+
+Attractive package
+We offer competitive compensation and a pension plan that looks out for your future self, as well as 25 vacation days per year, so you can recharge your batteries
+
+Benefits for expats
+It can be daunting starting a new job AND moving to a new country. That’s why we offer lots of support for our many expat colleagues, including:
+
+Relocation package: If you join Picnic from abroad, we’ll cover your trip to Amsterdam, sponsor your Visa, and offer you a month of accommodation while you settle in (as long as regulations allow).
+In the Netherlands, we offer support with your first tax report as well as arranging the 30% ruling.
+From health insurance to living arrangements to pet passports, there are always colleagues who’ve faced the same challenges and are more than happy to help!
+
+Commitment to equal opportunities
+Picnic is an equal opportunity employer—this means that all decisions regarding applications will be based on qualifications and merit. Applicants will be regarded independently of age, gender identity or expression, sexual orientation, ethnicity, skin color, civil status, religious beliefs, physical or mental disability, or any other factors protected by law.
+At Picnic, we celebrate and value our differences and are committed to building a safe and inclusive working environment where everyone can be themselves.
+
+Zoek je naar Java banen in Amsterdam?",,,,,,,,
+go-KMTNCJMjwRJ3YpiVAAAAAA==,google,https://careers.ing.com/en/job/amsterdam/java-backend-engineer-financial-markets/3121/21561296704?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,Java Backend Engineer - Financial Markets,ING,"Amsterdam, Netherlands",2025-02-26,,contract,,,,,,,True,,,,,"Step into the dynamic world of Financial Markets at ING! As a backend developer, you'll play a vital role in tackling complex data challenges and enhancing our risk management frameworks. With the opportunity to work on cutting-edge technologies, contribute to cross-functional projects, and ensure regulatory compliance, this position empowers you to make a significant impact on how we manage financial data. Join us in shaping innovative solutions that help our teams meet both operational and compliance standards while fostering an exciting and collaborative work environment!
+
+The Team:
+
+As part of our Financial Markets division, you’ll collaborate with a diverse array of stakeholders, including the Risk department and front office teams. Your contributions will be essential to modernizing our applications and building a robust ecosystem that caters to the bank's regulatory obligations. Experience a culture that values innovation, teamwork, and continuous learning while developing new microservices and optimizing existing applications.
+
+Roles and Responsibilities:
+In this role, you will:
+• Develop, maintain, and optimize backend applications, from batch processes to microservices in containerized environments like Kubernetes and OpenShift.
+• Collaborate with cross-functional teams to design and implement APIs for efficient data integration, transitioning to real-time architectures.
+• Ensure the quality and performance of your code, focusing on complex data calculations and analysis using Java (Java 17/21 preferred).
+• Manage and analyze risk-related data using relational databases, particularly Oracle, to meet operational and regulatory standards.
+• Utilize Azure DevOps for CI/CD, contributing to an Agile team committed to continuous improvement.
+• Build integrated solutions and new (micro-)services that not only solve your team's challenges but also benefit others in the organization.
+
+How to Succeed:
+
+We seek candidates who are driven, curious, and eager to learn. In return, we will support your growth and help you reach your full potential. To thrive in this role, you should possess:
+• Robust experience in Java (Java 8 and above) and familiarity with Spring Boot.
+• Strong analytical skills to interpret complex financial data within a regulatory framework.
+• Experience with containerized environments (Kubernetes, OpenShift) and relational database management.
+• Proven ability to collaborate effectively with diverse stakeholders in an Agile setting.
+• A proactive approach to problem-solving and a passion for continuous learning in IT and finance.
+• Excellent communication skills in English with a comfort in remote collaboration tools.
+
+Rewards and benefits
+
+We want to make sure that it’s possible for you to strike the right balance between your career and your private life. You can find out more about our employment conditions here.
+
+The benefits of working with us at ING include:
+• Salary (with all benefits included) between 70 102EUR - 113 790EUR based on 40hrs/week
+• 24-27 vacation days depending on contract
+• Pension scheme
+• 13th month salary
+• Individual Savings Contribution (BIS), 3.5% of your gross annual salary
+• 8% Holiday payment
+• Hybrid working to blend home working for focus and office working for collaboration and co-creation
+• Personal growth and challenging work with endless possibilities
+• An informal working environment with innovative colleagues
+
+About us
+
+With 60,000 employees and operations in approximately 40 countries, there is no shortage of opportunities for people with initiative who want to help people take a step ahead in life and in business. Do you want to work at the cutting edge of what’s possible and at the same time ensure you work with integrity and hold the customer’s interests at heart? Do you want to be surrounded by progressive, inspiring, diverse and supportive colleagues? Then there is no better place to invest your talents than at ING. Join us. Apply today.
+
+Questions?
+
+Contact the recruiter attached to the advertisement for more information. Want to apply directly? Please upload your CV and motivation letter by clicking the “Apply” button.
+
+Please note, multiple interview steps involving various business stakeholders will be part of the selection process.",,,,,,,,
+go-FdXYtfsPmbjkdaSiAAAAAA==,google,https://www.jobleads.com/nl/job/experienced-java-software-developer--netherlands--eb0d91fbffdbe9d4c356e50c914d7b2b9?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,Experienced Java Software Developer,Ir Olav's Globetrotters B.V,Netherlands,2025-02-20,,contract,,,,,,,False,,,,recruitment@irolav.world,"Are you a Java developer who is ready for a new challenge? With us, you will work on innovative solutions within the Social Domain of the municipalities. Together with a driven team, you will build scalable applications and you will be given the freedom to put your creativity into the code. We value your skills, offer room for growth and ensure a good balance between work and fun. Does this sound like your ideal challenge? Let us hear from you!
+What are you going to do
+• You analyze functional descriptions (stories) and advise the Product Owner on the approach to be followed;
+• You ensure technical coordination with your team members and architects;
+• You are actively involved in innovation of the applications within our domain and security and architecture frameworks.
+
+Our client has been a trusted partner for Dutch municipalities for over 70 years, providing innovative software solutions that support local governments in areas such as finance, public services, and spatial planning.
+
+As a leading supplier of software and service concepts, they are constantly seeking the latest IT advancements to improve government efficiency. Their Social Affairs business unit specializes in software that seamlessly integrates information across policy areas, delivering a comprehensive customer view to enhance service delivery and decision making.
+
+With a team of approximately 375 professionals, they are committed to continuous improvement, collaboration, and driving innovation in the public sector.
+Function criteria
+• You have completed a higher professional education/university education;
+• Minimum 5 years of experience as a developer in Java;
+• Experience with Spring Boot and/or J2EE;
+• Experience with Cloud/SaaS development;
+• Mastery of both Afrikaans/Dutch and English, both spoken and written;
+• You have experience with Agile working;
+• You are strongly focused on achieving results and quality;
+• You have excellent communication skills;
+• You are Dedicated, Enterprising and Progressive (the core values of our company);
+• You have a positive attitude and enjoy taking on challenges;
+• You have a good command of the English language, both spoken and written.
+
+Pré: You have experience with
+• Frontend development (e.g. VueJS);
+• Software Architecture and Design Patterns;
+• OWASP, Threat modeling, Security by Design;
+• Infrastructure as code, ARM, Bicep.
+Job offer
+
+Working from home is an important part of our working method, but many team members also meet weekly at our beautiful location in Den Bosch.
+
+Relocation package with step-by-step assistance with your relocation processes and covered virtual sessions with our relocation experts.
+
+Visa application and 30% tax ruling application done by Ir Olav’s Globetrotters on your behalf.
+
+Great South African community waiting for you in the Netherlands.
+
+26 days of vacation per year, plus you can buy an additional 10 days (pro rata, of course).
+
+Market related salary.
+
+Dutch Government authorized pension plan activated once you arrive in the Netherlands.
+
+One on one Dutch lessons up until company requirement where your partner can join lessons for free.
+
+Company laptop.
+
+Unlimited access to OpenUp and GoodHabitz (our online learning platform).
+
+Commitment for indefinite contract with our client.
+
+Mentoring and coaching until you go over to the payroll of our client.
+
+Great on and offline events to meet your fellow Globetrotters and learn about the Netherlands, hosted by Ir Olav's Globetrotters.
+
+Pleasant working atmosphere, where you can be and stay yourself.
+How to apply
+
+Are you just as excited as us about this role? Great! Then you're sure to be a good match! Applying for a job with us is very easy. Send your CV and motivation, using the application button, or email us at recruitment@irolav.world.",,,,,,,,
+go--1olat2dsJE2MZWKAAAAAA==,google,https://www.jobteaser.com/en/job-offers/63e752d0-d23a-46d5-8165-acaae5d63b69-thales-java-software-engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,Java Software Engineer,THALES,"Hengelo, Netherlands",2025-02-20,,,,,,,,,False,,,,,"Location: Hengelo, Netherlands
+
+SOFTWARE ENGINEER
+
+Thales designs state-of-the-art radar systems and optical sensors that form part of a complete and integrated defense system. The product portfolio ranges from small portable radars, for example, for border or object monitoring to complex four-dimensional radars that can detect small objects at hundreds to thousands of miles away.
+
+Within the software department, the radar core processing department is responsible for the software development of the optimal control and the digital processing functions in the sensors. In this respect, multi-disciplinary teams work together with specialists in the field of system engineering, functional sensor design and design and realization of real-time systems.
+
+About the job
+Within this radar core processing department the complete radar software is developed. This includes various fields including the control of radar systems, the organization of radar transmissions and the processing of the digital information flow. The ultimate goal is to detect and classify specific objects, such as aircraft and drones, track them and display them on an operator console.
+
+To test all these complex software systems, the SITE team develops various products ranging from high-end visualization applications, simulators, automatic calibration setups, web-based applications to high speed logging applications. As a software engineer you will work in a multidisciplinary and self-steering Agile development team that develops this test and control software for radar systems developed by Thales.
+
+About you
+Are you a software engineer with a drive for quality, an enthusiastic team player, open in your communication and do you feel responsible for the outcome of the team? Do you have extensive experience in developing high performance graphics (Java) applications? Then you might be the person we are looking for.
+
+The prerequisite for this is a completed HBO or WO education in the field of (technical) informatics or computer science. In addition, you must have extensive experience with the following activities:
+• Java/JVM
+• UI Design Swing/Java FX
+• Concurrency
+• Visualisatie OpenGL/Video
+• Webtechnologie
+• A good knowledge of the Dutch and English language is necessary to be successful in this job.
+
+What's in it for you
+• You'll be part of a very nice team in a high tech, innovative, international environment
+• The opportunity to grow within the organization, for example at technical/management/commercial or international level
+• Space for personal development and own initiative
+• A fine workplace in a modern building, with a focus on good work-life balance and flexibility
+• 40 holiday days a year, travel allowance and the possibility to personalize your working conditions; purchase/sale of hours, internet costs, bicycle plan, company fitness, trade union contribution or removal costs
+
+Interested?
+Apply now by clicking 'apply now' below!
+
+#LI-FV1",,,,,,,,
+go-tc8qQN4tkzBNXbWqAAAAAA==,google,https://www.uber.com/global/en/careers/list/134352/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,"Staff Software Engineer, Java, Developer Platform",Uber,"Amsterdam, Netherlands",2025-02-18,,,,,,,,,True,,,,accommodations@uber.com,"About the Role
+
+As part of the Java Service Platform team, you’ll help lead a group of experts that focus on delivering a best-in-class service development experience for thousands of Uber developers. You will leverage the latest technologies in open source, work with talented, high-velocity infrastructure partners and impact stakeholders across product backend domains serving Uber Mobility, Delivery, Market Place, Monetization and more.
+
+Being a pragmatic technologist, you will be able to design tools, frameworks and workflows to support highly available and scalable services. You would be seen as a collaborative role model and thought leader within a larger group. You will architect and build libraries and frameworks that empower a large and quickly-growing engineering organization to do its best work, moving fast without sacrificing stability, quality, performance or maintainability. You will also be able to technically mentor a team of talented engineers while also executing on delivering uniquely challenging projects. Along the way, you’ll shape the future of engineering at Uber.
+
+We need passionate, skilled developers who empathize with their fellow engineers, pursue technical excellence, care deeply about the quality and velocity of Uber’s engineering, and want ownership of business-critical code.
+
+What the Candidate Will Do
+• Drive the development of Java service standards and best practices at Uber.
+• Design, develop and maintain world-class Java components to support Uber services at scale.
+• Provide consultation & work closely with other business and infrastructure areas/departments on multiple initiatives to meet common organizational / business goals & objectives.
+• Participate in and provide consulting & planning guidance on short term & long term planning in order to meet ongoing business & operational needs.
+• Work closely with engineers across the company to solve critical software development problems in principled and reusable ways.
+
+Basic Qualifications
+• Deep knowledge of Spring and Spring Boot framework.
+• Solid understanding of Java, including common tools, frameworks and best practices.
+• Experience leading, designing, contributing to, or maintaining Java libraries or frameworks.
+• Experience building reusable tools, packages and software patterns for developers.
+• Passion for software quality, including testing, code review, and documentation.
+• Desire to contribute to open source.
+• Strong cross-team communication skills.
+• B.S., M.S., or Ph. D. in Computer Science or equivalent work experience.
+
+Preferred Qualifications
+• Experience leading, contributing to, or maintaining open-source projects.
+• Experience as a technology-specific speaker or evangelist.
+• Background in infrastructure and distributed systems.
+
+We welcome people from all backgrounds who seek the opportunity to help build a future where everyone and everything can move independently. If you have the curiosity, passion, and collaborative spirit, work with us, and let’s move the world forward, together.
+
+Offices continue to be central to collaboration and Uber’s cultural identity. Unless formally approved to work fully remotely, Uber expects employees to spend at least half of their work time in their assigned office. For certain roles, such as those based at green-light hubs, employees are expected to be in-office for 100% of their time. Please speak with your recruiter to better understand in-office expectations for this role.
+• Accommodations may be available based on religious and/or medical conditions, or as required by applicable law. To request an accommodation, please reach out to accommodations@uber.com.",,,,,,,,
+go-9udT8z4gWIKLmQ2XAAAAAA==,google,https://www.monsterboard.nl/banen/java-developer-spring-boot-rotterdam--ea0ea666-da2c-4048-bca3-6073a6ae4683?mstr_dist=true&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,Java Developer (Spring Boot),Brunel,"Rotterdam, Netherlands",2025-02-10,,contract,,,,,,,False,,,,,"IntroductieWe are hiring a Java Developer (Spring Boot) for one of our leading projects to join our growing team. Our team is passionate about creating innovative solutions that drive our clients' success. With a focus on cutting-edge technologies and a collaborative work environment, we're committed to delivering excellence in every project we undertake.Functieomschrijving
+• Design, develop, and maintain high-quality Java-based back-end applications.
+• Collaborate with cross-functional teams, including front-end and UX experts, to define, design, and implement new features.
+• Participate in code reviews, ensuring code quality and adherence to best practices.
+• Troubleshoot and debug issues, ensuring optimal performance and reliability.
+• Strive for efficient automation through CI/CD pipelines, Kubernetes, HELM, etc.
+• Stay updated on industry trends and emerging technologies to continuously improve our development process.
+Vereisten
+• Bachelor's degree in Computer Science, Software Engineering, or a related field.
+• 3+ years of professional experience in software development, with a focus on Java (Spring Boot).
+• Proficiency in developing and maintaining back-end systems.
+• Experience with cloud platforms and containerization technologies.
+• Strong understanding of Agile Scrum methodologies.
+• Excellent problem-solving and communication skills.
+• bility to work independently and as part of a team in a fast-paced environment.
+Arbeidsvoorwaarden
+
+We offer you the opportunity to work in a dynamic environment and you will also be part of an enthusiastic and motivated team. You get plenty of room for initiatives and there are plenty of opportunities for growth.
+
+If you are an employee from abroad, then we assist you to have a safe landing. We guide you with your relocation and we guide you with your career. We invite you to apply for this interesting position so that you can work with nationalities from all over the world and in an atmosphere in which all employees are valued.
+
+Being mediated by Brunel means that you have a contract with Brunel.
+
+Not only do you have a contract, you are also guaranteed a great career!
+
+Our primary and secondary terms of employment are:
+• Tech savvy team of international colleagues.
+• Bonus opportunities.
+• Standard 26 vacation days.
+• 8% vacation pay.
+• A salary between €4000-5500 gross based on your experience.
+When you work for Brunel, you work in a company with a gigantic network in 45 countries around the world. Did you know that we have a lot of different nationalities at work in the Software development sector in the Netherlands? At the moment we are hiring a Java Developer (Spring Boot) in the Netherlands. Which skills will you ad for this position?
+
+Vaardigheden:
+Agile Programming Methodologies, Automation, Best Practices, Cloud Computing, Code Reviews, Communication Skills, Computer Science, Continuous Deployment/Delivery, Continuous Improvement, Continuous Integration, Cross-Functional, Debugging Skills, Emerging Technology, High Tech Industry, Identify Issues, Industry/Trade Analysis, Java, Leading Edge Technology, Problem Solving Skills, Process Improvement, Quality Management, Scrum Project Management and Software Development, Software Development, Software Engineering, Team Player, User Interface/Experience (UI/UX)
+
+Over het bedrijf:
+Brunel
+
+Waarom Brunel?
+
+Bij Brunel gaan we alleen voor het beste van het beste. Als jij een ervaren specialist bent met een bewezen track record, dan verwelkomen wij je heel graag in onze organisatie. Samen met jou gaan we op zoek naar de volgende stap in jouw carrière.
+
+Sterk wereldwijd netwerk met interessante opdrachtgevers
+Wij brengen interessante opdrachtgevers en talentvolle specialisten bij elkaar. De afgelopen 40 jaar hebben wij hierin een sterk en wereldwijd netwerk opgebouwd. Wij bieden je een grenzeloze dienstverlening met uitdagende kansen. Dit doen we binnen de vakgebieden Engineering, IT, Finance, Legal, Marketing & Communicatie en Sales. Ook internationaal zijn er volop mogelijkheden.
+
+Persoonlijke begeleiding, opleiding op maat en prima arbeidsvoorwaarden
+Brunel is een zeer ondernemende organisatie. Wij hechten veel belang aan talent en ambitie. En daarom vinden wij het erg belangrijk dat jij jezelf continu persoonlijk kunt ontwikkelen. Jij kunt hierover inhoudelijk sparren met jouw consultant. Bovendien bieden wij je een op maat gemaakt opleidingsprogramma. Naast de goede carrièrekansen heb je ook uitstekende primaire en secundaire arbeidsvoorwaarden. Zo heb je bij ons een bonus-opportunity, een gunstige pensioenregeling en collectiviteitskorting op individuele verzekeringen.
+
+Werken op projectbasis met de zekerheid van een vast contract
+Werken via Brunel betekent keuze uit vele interessante bedrijven en functies. Wij bieden jou toegang tot zowel top 100 bedrijven, als regionale organisaties binnen diverse branches. Zo krijg jij de kans om in korte tijd veel ervaring op te doen. Je kunt bij ons op verschillende manieren aan de slag. In de meeste gevallen word je via ons gedetacheerd. Op die manier heb jij flexibiliteit met de zekerheid van een vast contract.
+
+Bedrijfsgrootte:
+Meer dan 10000 werknemers
+
+Branche:
+Uitzendbureaus / Werving & Selectie
+
+Oprichtingsjaar:
+1975
+
+Website:
+https://www.brunel.nl",,,,,,,,
+go-COUVeegMpLHtNK2TAAAAAA==,google,https://relocate.me/netherlands/amsterdam/picnic/java-developer-9226?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,"Java Developer
+							| Relocation Offered",Picnic,"Amsterdam, Netherlands",,,,,,,,,,False,,,,,"About
+Picnic
+
+Building the supermarket on wheels
+
+Started in 2015 in the Netherlands, Picnic now delivers groceries to millions across three countries, growing fast. The idea? We’re bringing back the milkman. Imagine personal service and fresh products but in a modern, sustainable way. We’re looking for bright minds to shape the future of grocery shopping with us. Ready to join the revolution?
+
+Tech at Picnic
+
+At Picnic we merge advanced technology with a customer-centric approach. We aim to create a simple, affordable, and enjoyable grocery shopping experience. Work on various aspects like our mobile app, store backend, internal development platforms, delivery routing, warehouse logistics, and ML models – all built in-house. We’re looking for problem-solvers who thrive in a collaborative environment. We are open to junior and experienced software, data and ML engineers. Our diverse team welcomes innovative and bold ideas.
+
+Picnic perks
+
+1. With a diverse team of over 80 nationalities, you’re sure to find your people
+
+2. You’ll work in an awesome scaleup environment with the freedom to drive your own projects and create a visible impact
+
+3. We offer a well rounded relocation package to help you make your new step
+
+“At Picnic, we build the technology that powers the transition towards a sustainable food
+
+supply chain where we delight customers with more choice, fresher products, and less
+
+waste. The team behind this innovation loves to crack hard problems, uses data to
+
+explore unbeaten paths, and strives to stay ahead of the curve in this fast-paced
+
+industry.”
+
+– Daniel Gebler, CTO
+
+Want to learn more? Check out our blogs!
+
+Position
+
+Check out our latest blog post to learn about why we chose Java!
+
+At Picnic, we’re revolutionizing the way people buy groceries with our innovative and sustainable app-only service. We do almost everything in-house, developing cutting-edge technologies and processes to ensure we continue to grow rapidly without missing a beat. If you’re a passionate Java developer we’re offering you the opportunity to join the diverse team at our Amsterdam HQ and make a real difference in our scaleup environment.
+
+In a nutshell
+
+Picnic has over 20 Java backend development teams, each highly involved with and essential to all parts of the company. From enabling a smooth shopping experience, to ensuring we fulfill our customers’ orders efficiently in our warehouses: there’s a wide range of products to work on. Product teams are also supported by the work of our platform teams on key technologies and infrastructure. Finding the right team to join is a breeze through a ‘Tech Safari’ that will be organized after your onboarding. You’ll get to join three different teams for a week, to find the best match.
+
+At Picnic your skills will be complemented with the latest tech and our diverse projects will keep you challenged and motivated. From designing, developing, and testing new user-facing features, to optimizing supply chain systems and improving the scalability and security of our platform: you’ll be managing individual project priorities, deadlines, and deliverables, while finding yourself fully immersed in an engaging startup culture.
+
+What you’ll do
+• Take ownership of projects, grow, and work collaboratively with your colleagues
+• Design, test, evolve, and evaluate the nuts and bolts of our operation while offering a creative and analytical approach
+• You feel at home writing platforms and display an intricate understanding of how each line of code fits into a business plan
+
+We don’t hide what we do. Instead, we open-source with the community that helped us grow. Here’s proof: http://picnic.tech
+
+Technologies we use
+• Java 17 (Spring 5 with Spring Boot 2, Reactor, Immutables, Maven)
+• Python 3.x
+• RabbitMQ and Kafka
+• PostgreSQL, MongoDB
+• Git and Docker
+• AWS, Helm, Terraform, Kubernetes, Vault
+• New Relic, Grafana and Prometheus
+
+Hungry for more? Check out https://stackshare.io/picnic-technologies for an overview of our tech stack.
+
+Your qualification
+• You have a Bachelor’s or Master’s Degree in Computer Science, Artificial Intelligence, Information Technology, Computer Engineering or a related technical field
+• You have at least two years of professional experience in programming and software development
+• You have a profound understanding of back-end development, including Java, Spring MVC, MongoDB and PostgreSQL
+• Your English skills are on point (no Dutch required)
+
+What we offer
+• Every expert was once a beginner! - You’ll get plenty of opportunities to challenge yourself and grow, including the Picnic Tech Academy, Lunch & Learn sessions, and tailored soft skills training. We also offer free professional weekly language courses
+• Make a difference - You’ll work in an awesome startup environment with the freedom to drive your own projects and create a visible impact.
+
+Our fully electric vehicles and sustainable business model mean you’ll also be contributing to making the world a better place!
+• Teamwork makes the dream work - With more than 80 nationalities across 3 countries, you’ll be part of a diverse company with plenty of cool stuff to get involved with, from board game evenings to after-work drinks to our company ski trip and more!
+• You are what you eat - You’ll get freshly prepared, healthy lunches and snacks (with plenty of vegetarian, vegan, and halal options). Coffee snob? Don’t worry, our amazing Picnic barista has you covered
+• Stay healthy - Mental health is important. As well as having the option to speak with Picnic colleagues who act as confidential advisors, our collaboration with OpenUp gives you easy access to professional psychologists, along with workshops and materials.
+
+There are plenty of sports communities and events to get involved with, from tennis to yoga, to climbing!
+• Attractive package - We offer competitive compensation and a pension plan that looks out for your future self, as well as 25 vacation days per year, so you can recharge your batteries
+• Benefits for expats - It can be daunting starting a new job AND moving to a new country. That’s why we offer lots of support for our many expat colleagues, including:
+• Relocation package: If you join Picnic from abroad, we’ll cover your trip to Amsterdam, sponsor your Visa, and offer you a month of accommodation while you settle in (as long as regulations allow)
+• In the Netherlands, we offer support with your first tax report as well as arranging the 30% ruling
+• From health insurance to living arrangements to pet passports, there are always colleagues who’ve faced the same challenges and are more than happy to help!",,,,,,,,
+go-jJTrepyUZYldaTI8AAAAAA==,google,https://relocate.me/netherlands/amsterdam/picnic/tech-lead-java-9742?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,"Tech Lead (Java)
+							| Relocation Offered",Picnic,"Amsterdam, Netherlands",,,,,,,,,,False,,,,,"About
+Picnic
+
+Building the supermarket on wheels
+
+Started in 2015 in the Netherlands, Picnic now delivers groceries to millions across three countries, growing fast. The idea? We’re bringing back the milkman. Imagine personal service and fresh products but in a modern, sustainable way. We’re looking for bright minds to shape the future of grocery shopping with us. Ready to join the revolution?
+
+Tech at Picnic
+
+At Picnic we merge advanced technology with a customer-centric approach. We aim to create a simple, affordable, and enjoyable grocery shopping experience. Work on various aspects like our mobile app, store backend, internal development platforms, delivery routing, warehouse logistics, and ML models – all built in-house. We’re looking for problem-solvers who thrive in a collaborative environment. We are open to junior and experienced software, data and ML engineers. Our diverse team welcomes innovative and bold ideas.
+
+Picnic perks
+
+1. With a diverse team of over 80 nationalities, you’re sure to find your people
+
+2. You’ll work in an awesome scaleup environment with the freedom to drive your own projects and create a visible impact
+
+3. We offer a well rounded relocation package to help you make your new step
+
+“At Picnic, we build the technology that powers the transition towards a sustainable food
+
+supply chain where we delight customers with more choice, fresher products, and less
+
+waste. The team behind this innovation loves to crack hard problems, uses data to
+
+explore unbeaten paths, and strives to stay ahead of the curve in this fast-paced
+
+industry.”
+
+– Daniel Gebler, CTO
+
+Want to learn more? Check out our blogs!
+
+Position
+
+Picnic operates more than 40 product tech teams that each provide an integral part of our customers' experience - from the point they start the app until the moment they hold their groceries in their hands.
+
+As Tech Lead you will be leading one of these teams and empower them to deliver high-quality, secure and performant solutions for the business we’re building. Together with the Product Owner you will evaluate initiatives and drive roadmap discussions. You’ll design and estimate technical solutions for the presented challenges together with your team.
+
+You will be responsible for the delivery of projects and for developing the skills and strengths of the people working in your team. As a Tech Lead, you’ll lead by example, not by title.
+
+What you’ll do
+• As a Tech Lead in one of our domains, you’ll work with stakeholders from tech and business to translate requirements into scalable and resilient solutions
+• You help the team plan, prioritize and make the right trade-offs. Ensuring business goals are achieved while also realizing your long-term technical vision
+• You provide in-depth tech expertise for your product and act as point of contact for other teams wishing to use and cooperate with your product
+• You are able to communicate your views both when specifying new features with stakeholders and while providing technical mentorship to your colleagues
+• You build and evaluate team members through regular development conversations, personalized coaching, and mentorship to foster growth and achieve career goals
+• You build it - you run it - you love it: you will be responsible for managing a sustainable support model for your product
+
+We don’t hide what we do. Instead, we open-source with the community that helped us grow. Here’s proof: http://picnic.tech
+
+Technologies we use
+• Java 21 (Spring 6 with Spring Boot 3, Reactor, Immutables, Maven)
+• Python 3.x
+• RabbitMQ and Kafka
+• PostgreSQL and MongoDB
+• Git and Docker
+• AWS, Helm, Terraform, Kubernetes, Vault
+• Datadog, Grafana and Prometheus
+
+Hungry for more? Check out https://stackshare.io/picnic-technologies for an overview of our tech stack.
+
+Your qualification
+• You have a Bachelor’s or Master’s Degree in Computer Science, Artificial Intelligence, Information Technology, Computer Engineering or a related technical field
+• You have at least 7 years of experience and a profound understanding of back-end development including Java, Spring Boot, MongoDB and PostgreSQL
+• You have at least 2 years of experience in leading projects and/or teams
+• You have solid problem solving skills and enjoy complex challenges
+• You have great English skills (no Dutch required) and are able to structure your thoughts and express them clearly verbally and in writing
+
+What we offer
+
+Learn new things every day!
+• You’ll get plenty of opportunities to challenge yourself and grow, including the Picnic Tech Academy, Lunch & Learn sessions, and tailored soft skills training. We also offer free professional weekly language courses
+
+Make a difference
+• You’ll work in an awesome scale-up environment with the freedom to drive your own projects and create a visible impact
+• Our fully electric vehicles and sustainable business model mean you’ll also be contributing to making the world a better place!
+
+Teamwork makes the dream work
+• With more than 80 nationalities across 3 countries, you’ll be part of a diverse company with plenty of cool stuff to get involved with, from board game evenings to after-work drinks to our company ski trip and more!
+
+You are what you eat
+• You’ll get freshly prepared, healthy lunches and snacks (with plenty of vegetarian, vegan, and halal options). Coffee snob? Don’t worry, our amazing Picnic barista has you covered
+
+Stay healthy
+• Mental health is important. As well as having the option to speak with Picnic colleagues who act as confidential advisors, our collaboration with OpenUp gives you easy access to professional psychologists, along with workshops and materials.
+• There are plenty of sports communities and events to get involved with, from tennis to yoga, to climbing!
+
+Attractive package
+• We offer competitive compensation and a pension plan that looks out for your future self, as well as 25 vacation days per year, so you can recharge your batteries
+
+Benefits for expats
+
+It can be daunting starting a new job AND moving to a new country. That’s why we offer lots of support for our many expat colleagues, including:
+• Relocation package: If you join Picnic from abroad, we’ll cover your trip to Amsterdam, sponsor your Visa, and offer you a month of accommodation while you settle in (as long as regulations allow)
+• In the Netherlands, we offer support with your first tax report as well as arranging the 30% ruling
+• From health insurance to living arrangements to pet passports, there are always colleagues who’ve faced the same challenges and are more than happy to help!",,,,,,,,
+go-7oIlz25NtUE1V4iCAAAAAA==,google,https://www.codeguild.nl/en/job/experienced-full-stack-java-react-developer-amsterdam-757819-1/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic,,Experienced Full-Stack Java React Developer | € 75.000 + permanent contract!,CodeGuild,"Amsterdam, Netherlands",,,contract,,,,,,,False,,,,s.gerrmann@codeguild.nl,"Experienced Full-Stack Java React Developer Amsterdam | Greenfield AI Product Development | Grow into Lead Dev! | AWS, Kubernetes, GraphQL | € 75.000 + permanent contract!
+
+Your role: Experienced Full-Stack Java React Developer Amsterdam
+• Do you want to quickly grow to Tech Lead while being mentored by an inspiring CTO and enjoy creative freedom, fast decision cycles, and a flat hierarchy?
+• Do you want to work on a unique AI-related and intellectually challenging product with a modern tech stack (Java 11, React, AWS, Kubernetes, GraphQL)?
+• Do you like working at an international SME tech company with a Master's and Ph.D.-level colleagues, a permanent contract, and an 8% end-of-year bonus?
+
+Your company: This medium-sized 100% tech company makes an impact with a unique AI-related SaaS product!
+
+More than ten years ago, this innovative SME product company found a gap in the market with their unique and very complex AI invention. From their prime location (close to the train station) they have been making an impact for many years at leading multinationals that have a fundamental interest in the international infrastructure! Their SaaS/PaaS product ensures that large amounts of data can be stored and shared by advanced AI concepts.
+
+This company is big enough to make an international impact and small enough to know all colleagues by name, so you're not just a number in the big picture! In addition, this international and informal team is known for its creative freedom, fun drinks, fast decision cycles, and a flat hierarchy. As if this wasn't enough, they also give you a permanent contract and an 8% year-end bonus! They also offer home working options and the office is close to the train station, so it is easy to travel from, for example, The Hague, Leiden or Rotterdam.
+
+Because they build a very complex AI-related product, their team consists of intelligent engineers of Master and Ph.D. level who share their knowledge to continuously improve! In order to perfect their product and there are several greenfield challenges on the verge of implementation, we are looking for an intelligent and experienced force to strengthen their team!
+
+Your role: Experienced Full-Stack Java React Developer Amsterdam
+
+You will work here in a multidisciplinary and highly motivated team, where you will be involved in further developing their complex AI product, threading and continuously improving performance.
+
+Now they will continue to develop one of their core products with an interesting greenfield project including GraphQL. Only the POC is made of this and they need you to help implement it! In addition, you get the chance to pick up the front-end with React/Typescript and cloud with AWS. You are not expected to have in-depth AWS knowledge, but you can research which AWS components can be used so that you can increase your cloud skills!
+
+As if this wasn't enough, you will have the unique opportunity to learn on a daily basis from the inspiring CTO, who will mentor and teach you all the technical and leadership skills so that you can start leading one of the teams as soon as possible! With this, you have a major impact on the product and further development of the company!
+
+What is required?
+• Minimum 4 years of professional Java development experience
+• Professional experience with React & Spring Boot
+• Communicative
+• Ambition to grow to Tech Lead
+• A quality coder, unit testing is a standard for you
+• A complete technical BSc or MSc or demonstrable thinking level
+• Experience with AWS and/or GraphQL is a plus
+• Experience with NoSQL databases is a plus
+
+What is on offer?
+• Up to € 75.000 gross per year based on experience and added value
+• Ability to work 32, 36, or 40 hours
+• Flexible working hours
+• Work from home options
+• Good pension
+• Public transport allowance
+• Laptop or MacBook
+• Permanent contract!
+
+Do you like complex AI greenfield challenges and would you like to grow into Tech Lead? Then this job is made for you!
+
+Be sure to send your CV to Sven Gerrmann via s.gerrmann@codeguild.nl or respond via the form below.",,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
