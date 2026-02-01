@@ -322,16 +322,28 @@ async def scrape(methods):
 
 
 def get_socks_proxies():
-    proxies_set = asyncio.run(scrape(["socks5", "socks4"]))
-    return list(proxies_set)
+    try:
+        proxies_set = asyncio.run(scrape(["socks5", "socks4"]))
+        return list(proxies_set)
+    except Exception as e:
+        logger.error(f"Failed to fetch SOCKS proxies: {e}")
+        return []
 
 def get_https_proxies():
-    proxies_set = asyncio.run(test_scraper())
-    return list(proxies_set)
+    try:
+        proxies_set = asyncio.run(test_scraper())
+        return list(proxies_set)
+    except Exception as e:
+        logger.error(f"Failed to fetch HTTPS proxies: {e}")
+        return []
 
 async def test_scraper():
-    async with httpx.AsyncClient(follow_redirects=True) as client:
-        scraper = ProxyLibScraper("https")
-        # Scrap the proxies using the SpysMeScraper
-        proxies = await scraper.scrape(client)
-        return list(proxies)
+    try:
+        async with httpx.AsyncClient(follow_redirects=True, timeout=10.0) as client:
+            scraper = ProxyLibScraper("https")
+            # Scrap the proxies using the SpysMeScraper
+            proxies = await scraper.scrape(client)
+            return list(proxies)
+    except Exception as e:
+        logger.error(f"Error in test_scraper: {e}")
+        return []

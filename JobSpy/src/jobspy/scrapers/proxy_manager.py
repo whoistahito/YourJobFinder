@@ -145,29 +145,38 @@ class ProxyManager:
                     current_time - self._last_fetch_time > self._min_fetch_interval):
 
                 logger.info("Fetching fresh proxy list")
-                # Get both SOCKS and HTTPS proxies
-                socks_proxies = get_socks_proxies()
-                https_proxies = get_https_proxies()
+                try:
+                    # Get both SOCKS and HTTPS proxies
+                    socks_proxies = get_socks_proxies()
+                    https_proxies = get_https_proxies()
 
-                # Format proxies as dictionaries
-                formatted_socks = [{'http': proxy, 'https': proxy} for proxy in socks_proxies]
-                formatted_https = [{'http': proxy, 'https': proxy} for proxy in https_proxies]
+                    # Format and combine proxies
+                    all_proxies = (
+                        [{'http': proxy, 'https': proxy} for proxy in socks_proxies] +
+                        [{'http': proxy, 'https': proxy} for proxy in https_proxies]
+                    )
 
-                # Combine and deduplicate
-                all_proxies = formatted_socks + formatted_https
-                seen = set()
-                unique_proxies = []
+                    # Deduplicate while preserving order
+                    seen_proxies = set()
+                    unique_proxies = []
+                    for proxy in all_proxies:
+                        proxy_key = (proxy['http'], proxy['https'])
+                        if proxy_key not in seen_proxies:
+                            seen_proxies.add(proxy_key)
+                            unique_proxies.append(proxy)
 
-                for proxy in all_proxies:
-                    proxy_str = str(proxy)
-                    if proxy_str not in seen:
-                        seen.add(proxy_str)
-                        unique_proxies.append(proxy)
-
-                self._all_proxies = unique_proxies
-                self._last_fetch_time = current_time
-
-                logger.info(f"Fetched {len(self._all_proxies)} unique proxies")
+                    if unique_proxies:
+                        self._all_proxies = unique_proxies
+                        self._last_fetch_time = current_time
+                        logger.info(f"Fetched {len(self._all_proxies)} unique proxies")
+                    else:
+                        logger.warning("No proxies fetched, keeping existing proxy list if available")
+                        if not self._all_proxies:
+                            logger.error("No proxies available and failed to fetch new ones")
+                except Exception as e:
+                    logger.error(f"Error fetching proxies: {e}")
+                    if not self._all_proxies:
+                        logger.error("No proxies available and failed to fetch new ones")
 
     def invalidate_proxy(self, domain: str):
         """Mark a cached proxy as invalid, forcing a new one to be found next time."""
