@@ -12,7 +12,6 @@ from app import app
 from db.database_service import UserManager, UserEmailManager
 from email_manager import send_email
 from html_render import create_job_card, get_html_template, get_welcome_message
-from llm import validate_job_title, batch_process, validate_location
 
 logger = create_logger("main")
 
@@ -78,11 +77,12 @@ def notify_jobs(filtered_jobs: pd.DataFrame, email: str, position: str, location
     Send notification email if there are filtered jobs based on refined criteria.
     """
     if not filtered_jobs.empty:
-        # Sort jobs by site and date posted
-        filtered_jobs = filtered_jobs[~filtered_jobs['job_url'].map(lambda url: "campaign" not in url)]
+        # Filter out campaign URLs and sort by site and date
+        filtered_jobs = filtered_jobs[~filtered_jobs['job_url'].str.contains('campaign', case=False, na=False)]
         filtered_jobs = filtered_jobs.sort_values(
             by=["site", "date_posted"], ascending=[True, False]
         ).reset_index(drop=True)
+
         # Filter and render job listings
         filtered_jobs['has_salary'] = filtered_jobs["min_amount"].notna() | filtered_jobs["max_amount"].notna()
         html_content = ''.join(filtered_jobs.apply(create_job_card, axis=1))
@@ -103,7 +103,8 @@ def check_for_new_users():
         for user in new_users:
             if user.confirmation_token:
                 confirm_url = f"https://api.yourjobfinder.website/confirm/{user.confirmation_token}"
-                send_email(get_welcome_message(confirm_url), "Welcome to Your Job Finder! Please Confirm Email", user.email, is_html=True)
+                send_email(get_welcome_message(confirm_url), "Welcome to Your Job Finder! Please Confirm Email",
+                           user.email, is_html=True)
             UserManager().mark_user_as_not_new(user.email, user.position, user.location)
 
 
@@ -124,6 +125,7 @@ def notify_user(user):
         found_jobs = try_find_jobs(site, user.position, user.location, user.job_type)
         jobs_df = pd.concat([jobs_df, found_jobs], ignore_index=True)
         time.sleep(random.uniform(10, 20))
+
     if not jobs_df.empty:
         # Remove already sent jobs
         jobs_df = jobs_df[
@@ -131,21 +133,9 @@ def notify_user(user):
                                       UserEmailManager().is_sent(user.email, url, user.position, user.location)
                                       )
         ]
-        jobs_df = jobs_df[:7]
 
-        # Uniform location
-        validated_locations = batch_process(validate_location, jobs_df['location'].tolist())
-        jobs_df['location'] = validated_locations
-
-        # Filter out unrelated titles
-        job_title_search_pairs = [(title, user.position) for title in jobs_df['title']]
-        is_related_results = batch_process(validate_job_title, job_title_search_pairs)
-        jobs_df['is_related'] = is_related_results
-
-        filtered_jobs = jobs_df[jobs_df['is_related']].copy()
-
-        if notify_jobs(filtered_jobs, user.email, user.position, user.location):
-            filtered_jobs.apply(
+        if notify_jobs(jobs_df, user.email, user.position, user.location):
+            jobs_df.apply(
                 lambda row: UserEmailManager().add_sent_email(
                     user.email, row['job_url'], user.position, user.location), axis=1)
 
