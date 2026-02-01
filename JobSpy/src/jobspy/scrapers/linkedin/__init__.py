@@ -144,11 +144,13 @@ class LinkedInScraper(Scraper):
                 params
             )
 
-            if not proxy_result or not proxy_result[1]:
+            # Use proxy result if available, otherwise fallback to direct request
+            job_cards = proxy_result[1] if (proxy_result and proxy_result[1]) else self._scrape_without_proxy(params)
+
+            if not job_cards:
                 logger.error(f"Failed to scrape LinkedIn for {self.scraper_input.search_term}")
                 break
 
-            job_cards = proxy_result[1]
 
             # Process job cards
             for job_card in job_cards:
@@ -179,6 +181,37 @@ class LinkedInScraper(Scraper):
         # Limit results to the requested number
         job_list = job_list[:scraper_input.results_wanted]
         return JobResponse(jobs=job_list)
+
+    def _scrape_without_proxy(self, params: Dict[str, Any]) -> Optional[List[Tag]]:
+        """
+        Fallback method to scrape LinkedIn without using a proxy
+
+        Args:
+            params: Search parameters
+
+        Returns:
+            List of job card elements if successful, None otherwise
+        """
+        logger.warning(f"Proxy manager failed, attempting without proxy for {self.scraper_input.search_term}")
+        try:
+            response = self.session.get(
+                f"{self.base_url}/jobs-guest/jobs/api/seeMoreJobPostings/search?",
+                params=params,
+                timeout=10
+            )
+
+            if response.status_code in range(200, 400):
+                soup = BeautifulSoup(response.text, "html.parser")
+                job_cards = soup.find_all("div", class_="base-search-card")
+                if job_cards:
+                    logger.info("Successfully scraped without proxy")
+                    return job_cards
+            else:
+                logger.error(f"Failed to scrape without proxy: status {response.status_code}")
+        except Exception as e:
+            logger.error(f"Exception when scraping without proxy: {str(e)}")
+
+        return None
 
     def test_proxy_for_linkedin(self, proxy: Dict[str, str], params: Dict[str, Any]) -> Optional[List[Tag]]:
         """
