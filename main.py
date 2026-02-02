@@ -121,7 +121,7 @@ def notify_users() -> None:
 
 def notify_user(user):
     jobs_df = pd.DataFrame()
-    for site in [Site.LINKEDIN, Site.INDEED, Site.GOOGLE]:
+    for site in [ Site.INDEED]:
         found_jobs = try_find_jobs(site, user.position, user.location, user.job_type)
         jobs_df = pd.concat([jobs_df, found_jobs], ignore_index=True)
         time.sleep(random.uniform(10, 20))
