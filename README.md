@@ -22,8 +22,6 @@ Job Scraper is an automated job search assistant that helps users find relevant 
 - **SQLAlchemy**: ORM for database interactions
 - **Pandas**: Data manipulation and processing
 - **Schedule**: Task scheduling
-- **JobSpy**: Custom job scraping module
-- **LLM Integration**: For job title and location validation
 
 ## Getting Started
 
@@ -130,10 +128,6 @@ DELETE /user
 ## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/whoistahito/Job-Scraper/issues).
-
-## Acknowledgments
-
-The JobSpy package used in this project is based on the cullenwatson/JobSpy and iw4p/proxy-scraper repository and has been adapted for this project. 
 
 ## License
 
