@@ -169,12 +169,18 @@ def get_welcome_message(confirm_url):
 def create_job_card(row):
     """Creates an individual job card (table block) aligned with theme.
 
-    Expected keys in row: title, company, location, date_posted, job_url
+    Expected row: GoogleJobPosting model instance.
     """
-    if isinstance(row['date_posted'], datetime.date):
-        posted_date = row['date_posted'].strftime("%b %d, %Y")
+    title = row.title or ""
+    company = row.company or ""
+    location = row.location or ""
+    date_posted = row.date_posted
+    job_url = row.link
+
+    if isinstance(date_posted, datetime.date):
+        posted_date = date_posted.strftime("%b %d, %Y")
     else:
-        posted_date = 'This Week'
+        posted_date = "This Week"
 
     return f'''
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0; border-collapse:separate;">
@@ -183,13 +189,13 @@ def create_job_card(row):
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
               <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;vertical-align:top;">
-                <h3 style="margin:0 0 6px 0;font-size:17px;line-height:1.35;color:{DARK_TEXT};font-weight:600;">{row['title']}</h3>
-                <p style="margin:0 0 6px 0;font-size:14px;line-height:1.4;color:{SUBTEXT};font-weight:500;">{row['company']}</p>
-                <p style="margin:0 0 12px 0;font-size:13px;line-height:1.55;color:#6b7280;">📍 {row['location']}<br />🕒 Posted: {posted_date}</p>
+                <h3 style="margin:0 0 6px 0;font-size:17px;line-height:1.35;color:{DARK_TEXT};font-weight:600;">{title}</h3>
+                <p style="margin:0 0 6px 0;font-size:14px;line-height:1.4;color:{SUBTEXT};font-weight:500;">{company}</p>
+                <p style="margin:0 0 12px 0;font-size:13px;line-height:1.55;color:#6b7280;">📍 {location}<br />🕒 Posted: {posted_date}</p>
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td bgcolor="{BRAND_PRIMARY_DARK}" style="border-radius:999px;">
-                      <a href="{row['job_url']}" style="display:inline-block;padding:11px 20px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">View Details ↗</a>
+                      <a href="{job_url}" style="display:inline-block;padding:11px 20px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">View Details ↗</a>
                     </td>
                   </tr>
                 </table>

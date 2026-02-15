@@ -18,46 +18,35 @@ def find_jobs(
         search_term: str,
         location: str,
         job_type: Optional[str],
-):
-    return scrape_google(search_term, location, 10)
+) -> list[GoogleJobPosting]:
+    return scrape_google(search_term, location, 10).jobs
 
 
 def _safe_str(value: Optional[str]) -> str:
     return value or ""
 
 
-def _job_to_card(job: GoogleJobPosting) -> dict:
-    data = job.model_dump()
-    job_url = data.get("job_url") or data.get("link") or ""
-    return {
-        "title": data.get("title") or "",
-        "company": data.get("company") or "",
-        "location": data.get("location") or "",
-        "date_posted": data.get("date_posted"),
-        "job_url": job_url,
-    }
-
-
-
-def notify_jobs(jobs: list[dict], email: str, position: str, location: str) -> list[dict]:
+def notify_jobs(
+        jobs: list[GoogleJobPosting],
+        email: str,
+        position: str,
+        location: str,
+) :
     """
     Send notification email if there are filtered jobs based on refined criteria.
     """
-    if jobs:
-        sorted_jobs = sorted(
-            jobs,
-            key=lambda job: _safe_str(job.get("date_posted")),
-            reverse=True,
-        )
+    if not jobs:
+        raise Exception("No jobs found based on the criteria.")
 
-        html_content = ''.join(create_job_card(job) for job in sorted_jobs)
-        html_template = get_html_template(html_content, email, position, location)
-        send_email(html_template, "Found some job opportunities for you!", email, is_html=True)
-        return sorted_jobs
+    sorted_jobs = sorted(
+        jobs,
+        key=lambda job: _safe_str(job.date_posted),
+        reverse=True,
+    )
 
-    logger.error("No jobs found based on the criteria.")
-    return []
-
+    html_content = ''.join(create_job_card(job) for job in sorted_jobs)
+    html_template = get_html_template(html_content, email, position, location)
+    send_email(html_template, "Found some job opportunities for you!", email, is_html=True)
 
 def check_for_new_users():
     """
@@ -71,7 +60,10 @@ def check_for_new_users():
                 send_email(get_welcome_message(confirm_url), "Welcome to Your Job Finder! Please Confirm Email",
                            user.email, is_html=True)
             if user.is_new and user.is_confirmed:
-                notify_user(user)
+                try:
+                    notify_user(user)
+                except Exception as e:
+                    logger.error(e)
             UserManager().mark_user_as_not_new(user.email, user.position, user.location)
 
 
@@ -83,29 +75,30 @@ def notify_users() -> None:
     with app.app_context():
         users = UserManager().get_confirmed_users()
         for user in users:
-            notify_user(user)
+            try:
+                notify_user(user)
+            except Exception as e:
+                logger.error(e)
 
 
 def notify_user(user):
     found_jobs = find_jobs(user.position, user.location, user.job_type)
-    if not found_jobs.jobs:
+    if not found_jobs:
         logger.error("No jobs found based on the criteria.")
         return
 
     job_cards = []
-    for job in found_jobs.jobs:
-        job_url = job.link or job.model_dump().get("job_url")
-        if not job_url:
-            continue
+    for job in found_jobs:
+        job_url = job.link
         if UserEmailManager().is_sent(user.email, job_url, user.position, user.location):
             continue
-        job_cards.append(_job_to_card(job))
-
-    sent_jobs = notify_jobs(job_cards, user.email, user.position, user.location)
-    for job in sent_jobs:
-        UserEmailManager().add_sent_email(
-            user.email, job["job_url"], user.position, user.location
-        )
+        job_cards.append(job)
+    if len(job_cards) >0 :
+        notify_jobs(job_cards, user.email, user.position, user.location)
+        for job in job_cards:
+            UserEmailManager().add_sent_email(
+                user.email, job.link, user.position, user.location
+            )
 
 
 if __name__ == "__main__":
