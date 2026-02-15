@@ -9,7 +9,7 @@ class GoogleJobPosting(BaseModel):
     title: Optional[str] = None
     company: Optional[str] = None
     location: Optional[str] = None
-    link: Optional[str] = None
+    link: str = Field(min_length=1)
     date_posted: Optional[str] = Field(default=None, alias="datePosted")
     employment_type: Optional[str] = Field(default=None, alias="employmentType")
     description: Optional[str] = None
@@ -26,4 +26,3 @@ class GoogleScrapeResponse(BaseModel):
     @classmethod
     def from_json(cls, data: Dict[str, Any]) -> "GoogleScrapeResponse":
         return cls.model_validate(data)
-
