@@ -89,6 +89,7 @@ def notify_users() -> None:
 def notify_user(user):
     found_jobs = find_jobs(user.position, user.location, user.job_type)
     if not found_jobs.jobs:
+        logger.error("No jobs found based on the criteria.")
         return
 
     job_cards = []
