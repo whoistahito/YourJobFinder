@@ -1,7 +1,14 @@
 import os
 
+class GoogleScraperCredential:
+    @staticmethod
+    def get_google_scraper_url():
+        return os.environ.get("google_scraper_url")
+    @staticmethod
+    def get_google_scraper_token():
+        return os.environ.get("google_scraper_token")
 
-class Credential:
+class EmailCredential:
     @staticmethod
     def get_email_address():
         return os.environ.get("email_address")
@@ -10,10 +17,8 @@ class Credential:
     def get_email_password():
         return os.environ.get("email_password")
 
-    @staticmethod
-    def get_google_api():
-        return os.environ.get("google_api_key")
 
+class DatabaseCredential:
     @staticmethod
     def get_db_name():
         return os.environ.get("db_name")
@@ -28,18 +33,21 @@ class Credential:
 
     @staticmethod
     def get_db_host():
-        return os.environ.get('db_port', '127.0.0.1')
+        return os.environ.get("db_host")
 
     @staticmethod
     def get_db_port():
-        return os.environ.get('db_port', '5432')
+        return os.environ.get("db_port")
 
     @staticmethod
     def get_db_uri():
-        return os.environ.get("db_url", "postgresql://%s:%s@%s:%s/%s" % (
-            Credential.get_db_username(),
-            Credential.get_db_password(),
-            Credential.get_db_host(),
-            Credential.get_db_port(),
-            Credential.get_db_name()
-        ))
+        return os.environ.get(
+            "db_url",
+            "postgresql://%s:%s@%s:%s/%s" % (
+                DatabaseCredential.get_db_username(),
+                DatabaseCredential.get_db_password(),
+                DatabaseCredential.get_db_host(),
+                DatabaseCredential.get_db_port(),
+                DatabaseCredential.get_db_name(),
+            ),
+        )

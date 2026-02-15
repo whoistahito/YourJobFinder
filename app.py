@@ -3,10 +3,10 @@ from flask_cors import CORS
 
 from db.database_service import UserManager
 from extension import db, migrate
-from credential import Credential
+from credential import DatabaseCredential
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = Credential().get_db_uri()
+app.config['SQLALCHEMY_DATABASE_URI'] = DatabaseCredential.get_db_uri()
 db.init_app(app)
 migrate.init_app(app, db)
 user_manager = UserManager()

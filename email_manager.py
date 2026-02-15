@@ -2,19 +2,18 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 
-from JobSpy.src.jobspy.scrapers.utils import create_logger
-from credential import Credential
+from logger import create_logger
+from credential import EmailCredential
 
 logger = create_logger("email_manager")
 
 
 def send_email(body, subject,receiver_email, is_html=True):
-    cred = Credential()
     # Email configuration
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
-    sender_email = cred.get_email_address()
-    password = cred.get_email_password()
+    sender_email = EmailCredential.get_email_address()
+    password = EmailCredential.get_email_password()
 
 
     # Set up the MIME
