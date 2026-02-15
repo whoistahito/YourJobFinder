@@ -1,11 +1,6 @@
 from __future__ import annotations
 
-from itertools import cycle
 import logging
-from markdownify import markdownify as md
-import numpy as np
-import re
-import requests
 
 
 def create_logger(name: str):

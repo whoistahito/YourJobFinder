@@ -7,7 +7,7 @@ from app import app
 from db.database_service import UserManager, UserEmailManager
 from email_manager import send_email
 from html_render import create_job_card, get_html_template, get_welcome_message
-from logger import create_logger
+from logger_utils import create_logger
 from google_scraper_service import scrape_google
 from google_scraper_models import GoogleJobPosting
 
@@ -70,6 +70,8 @@ def check_for_new_users():
                 confirm_url = f"https://api.yourjobfinder.website/confirm/{user.confirmation_token}"
                 send_email(get_welcome_message(confirm_url), "Welcome to Your Job Finder! Please Confirm Email",
                            user.email, is_html=True)
+            if user.is_new and user.is_confirmed:
+                notify_user(user)
             UserManager().mark_user_as_not_new(user.email, user.position, user.location)
 
 

@@ -2,7 +2,7 @@ import requests
 
 from credential import GoogleScraperCredential
 from google_scraper_models import GoogleScrapeResponse
-from logger import create_logger
+from logger_utils import create_logger
 logger = create_logger("Google Scraper")
 
 def scrape_google(title: str, location: str, limit: int = 10) -> GoogleScrapeResponse:
@@ -20,5 +20,5 @@ def scrape_google(title: str, location: str, limit: int = 10) -> GoogleScrapeRes
     response = requests.post(url, json=payload, headers=headers, timeout=120)
     response.raise_for_status()
     data = response.json()
-    print(data)
+    logger.info(f"Found {len(data['jobs'])} jobs")
     return GoogleScrapeResponse.from_json(data)
