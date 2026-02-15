@@ -97,7 +97,7 @@ def get_welcome_message(confirm_url):
             <ul style="margin:0;">
               <li>Role focus & related titles</li>
               <li>Job type preference</li>
-              <li>Location / remote setting</li>
+              <li>Location preference</li>
               <li>Posting recency & basic source quality filters</li>
             </ul>
             <p class="small" style="margin:10px 0 0 0;">Duplicates, expired and obvious low‑quality listings never reach you.</p>
@@ -169,24 +169,12 @@ def get_welcome_message(confirm_url):
 def create_job_card(row):
     """Creates an individual job card (table block) aligned with theme.
 
-    Expected keys in row: title, company, location, date_posted, is_remote, job_url, new_badge (optional)
+    Expected keys in row: title, company, location, date_posted, job_url
     """
     if isinstance(row['date_posted'], datetime.date):
         posted_date = row['date_posted'].strftime("%b %d, %Y")
     else:
         posted_date = 'This Week'
-
-    new_badge = ''
-    if row.get('new_badge', False):
-        new_badge = (
-            f'<span style="display:inline-block;background:#ecfdf5;color:#065f46;font-size:11px;font-weight:600;line-height:1;padding:6px 10px;border-radius:999px;">NEW</span>'
-        )
-
-    remote_badge = ''
-    if row.get('is_remote'):
-        remote_badge = (
-            f'<span style="display:inline-block;background:#eef2ff;color:{BRAND_PRIMARY_DARK};font-size:11px;font-weight:500;line-height:1;padding:6px 10px;border-radius:999px;margin-left:6px;">Remote</span>'
-        )
 
     return f'''
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0; border-collapse:separate;">
@@ -198,7 +186,6 @@ def create_job_card(row):
                 <h3 style="margin:0 0 6px 0;font-size:17px;line-height:1.35;color:{DARK_TEXT};font-weight:600;">{row['title']}</h3>
                 <p style="margin:0 0 6px 0;font-size:14px;line-height:1.4;color:{SUBTEXT};font-weight:500;">{row['company']}</p>
                 <p style="margin:0 0 12px 0;font-size:13px;line-height:1.55;color:#6b7280;">📍 {row['location']}<br />🕒 Posted: {posted_date}</p>
-                <div style="margin:0 0 14px 0;">{new_badge}{remote_badge}</div>
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td bgcolor="{BRAND_PRIMARY_DARK}" style="border-radius:999px;">
@@ -285,7 +272,7 @@ def get_html_template(html_content, email, position, location):
                   <tr>
                     <td style="padding:18px 22px;">
                       <p style="margin:0 0 6px 0; font-size:13px; line-height:1.5; font-weight:600; color:{DARK_TEXT}; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Why you got these</p>
-                      <p style="margin:0; font-size:12px; line-height:1.55; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Matched on role semantics, location / remoteness, recency & source quality. Tune further by creating an additional alert with narrower scope.</p>
+                      <p style="margin:0; font-size:12px; line-height:1.55; color:#6b7280; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">Matched on role semantics, location, recency & source quality. Tune further by creating an additional alert with narrower scope.</p>
                     </td>
                   </tr>
                 </table>

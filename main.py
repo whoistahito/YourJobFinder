@@ -1,97 +1,62 @@
-import random
 import time
 from typing import Optional
 
-import pandas as pd
 import schedule
 
-from JobSpy.src.jobspy import Site
-from JobSpy.src.jobspy import scrape_jobs
-from JobSpy.src.jobspy.scrapers.utils import create_logger
 from app import app
 from db.database_service import UserManager, UserEmailManager
 from email_manager import send_email
 from html_render import create_job_card, get_html_template, get_welcome_message
+from logger import create_logger
+from google_scraper_service import scrape_google
+from google_scraper_models import GoogleJobPosting
 
 logger = create_logger("main")
 
 
 def find_jobs(
-        site: Site,
         search_term: str,
         location: str,
         job_type: Optional[str],
-) -> pd.DataFrame:
-    """
-    Find jobs on a site with the given job characteristics.
-    Adjusts search terms for specific job types if needed.
-    """
-    if job_type == "working student":
-        search_term += " " + "Werkstudent"
-        job_type = None
-
-    if location.lower().strip() == "remote":
-        location = "Worldwide"
-
-    return scrape_jobs(
-        site_name=site,
-        search_term=search_term,
-        job_type=job_type,
-        radius=15,
-        location=location.split(",")[0].strip() if location.split(",")[0].strip() else "worldwide",
-        results_wanted=10,
-        hours_old=120,
-        country_indeed=location.split(",")[-1].strip() if location.split(",")[-1].strip() else "worldwide",
-        proxies=None,
-        enforce_annual_salary=True,
-        is_remote=location.lower().strip() == "remote",
-    )
+):
+    return scrape_google(search_term, location, 10)
 
 
-def try_find_jobs(
-        site: Site,
-        search_term: str,
-        location: str,
-        job_type: Optional[str],
-        max_retries: int = 2,
-) -> pd.DataFrame:
-    """
-    Process job scraping for a single site, retry if needed,
-    and return a DataFrame with the found jobs.
-    """
-    retries = 0
-
-    while retries < max_retries:
-        try:
-            return find_jobs(site, search_term, location, job_type)
-        except Exception as err:
-            logger.error(f"Exception while processing {site}: {err}")
-            retries += 1
-            logger.error(f"Retrying {retries}/{max_retries}")
-            time.sleep(random.uniform(100, 200))  # Wait before retrying
-    return pd.DataFrame()  # Return empty DataFrame if all retries fail
+def _safe_str(value: Optional[str]) -> str:
+    return value or ""
 
 
-def notify_jobs(filtered_jobs: pd.DataFrame, email: str, position: str, location: str) -> bool:
+def _job_to_card(job: GoogleJobPosting) -> dict:
+    data = job.model_dump()
+    job_url = data.get("job_url") or data.get("link") or ""
+    return {
+        "title": data.get("title") or "",
+        "company": data.get("company") or "",
+        "location": data.get("location") or "",
+        "date_posted": data.get("date_posted"),
+        "job_url": job_url,
+    }
+
+
+
+def notify_jobs(jobs: list[dict], email: str, position: str, location: str) -> list[dict]:
     """
     Send notification email if there are filtered jobs based on refined criteria.
     """
-    if not filtered_jobs.empty:
-        # Filter out campaign URLs and sort by site and date
-        filtered_jobs = filtered_jobs[~filtered_jobs['job_url'].str.contains('campaign', case=False, na=False)]
-        filtered_jobs = filtered_jobs.sort_values(
-            by=["site", "date_posted"], ascending=[True, False]
-        ).reset_index(drop=True)
+    if jobs:
+        sorted_jobs = sorted(
+            jobs,
+            key=lambda job: _safe_str(job.get("date_posted")),
+            reverse=True,
+        )
 
-        # Filter and render job listings
-        filtered_jobs['has_salary'] = filtered_jobs["min_amount"].notna() | filtered_jobs["max_amount"].notna()
-        html_content = ''.join(filtered_jobs.apply(create_job_card, axis=1))
+        html_content = ''.join(create_job_card(job) for job in sorted_jobs)
         html_template = get_html_template(html_content, email, position, location)
         send_email(html_template, "Found some job opportunities for you!", email, is_html=True)
-        return True
+        return sorted_jobs
 
     logger.error("No jobs found based on the criteria.")
-    return False
+    return []
 
 
 def check_for_new_users():
@@ -120,24 +85,24 @@ def notify_users() -> None:
 
 
 def notify_user(user):
-    jobs_df = pd.DataFrame()
-    for site in [ Site.INDEED]:
-        found_jobs = try_find_jobs(site, user.position, user.location, user.job_type)
-        jobs_df = pd.concat([jobs_df, found_jobs], ignore_index=True)
-        time.sleep(random.uniform(10, 20))
+    found_jobs = find_jobs(user.position, user.location, user.job_type)
+    if not found_jobs.jobs:
+        return
 
-    if not jobs_df.empty:
-        # Remove already sent jobs
-        jobs_df = jobs_df[
-            ~jobs_df['job_url'].apply(lambda url:
-                                      UserEmailManager().is_sent(user.email, url, user.position, user.location)
-                                      )
-        ]
+    job_cards = []
+    for job in found_jobs.jobs:
+        job_url = job.link or job.model_dump().get("job_url")
+        if not job_url:
+            continue
+        if UserEmailManager().is_sent(user.email, job_url, user.position, user.location):
+            continue
+        job_cards.append(_job_to_card(job))
 
-        if notify_jobs(jobs_df, user.email, user.position, user.location):
-            jobs_df.apply(
-                lambda row: UserEmailManager().add_sent_email(
-                    user.email, row['job_url'], user.position, user.location), axis=1)
+    sent_jobs = notify_jobs(job_cards, user.email, user.position, user.location)
+    for job in sent_jobs:
+        UserEmailManager().add_sent_email(
+            user.email, job["job_url"], user.position, user.location
+        )
 
 
 if __name__ == "__main__":
