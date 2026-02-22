@@ -1,7 +1,7 @@
 import requests
 
 from credential import GoogleScraperCredential
-from google_scraper_models import GoogleScrapeResponse
+from scrapers.google_scraper_models import GoogleScrapeResponse
 from logger_utils import create_logger
 logger = create_logger("Google Scraper")
 

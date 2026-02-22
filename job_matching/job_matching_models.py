@@ -1,0 +1,41 @@
+from typing import List
+
+from pydantic import BaseModel, Field
+
+class SkillExperienceBase(BaseModel):
+
+    """Base class for skill and experience data structures."""
+    skills: List[str] = Field(
+        default_factory=list,
+        description="List of required skills"
+    )
+    experiences: List[str] = Field(
+        default_factory=list,
+        description="List of experience requirements"
+    )
+    qualifications: List[str] = Field(
+        default_factory=list,
+        description="List of qualifications/certifications"
+    )
+
+
+class Requirements(SkillExperienceBase):
+    """Normalized requirements schema for job extraction outputs."""
+    pass
+
+
+class UserProfile(SkillExperienceBase):
+    """User profile with skills, experiences, and qualifications."""
+    pass
+
+class JobMatchingResponse(BaseModel):
+    jobRequirements: Requirements = Field(...,
+                                          description="Job requirements")
+    userProfile: UserProfile = Field(...,
+                                     description="User profile data")
+    similarityScore: SimilarityScore = Field(...,
+                                             description="Similarity score")
+
+class SimilarityScore(BaseModel):
+    score: float = Field(...,
+                         description="Similarity score")

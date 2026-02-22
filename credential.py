@@ -1,5 +1,23 @@
 import os
 
+class JobMatcherCredential:
+    @staticmethod
+    def get_url():
+        return os.environ.get("job_matcher_url")
+
+    @staticmethod
+    def get_token():
+        return os.environ.get("job_matcher_token")
+
+    @staticmethod
+    def get_extractor_model():
+        return os.environ.get("extractor_model")
+
+    @staticmethod
+    def get_judge_model():
+        return os.environ.get("judge_model")
+
+
 class GoogleScraperCredential:
     @staticmethod
     def get_google_scraper_url():

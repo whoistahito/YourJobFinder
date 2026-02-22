@@ -1,5 +1,5 @@
 import time
-from typing import Optional
+from typing import Optional, Union
 
 import schedule
 
@@ -8,10 +8,16 @@ from db.database_service import UserManager, UserEmailManager
 from email_manager import send_email
 from html_render import create_job_card, get_html_template, get_welcome_message
 from logger_utils import create_logger
-from google_scraper_service import scrape_google
-from google_scraper_models import GoogleJobPosting
+from scrapers.google_scraper_service import scrape_google
+from scrapers.google_scraper_models import GoogleJobPosting
+from job_matching.job_matching_service import match
+from job_matching.job_matching_models import UserProfile
 
 logger = create_logger("main")
+
+# Jobs with a match score below this threshold are silently skipped.
+# Set to 0.0 to disable filtering entirely (all jobs pass through).
+JOB_MATCH_THRESHOLD = 0.4
 
 
 def find_jobs(
@@ -26,12 +32,23 @@ def _safe_str(value: Optional[str]) -> str:
     return value or ""
 
 
+def get_user_profile(user) -> Optional[UserProfile]:
+    """Convert the SQLAlchemy User relations into a UserProfile Pydantic model."""
+    if not (user.skills or user.experiences or user.educations):
+        return None
+
+    return UserProfile(
+        skills=[s.skill for s in user.skills],
+        experiences=[e.experience for e in user.experiences],
+        qualifications=[e.education for e in user.educations],
+    )
+
 def notify_jobs(
         jobs: list[GoogleJobPosting],
         email: str,
         position: str,
         location: str,
-) :
+):
     """
     Send notification email if there are filtered jobs based on refined criteria.
     """
@@ -87,13 +104,36 @@ def notify_user(user):
         logger.error("No jobs found based on the criteria.")
         return
 
+    user_profile = get_user_profile(user)
+
     job_cards = []
     for job in found_jobs:
         job_url = job.link
         if UserEmailManager().is_sent(user.email, job_url, user.position, user.location):
             continue
+
+        # job matching if user has profile and job has description
+        if user_profile and job.description:
+            try:
+                score = match(job.description, user_profile)
+                if score < JOB_MATCH_THRESHOLD:
+                    logger.info(
+                        f"Skipping '{job.title}' for {user.email} "
+                        f"— match score {score:.2f} < threshold {JOB_MATCH_THRESHOLD}"
+                    )
+                    continue
+                logger.info(
+                    f"'{job.title}' passed match filter for {user.email} "
+                    f"— score {score:.2f}"
+                )
+            except Exception as e:
+                logger.error(
+                    f"Job matching failed for '{job.title}': {e} — including job anyway"
+                )
+
         job_cards.append(job)
-    if len(job_cards) >0 :
+
+    if len(job_cards) > 0 :
         notify_jobs(job_cards, user.email, user.position, user.location)
         for job in job_cards:
             UserEmailManager().add_sent_email(
