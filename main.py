@@ -78,7 +78,7 @@ def check_for_new_users():
                 try:
                     notify_user(user)
                 except Exception as e:
-                    logger.error(e)
+                    logger.exception(f"notify_user failed for {user.email}: {e}")
             UserManager().mark_user_as_not_new(user.email, user.position, user.location)
 
 
@@ -93,7 +93,7 @@ def notify_users() -> None:
             try:
                 notify_user(user)
             except Exception as e:
-                logger.error(e)
+                logger.exception(f"notify_user failed for {user.email}: {e}")
 
 
 def notify_user(user):
@@ -126,7 +126,7 @@ def notify_user(user):
                     f"— score {score:.2f}"
                 )
             except Exception as e:
-                logger.error(
+                logger.exception(
                     f"Job matching failed for '{job.title}': {e} — including job anyway"
                 )
 
