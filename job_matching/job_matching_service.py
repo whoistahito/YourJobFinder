@@ -15,7 +15,7 @@ def match(job_description: str, user_profile: UserProfile) -> float:
     token = JobMatcherCredential.get_token()
     url = JobMatcherCredential.get_url()
     payload = {
-        "modelId": JobMatcherCredential.get_extractor_model(),
+        "modelId": JobMatcherCredential.get_judge_model(),
         "extractionPipeline": {
             "extractorModelIds": JobMatcherCredential.get_extractor_model(),
             "judgeModelId": JobMatcherCredential.get_judge_model(),
@@ -24,10 +24,11 @@ def match(job_description: str, user_profile: UserProfile) -> float:
         "userProfile": user_profile.model_dump(),
     }
     headers = {
+        "Content-Type": "application/json",
         "Authorization": f"Bearer {token}",
     }
     logger.info(f"Matching job description (first 15 chars): {job_description[:15]!r}")
-    response = requests.post(url, json=payload, headers=headers, timeout=120)
+    response = requests.post(url, json=payload, headers=headers, timeout=240)
     response.raise_for_status()
     data = JobMatchingResponse.model_validate(response.json())
     score = data.similarityScore.score

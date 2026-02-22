@@ -28,6 +28,10 @@ class UserProfile(SkillExperienceBase):
     """User profile with skills, experiences, and qualifications."""
     pass
 
+class SimilarityScore(BaseModel):
+    score: float = Field(...,
+                         description="Similarity score")
+
 class JobMatchingResponse(BaseModel):
     jobRequirements: Requirements = Field(...,
                                           description="Job requirements")
@@ -35,7 +39,3 @@ class JobMatchingResponse(BaseModel):
                                      description="User profile data")
     similarityScore: SimilarityScore = Field(...,
                                              description="Similarity score")
-
-class SimilarityScore(BaseModel):
-    score: float = Field(...,
-                         description="Similarity score")
