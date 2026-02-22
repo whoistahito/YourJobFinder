@@ -11,7 +11,8 @@ class JobMatcherCredential:
 
     @staticmethod
     def get_extractor_model():
-        return os.environ.get("extractor_model")
+        value = os.environ.get("extractor_model","gpt-oss-120b,glm4.7")
+        return[item.strip() for item in value.split(",")]
 
     @staticmethod
     def get_judge_model():
