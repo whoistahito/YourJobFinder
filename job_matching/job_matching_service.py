@@ -1,5 +1,5 @@
 import requests
-
+import time
 from credential import JobMatcherCredential
 from job_matching.job_matching_models import UserProfile, JobMatchingResponse
 from logger_utils import create_logger
@@ -27,10 +27,11 @@ def match(job_description: str, user_profile: UserProfile) -> float:
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}",
     }
-    logger.info(f"Matching job description (first 15 chars): {job_description[:15]!r}")
-    response = requests.post(url, json=payload, headers=headers, timeout=240)
+    start_time = time.time()
+    response = requests.post(url, json=payload, headers=headers, timeout=120)
+    endtime = time.time() - start_time
     response.raise_for_status()
     data = JobMatchingResponse.model_validate(response.json())
     score = data.similarityScore.score
-    logger.info(f"Received matching score: {score:.2f}")
+    logger.info(f"Received matching score: {score:.2f} in {endtime:.2f} seconds")
     return score
