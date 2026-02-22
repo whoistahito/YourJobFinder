@@ -1,18 +1,20 @@
-from typing import Any, Dict, List, Optional
+from typing import Annotated, Any, Dict, List, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, HttpUrl
 
+
+NonEmptyStr = Annotated[str, StringConstraints(min_length=2, strip_whitespace=True)]
 
 class GoogleJobPosting(BaseModel):
     model_config = ConfigDict(populate_by_name=True, extra="allow")
 
-    title: Optional[str] = None
-    company: Optional[str] = None
-    location: Optional[str] = None
-    link: str = Field(min_length=1)
+    title: NonEmptyStr
+    company: NonEmptyStr
+    location: NonEmptyStr
+    link: HttpUrl
     date_posted: Optional[str] = Field(default=None, alias="datePosted")
     employment_type: Optional[str] = Field(default=None, alias="employmentType")
-    description: Optional[str] = None
+    description: NonEmptyStr
 
 
 class GoogleScrapeResponse(BaseModel):

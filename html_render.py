@@ -175,7 +175,7 @@ def create_job_card(row):
     company = row.company or ""
     location = row.location or ""
     date_posted = row.date_posted
-    job_url = row.link
+    job_url = str(row.link)
 
     if isinstance(date_posted, datetime.date):
         posted_date = date_posted.strftime("%b %d, %Y")

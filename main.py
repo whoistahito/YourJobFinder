@@ -1,5 +1,5 @@
 import time
-from typing import Optional, Union
+from typing import Optional
 
 import schedule
 
@@ -15,9 +15,7 @@ from job_matching.job_matching_models import UserProfile
 
 logger = create_logger("main")
 
-# Jobs with a match score below this threshold are silently skipped.
-# Set to 0.0 to disable filtering entirely (all jobs pass through).
-JOB_MATCH_THRESHOLD = 0.4
+JOB_MATCH_THRESHOLD = 0.35
 
 
 def find_jobs(
@@ -108,13 +106,14 @@ def notify_user(user):
 
     job_cards = []
     for job in found_jobs:
-        job_url = job.link
+        job_url = str(job.link)
         if UserEmailManager().is_sent(user.email, job_url, user.position, user.location):
             continue
 
         # job matching if user has profile and job has description
         if user_profile and job.description:
             try:
+                logger.info(f"Matching: {job.title}")
                 score = match(job.description, user_profile)
                 if score < JOB_MATCH_THRESHOLD:
                     logger.info(
@@ -137,7 +136,7 @@ def notify_user(user):
         notify_jobs(job_cards, user.email, user.position, user.location)
         for job in job_cards:
             UserEmailManager().add_sent_email(
-                user.email, job.link, user.position, user.location
+                user.email, str(job.link), user.position, user.location
             )
 
 
