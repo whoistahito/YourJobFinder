@@ -1,5 +1,6 @@
 import os
 
+
 class JobMatcherCredential:
     @staticmethod
     def get_url():
@@ -37,6 +38,8 @@ class EmailCredential:
         return os.environ.get("email_password")
 
 
+
+
 class DatabaseCredential:
     @staticmethod
     def get_db_name():
@@ -60,13 +63,19 @@ class DatabaseCredential:
 
     @staticmethod
     def get_db_uri():
-        return os.environ.get(
-            "db_url",
-            "postgresql://%s:%s@%s:%s/%s" % (
-                DatabaseCredential.get_db_username(),
-                DatabaseCredential.get_db_password(),
-                DatabaseCredential.get_db_host(),
-                DatabaseCredential.get_db_port(),
-                DatabaseCredential.get_db_name(),
-            ),
+        from ssh_tunnel import get_tunnel
+        tunnel = get_tunnel()
+        if tunnel:
+            host = "127.0.0.1"
+            port = tunnel.local_bind_port
+        else:
+            host = DatabaseCredential.get_db_host()
+            port = DatabaseCredential.get_db_port()
+
+        return "postgresql://%s:%s@%s:%s/%s" % (
+            DatabaseCredential.get_db_username(),
+            DatabaseCredential.get_db_password(),
+            host,
+            port,
+            DatabaseCredential.get_db_name(),
         )

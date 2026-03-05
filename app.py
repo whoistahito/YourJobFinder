@@ -4,6 +4,9 @@ from flask_cors import CORS
 from db.database_service import UserManager
 from extension import db, migrate
 from credential import DatabaseCredential
+from ssh_tunnel import start_ssh_tunnel
+
+start_ssh_tunnel()
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DatabaseCredential.get_db_uri()

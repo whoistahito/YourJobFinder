@@ -48,4 +48,6 @@ dependencies = [
     "psycopg2-binary",
     "Flask-SQLAlchemy",
     "Flask-Migrate",
+    "sshtunnel",
+    "paramiko>=3.0,<4.0",
 ]
