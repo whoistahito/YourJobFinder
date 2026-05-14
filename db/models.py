@@ -9,6 +9,7 @@ class User(db.Model):
     position = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
     job_type = db.Column(db.String, nullable=False)
+    country_code = db.Column(db.String(10), nullable=True)
     is_new = db.Column(db.Boolean, nullable=False, default=True)
     is_confirmed = db.Column(db.Boolean, nullable=False, default=False)
     confirmation_token = db.Column(db.String, nullable=True)

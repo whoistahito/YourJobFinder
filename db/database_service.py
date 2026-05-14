@@ -4,9 +4,9 @@ import uuid
 
 
 class UserManager:
-    def add_user(self, email, position, location, job_type, skills=None, experience=None, education=None):
+    def add_user(self, email, position, location, job_type, country_code=None, skills=None, experience=None, education=None):
         token = str(uuid.uuid4())
-        user = User(email=email, position=position, location=location, job_type=job_type, confirmation_token=token)
+        user = User(email=email, position=position, location=location, job_type=job_type, country_code=country_code, confirmation_token=token)
         if skills:
             for s in skills:
                 user.skills.append(Skill(skill=s))

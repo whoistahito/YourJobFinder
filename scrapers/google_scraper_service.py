@@ -7,7 +7,7 @@ from logger_utils import create_logger
 
 logger = create_logger("Google Scraper")
 
-def scrape_google(title: str, location: str, limit: int = 10) -> GoogleScrapeResponse:
+def scrape_google(title: str, location: str, limit: int = 10, country_code: str = None) -> GoogleScrapeResponse:
     token = GoogleScraperCredential.get_google_scraper_token()
     url = GoogleScraperCredential.get_google_scraper_url()
     query = f"{title} jobs in {location}"
@@ -15,6 +15,8 @@ def scrape_google(title: str, location: str, limit: int = 10) -> GoogleScrapeRes
         "query": query,
         "limit": limit,
     }
+    if country_code:
+        payload["countryCode"] = country_code
     headers = {
         "Authorization": f"Bearer {token}",
     }

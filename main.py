@@ -22,8 +22,9 @@ def find_jobs(
         search_term: str,
         location: str,
         job_type: Optional[str],
+        country_code: Optional[str] = None,
 ) -> list[GoogleJobPosting]:
-    return scrape_google(search_term, location, 10).jobs
+    return scrape_google(search_term, location, 10, country_code=country_code).jobs
 
 
 def _safe_str(value: Optional[str]) -> str:
@@ -97,7 +98,7 @@ def notify_users() -> None:
 
 
 def notify_user(user):
-    found_jobs = find_jobs(user.position, user.location, user.job_type)
+    found_jobs = find_jobs(user.position, user.location, user.job_type, country_code=getattr(user, 'country_code', None))
     if not found_jobs:
         logger.error("No jobs found based on the criteria.")
         return
