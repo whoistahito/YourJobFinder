@@ -16,7 +16,7 @@ def scrape_google(title: str, location: str, limit: int = 10, country_code: str 
         "limit": limit,
     }
     if country_code:
-        payload["countryCode"] = country_code
+        payload["country"] = country_code
     headers = {
         "Authorization": f"Bearer {token}",
     }
