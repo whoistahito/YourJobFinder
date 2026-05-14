@@ -10,11 +10,11 @@ class GoogleJobPosting(BaseModel):
 
     title: NonEmptyStr
     company: NonEmptyStr
-    location: NonEmptyStr
+    location: Optional[str] = None
     link: HttpUrl
     date_posted: Optional[str] = Field(default=None, alias="datePosted")
     employment_type: Optional[str] = Field(default=None, alias="employmentType")
-    description: NonEmptyStr
+    description: Optional[str] = None
 
 
 class GoogleScrapeResponse(BaseModel):
@@ -27,4 +27,13 @@ class GoogleScrapeResponse(BaseModel):
 
     @classmethod
     def from_json(cls, data: Dict[str, Any]) -> "GoogleScrapeResponse":
+        from logger_utils import create_logger
+        logger = create_logger("Google Scraper")
+        valid_jobs = []
+        for raw_job in data.get("jobs", []):
+            try:
+                valid_jobs.append(GoogleJobPosting.model_validate(raw_job))
+            except Exception as e:
+                logger.warning(f"Skipping job due to validation error: {e}")
+        data = {**data, "jobs": valid_jobs}
         return cls.model_validate(data)
