@@ -1,4 +1,5 @@
 from extension import db
+from datetime import datetime, timezone
 import uuid
 
 
@@ -10,6 +11,7 @@ class User(db.Model):
     location = db.Column(db.String, nullable=False)
     job_type = db.Column(db.String, nullable=False)
     country_code = db.Column(db.String(10), nullable=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
     is_new = db.Column(db.Boolean, nullable=False, default=True)
     is_confirmed = db.Column(db.Boolean, nullable=False, default=False)
     confirmation_token = db.Column(db.String, nullable=True)
