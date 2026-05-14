@@ -21,12 +21,15 @@ def scrape_google(title: str, location: str, limit: int = 10, country_code: str 
         "Authorization": f"Bearer {token}",
     }
     logger.info(f"Scraping for {title}")
-    response = requests.post(url, json=payload, headers=headers, timeout=120)
-    response.raise_for_status()
-    data = response.json()
-    logger.info(f"Found {len(data['jobs'])} jobs")
     try:
+        response = requests.post(url, json=payload, headers=headers, timeout=120)
+        response.raise_for_status()
+        data = response.json()
+        logger.info(f"Found {len(data['jobs'])} jobs")
         return GoogleScrapeResponse.from_json(data)
+    except requests.exceptions.HTTPError as e:
+        logger.error(f"Scraper HTTP error for '{title}': {e}")
+        return GoogleScrapeResponse()
     except (ValidationError, Exception) as e:
         logger.error(f"Failed to parse scraper response: {e}")
         return GoogleScrapeResponse()
