@@ -1,72 +1,17 @@
-from flask import Flask, request, jsonify, redirect
-from flask_cors import CORS
+"""Production Flask entrypoint.
 
-from db.database_service import UserManager
-from extension import db, migrate
+Thin bootstrap: starts the SSH tunnel to the DB, builds the app via the
+factory (which owns all routes + the matched-jobs API). gunicorn targets
+`app:app`.
+"""
 from credential import DatabaseCredential
+from extension import db
+from infrastructure.app_factory import create_app
 from ssh_tunnel import start_ssh_tunnel
 
 start_ssh_tunnel()
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = DatabaseCredential.get_db_uri()
-db.init_app(app)
-migrate.init_app(app, db)
-user_manager = UserManager()
-# TODO: Add www to list
-cors = CORS(app)
-
-@app.route('/user', methods=['POST'])
-def add_user():
-    data = request.json
-    email = data.get('email')
-    position = data.get('position')
-    location = data.get('location')
-    job_type = data.get('jobType')
-    country_code = data.get('countryCode')
-    skills = data.get('skills')
-    experience = data.get('experience')
-    education = data.get('education')
-    try:
-        if email is None or position is None or location is None or job_type is None:
-            return jsonify({"message": "Invalid request"}), 400
-        user_manager.add_user(email, position, location, job_type, country_code, skills, experience, education)
-        return jsonify({"message": "User added successfully!"}), 201
-    except Exception as e:
-        print(e)
-        return jsonify({"message": str(e)}), 500
+app = create_app(db_uri=DatabaseCredential.get_db_uri())
 
 
-
-@app.route('/user', methods=['DELETE'])
-def delete_user():
-    data = request.json
-    email = data.get('email')
-    position = data.get('position')
-    location = data.get('location')
-    try:
-        if email is None or position is None or location is None:
-            raise Exception
-        user_manager.delete_user(email, position, location)
-        return jsonify({"message": "User added successfully!"}), 201
-    except Exception as e:
-        print(e)
-        return jsonify({"message": e}), 500
-
-@app.route('/confirm/<token>', methods=['GET'])
-def confirm_email(token):
-    user = user_manager.confirm_user(token)
-    if user:
-        return redirect("https://yourjobfinder.website/confirm-email/success")
-    else:
-        return redirect("https://yourjobfinder.website/confirm-email/error")
-
-@app.route('/', methods=['GET'])
-def index():
-    return redirect("https://yourjobfinder.website")
-
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(threaded=True, port=5000)

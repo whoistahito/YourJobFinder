@@ -1,4 +1,5 @@
 import time
+from datetime import datetime, timezone
 from typing import Optional
 
 import schedule
@@ -12,6 +13,9 @@ from scrapers.google_scraper_service import scrape_google
 from scrapers.google_scraper_models import GoogleJobPosting
 from job_matching.job_matching_service import match
 from job_matching.job_matching_models import UserProfile
+from domain.matched_job import MatchedJob
+from infrastructure.job_match_repository import SqlAlchemyJobMatchRepository
+from extension import db
 
 logger = create_logger("main")
 
@@ -104,6 +108,7 @@ def notify_user(user):
         return
 
     user_profile = get_user_profile(user)
+    job_match_repo = SqlAlchemyJobMatchRepository(db)
 
     job_cards = []
     for job in found_jobs:
@@ -112,6 +117,7 @@ def notify_user(user):
             continue
 
         # job matching if user has profile and job has description
+        score_value = None
         if user_profile and job.description:
             try:
                 logger.info(f"Matching: {job.title}")
@@ -126,12 +132,18 @@ def notify_user(user):
                     f"'{job.title}' passed match filter for {user.email} "
                     f"— score {score:.2f}"
                 )
+                score_value = int(round(score * 100))
             except Exception as e:
                 logger.exception(
                     f"Job matching failed for '{job.title}': {e} — including job anyway"
                 )
 
         job_cards.append(job)
+        job_match_repo.save(MatchedJob(
+            id=None, user_id=user.id, title=job.title, company=job.company,
+            location=job.location, job_url=job_url, date_posted=job.date_posted,
+            score=score_value, created_at=datetime.now(timezone.utc),
+        ))
 
     if len(job_cards) > 0 :
         notify_jobs(job_cards, user.email, user.position, user.location)
