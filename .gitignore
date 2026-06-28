@@ -6,3 +6,6 @@
 *.pyc
 /Suggestions.md
 /temp/
+.env
+.env
+!.env

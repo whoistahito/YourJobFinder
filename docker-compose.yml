@@ -1,0 +1,82 @@
+# One image, three runtimes (migrate → web + worker), plus a bundled Postgres.
+# Using a managed DB instead? Delete the `db` service + its volume and set DB_HOST.
+#
+# Env: the app reads LOWERCASE names (credential.py / ssh_tunnel.py), so the left
+# side stays lowercase; the ${UPPERCASE:-default} on the right is what you set in
+# Coolify (or a root .env for local). Secrets default to empty.
+x-app-env: &app-env
+  db_host: ${DB_HOST:-db}
+  db_port: ${DB_PORT:-5432}
+  db_name: ${DB_NAME:-jobfinder}
+  db_username: ${DB_USERNAME:-jobfinder}
+  db_password: ${DB_PASSWORD:-}
+  # ssh_tunnel.py reads ssh_db_port at import and crashes if unset; this dummy
+  # keeps the import alive. Leave SSH_HOST unset → tunnel fails open → direct DB.
+  ssh_db_port: ${SSH_DB_PORT:-5432}
+  email_address: ${EMAIL_ADDRESS:-}
+  email_password: ${EMAIL_PASSWORD:-}
+  google_scraper_url: ${GOOGLE_SCRAPER_URL:-}
+  google_scraper_token: ${GOOGLE_SCRAPER_TOKEN:-}
+  job_matcher_url: ${JOB_MATCHER_URL:-}
+  job_matcher_token: ${JOB_MATCHER_TOKEN:-}
+  extractor_model: ${EXTRACTOR_MODEL:-gpt-oss-120b,glm4.7}
+  judge_model: ${JUDGE_MODEL:-glm4.7}
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-jobfinder}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-}
+      POSTGRES_DB: ${DB_NAME:-jobfinder}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-jobfinder} -d ${DB_NAME:-jobfinder}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # Runs once per `up`, applies migrations, exits. web/worker wait for it.
+  migrate:
+    build: .
+    command: flask db upgrade
+    environment: *app-env
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  web:
+    build: .
+    command: gunicorn app:app -c gunicorn_config.py
+    environment: *app-env
+    # Coolify's proxy reaches the container over the internal network — don't
+    # publish to the host (that collides with the proxy on :8080). `expose`
+    # advertises the port; set the domain → port 8080 in Coolify's UI.
+    expose:
+      - "8080"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8080/users/_health/matches').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+
+  worker:
+    build: .
+    command: python -u main.py
+    environment: *app-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  pgdata:
