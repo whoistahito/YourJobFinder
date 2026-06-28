@@ -78,6 +78,6 @@
 - Common commands:
   - `uv venv && uv sync`
   - Run API locally: `uv run python app.py` (Flask dev server on `:5000`)
-  - Run worker locally (unbuffered logs): `uv run python -u main.py`
-  - Apply migrations (also used in `Procfile` release phase): `uv run flask db upgrade`
-- Production hints: `Procfile` uses `web: gunicorn app:app` and `gunicorn_config.py` binds `0.0.0.0:8080`.
+  - Run the daily job once (unbuffered logs): `uv run python -u main.py`
+  - Apply migrations: `uv run flask db upgrade`
+- Deployment: Docker (`Dockerfile` + `docker-compose.yml`) on Coolify. The `web` service runs `gunicorn app:app -c gunicorn_config.py` (binds `0.0.0.0:8080`); a `migrate` service applies migrations on each deploy; the daily `python main.py` runs via a Coolify Scheduled Task. See `.env.example` for env vars.
