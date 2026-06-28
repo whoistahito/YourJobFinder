@@ -20,6 +20,8 @@ class UserManager:
         if not self.user_exists(email, position, location):
             db.session.add(user)
             db.session.commit()
+            return user
+        return None
 
     def delete_user(self, email, position, location):
         user = self.user_exists(email=email, position=position, location=location)

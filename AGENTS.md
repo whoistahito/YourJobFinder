@@ -1,14 +1,15 @@
 # AGENTS.md
 
 ## Big picture (what runs)
-- Two processes:
-  - **API**: `app.py` (Flask) exposes `/user` create/delete + `/confirm/<token>` redirect.
-  - **Worker**: `main.py` is an infinite loop that (a) emails new users a confirmation link and (b) runs a scheduled daily scrape+email+match job.
+- Two entrypoints:
+  - **API**: `app.py` (Flask) exposes `/user` create/delete, `/confirm/<token>` redirect, and `/users/<id>/matches`. Sends the confirmation email in-request on signup.
+  - **Scheduled job**: `main.py` is a **one-shot** — a single scrape+match+email pass over confirmed users, then exits. A platform scheduler (Coolify Scheduled Task → `python main.py`, daily) drives the cadence; it is no longer a resident loop. The pipeline lives in `notifications.py`.
 - DB is **Flask-SQLAlchemy** (`extension.py`) with migrations via **Flask-Migrate/Alembic** (`migrations/`).
 
 ## Repo map (start here)
 - `app.py`: Flask app + routes; initializes `db` + `migrate`; creates `UserManager()`.
-- `main.py`: scheduler + notification pipeline (must run inside `app.app_context()` for DB).
+- `main.py`: one-shot scheduled-job entrypoint — wraps `notifications.notify_all_confirmed_users()` in `app.app_context()` and exits.
+- `notifications.py`: the notification pipeline (`send_welcome_email`, `notify_user`, `notify_all_confirmed_users`). No `app` import / no `app_context()` wrapping — callers supply the context (the Flask request for the signup welcome email; `main.py` for the daily batch).
 - `db/models.py`: `User` (+ `Skill`/`Experience`/`Education`) and `SentEmail` (composite PK).
 - `db/database_service.py`: thin managers (`UserManager`, `UserEmailManager`) around SQLAlchemy queries/commits.
 - `scrapers/google_scraper_service.py`: posts to an external Google scraping API using bearer token.
@@ -19,13 +20,10 @@
 - `html_render.py`: HTML-heavy templates (welcome email + daily "job cards").
 
 ## File notes
-### `main.py`
-- Long-running **worker** process (see `Procfile: worker: python -u main.py`).
-- Owns the scheduler loop:
-  - `check_for_new_users()` runs every loop iteration (~every 20s) and sends a confirmation email to `User.is_new` users.
-  - `schedule.every().day.at("10:45").do(notify_users)` triggers the daily scrape+match+email batch.
-- All DB access is wrapped in `with app.app_context():` (required because the worker imports the Flask app from `app.py`).
-- `JOB_MATCH_THRESHOLD = 0.6` — jobs scoring below this are silently skipped. Set to `0.0` to disable filtering.
+### `main.py` / `notifications.py`
+- `main.py` is the **one-shot** scheduled-job entrypoint: `with app.app_context(): notify_all_confirmed_users()`, then exits. Run it on a schedule (Coolify Scheduled Task), not as a resident process.
+- Confirmation emails are **event-driven**: `send_welcome_email(user)` is called from the `POST /user` handler (`app_factory.py`) right after the user row commits. No polling, no `is_new` sweep.
+- `JOB_MATCH_THRESHOLD = 0.35` (in `notifications.py`) — jobs scoring below this are silently skipped. Set to `0.0` to disable filtering.
 - Helper `_has_profile(user) -> bool`: returns `True` if the user has at least one skill, experience, or education row.
 - Helper `_build_user_profile(user) -> UserProfile`: converts the SQLAlchemy `User` relations into a `UserProfile` Pydantic model (skills → `skills`, experiences → `experiences`, educations → `qualifications`).
 - Notification pipeline (`notify_user()`):
@@ -51,10 +49,9 @@
   - Raises on HTTP errors; callers should handle exceptions and fail-open.
 
 ## Key data flows (follow the call chain)
-- **Create user**: `POST /user` → `UserManager.add_user(...)` → inserts `users` row with `is_new=True`, `is_confirmed=False`, `confirmation_token=<uuid>` and optional related rows (`skills`, `experiences`, `educations`).
+- **Create user**: `POST /user` → `UserManager.add_user(...)` (returns the new `User`, or `None` if a duplicate) → inserts `users` row with `is_confirmed=False`, `confirmation_token=<uuid>` and optional related rows. On success the handler calls `notifications.send_welcome_email(user)` in-request (failure is logged, signup still 201).
 - **Confirm user**: `GET /confirm/<token>` → `UserManager.confirm_user(token)` sets `is_confirmed=True` and clears token, then `app.py` redirects to `https://yourjobfinder.website/...`.
-- **Worker: new user email**: `check_for_new_users()` → builds `https://api.yourjobfinder.website/confirm/<token>` → `html_render.get_welcome_message(confirm_url)` → `email_manager.send_email(..., is_html=True)` → marks `is_new=False`.
-- **Worker: daily notify**: `notify_users()` → for each confirmed user → `notify_user(user)`:
+- **Scheduled daily notify**: `python main.py` → `notify_all_confirmed_users()` → for each confirmed user → `notify_user(user)`:
   1. `scrape_google(position, location, 10)` → list of `GoogleJobPosting`.
   2. Build `UserProfile` from user's skills/experiences/educations (skipped if profile is empty).
   3. Per job: skip if `UserEmailManager.is_sent(...)` → optionally call `job_matching.match(description, profile)` → skip if score < `JOB_MATCH_THRESHOLD`.

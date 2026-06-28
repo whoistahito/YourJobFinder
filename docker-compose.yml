@@ -69,14 +69,12 @@ services:
       start_period: 15s
     restart: unless-stopped
 
-  worker:
-    build: .
-    command: python -u main.py
-    environment: *app-env
-    depends_on:
-      migrate:
-        condition: service_completed_successfully
-    restart: unless-stopped
+# The daily scrape is no longer a resident `worker` service — main.py is now a
+# one-shot. In Coolify add a Scheduled Task on this app:
+#   Container: web
+#   Command:   python main.py
+#   Frequency: 45 10 * * *   (or the `daily` shortcut)
+# https://coolify.io/docs/knowledge-base/cron-syntax
 
 volumes:
   pgdata:

@@ -20,6 +20,7 @@ from extension import db, migrate
 from domain.job_match_repository import JobMatchRepository
 from infrastructure.job_match_repository import SqlAlchemyJobMatchRepository
 from application.list_user_matches import ListUserMatches
+from notifications import send_welcome_email
 
 
 def create_app(
@@ -56,7 +57,15 @@ def _register_routes(app: Flask, user_manager: UserManager, repo: JobMatchReposi
         try:
             if email is None or position is None or location is None or job_type is None:
                 return jsonify({"message": "Invalid request"}), 400
-            user_manager.add_user(email, position, location, job_type, country_code, skills, experience, education)
+            user = user_manager.add_user(email, position, location, job_type, country_code, skills, experience, education)
+            if user is not None:
+                # Event-driven: send the confirmation email now instead of polling.
+                # Don't fail the signup if SMTP hiccups — the user row is committed.
+                # ponytail: synchronous send; move behind a queue if it gets slow.
+                try:
+                    send_welcome_email(user)
+                except Exception as e:
+                    print(f"welcome email failed for {email}: {e}")
             return jsonify({"message": "User added successfully!"}), 201
         except Exception as e:
             print(e)
