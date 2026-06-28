@@ -110,7 +110,7 @@ def notify_user(user):
     user_profile = get_user_profile(user)
     job_match_repo = SqlAlchemyJobMatchRepository(db)
 
-    job_cards = []
+    matched = []  # (job, score_value) — persisted only after the email is sent
     for job in found_jobs:
         job_url = str(job.link)
         if UserEmailManager().is_sent(user.email, job_url, user.position, user.location):
@@ -138,19 +138,26 @@ def notify_user(user):
                     f"Job matching failed for '{job.title}': {e} — including job anyway"
                 )
 
-        job_cards.append(job)
+        matched.append((job, score_value))
+
+    if not matched:
+        return
+
+    # Send first; only record (sent-email + dashboard match) once the send succeeds,
+    # so a failed send doesn't leave dashboard rows for an email the user never got.
+    # ponytail: the two writes below commit per-job, not in one txn — a crash between
+    # them can drop a dashboard row (job still marked sent). Wrap in a single txn if
+    # that matters; the costly duplicate-on-send-failure case is already gone.
+    notify_jobs([job for job, _ in matched], user.email, user.position, user.location)
+    for job, score_value in matched:
+        UserEmailManager().add_sent_email(
+            user.email, str(job.link), user.position, user.location
+        )
         job_match_repo.save(MatchedJob(
             id=None, user_id=user.id, title=job.title, company=job.company,
-            location=job.location, job_url=job_url, date_posted=job.date_posted,
+            location=job.location, job_url=str(job.link), date_posted=job.date_posted,
             score=score_value, created_at=datetime.now(timezone.utc),
         ))
-
-    if len(job_cards) > 0 :
-        notify_jobs(job_cards, user.email, user.position, user.location)
-        for job in job_cards:
-            UserEmailManager().add_sent_email(
-                user.email, str(job.link), user.position, user.location
-            )
 
 
 if __name__ == "__main__":
