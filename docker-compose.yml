@@ -56,7 +56,9 @@ services:
         set -e
         [ -n "$$SSH_KEY" ] || { echo "FATAL: SSH_KEY is empty — set it in Coolify (raw OpenSSH private key, Multiline ON)"; exit 1; }
         printf '%s\n' "$$SSH_KEY" > /tmp/id_rsa && chmod 600 /tmp/id_rsa
-        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY is not a valid OpenSSH private key"; exit 1; }
+        # ponytail: diag only prints line count + the 35-char header marker
+        # (no key material), enough to tell collapsed-newlines from wrong-format.
+        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY is not a valid OpenSSH private key — lines=$(wc -l < /tmp/id_rsa) head=[$(head -c 35 /tmp/id_rsa)]"; exit 1; }
         exec autossh -M 0 -N \
           -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes \
           -o ServerAliveInterval=10 -o ServerAliveCountMax=3 \
