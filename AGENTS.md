@@ -16,7 +16,7 @@
 - `scrapers/google_scraper_models.py`: Pydantic models `GoogleJobPosting` and `GoogleScrapeResponse`.
 - `job_matching/job_matching_service.py`: calls the external job-matching API; exposes `match(job_description, user_profile) -> float`.
 - `job_matching/job_matching_models.py`: Pydantic models `UserProfile`, `Requirements`, `SimilarityScore`, `JobMatchingResponse`.
-- `email_manager.py`: SMTP send (Gmail host/587) using env-provided credentials.
+- `email_manager.py`: `send_email(body, subject, to, is_html=True, sender=None)` via Cloudflare Email Service. `sender` is the from-address (welcome@ for signup, notification@ for job updates); defaults to the welcome sender.
 - `html_render.py`: HTML-heavy templates (welcome email + daily "job cards").
 
 ## File notes
@@ -60,7 +60,7 @@
 
 ## Configuration / env vars (see `credential.py`)
 - DB (preferred single URL): `db_url` (otherwise built from `db_username`, `db_password`, `db_host`, `db_port`, `db_name`).
-- Email: `email_address`, `email_password`.
+- Email (Cloudflare Email Service): `cloudflare_email_token`, `cloudflare_account_id`, `cloudflare_email_welcome_from`, `cloudflare_email_notification_from`.
 - Scraper API: `google_scraper_url`, `google_scraper_token`.
 - Job Matcher API: `job_matcher_url`, `job_matcher_token`, `extractor_model`, `judge_model`.
 

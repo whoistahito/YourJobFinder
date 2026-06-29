@@ -49,6 +49,7 @@ dependencies = [
     "Flask-Migrate",
     "sshtunnel",
     "paramiko>=3.0,<4.0",
+    "cloudflare",
 ]
 
 [dependency-groups]

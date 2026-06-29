@@ -13,8 +13,10 @@ x-app-env: &app-env
   # ssh_tunnel.py reads ssh_db_port at import and crashes if unset; this dummy
   # keeps the import alive. Leave SSH_HOST unset → tunnel fails open → direct DB.
   ssh_db_port: ${SSH_DB_PORT:-5432}
-  email_address: ${EMAIL_ADDRESS:-}
-  email_password: ${EMAIL_PASSWORD:-}
+  cloudflare_email_token: ${CLOUDFLARE_EMAIL_TOKEN:-}
+  cloudflare_account_id: ${CLOUDFLARE_ACCOUNT_ID:-c5fbc09971701c92572e214f852edea7}
+  cloudflare_email_welcome_from: ${CLOUDFLARE_EMAIL_WELCOME_FROM:-welcome@yourjobfinder.website}
+  cloudflare_email_notification_from: ${CLOUDFLARE_EMAIL_NOTIFICATION_FROM:-notification@yourjobfinder.website}
   google_scraper_url: ${GOOGLE_SCRAPER_URL:-}
   google_scraper_token: ${GOOGLE_SCRAPER_TOKEN:-}
   job_matcher_url: ${JOB_MATCHER_URL:-}

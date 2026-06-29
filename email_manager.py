@@ -1,44 +1,43 @@
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
+import html
+import re
+
+from cloudflare import Cloudflare
 
 from logger_utils import create_logger
-from credential import EmailCredential
+from credential import CloudflareEmailCredential
 
 logger = create_logger("email_manager")
 
-
-def send_email(body, subject,receiver_email, is_html=True):
-    # Email configuration
-    smtp_server = "smtp.gmail.com"
-    smtp_port = 587
-    sender_email = EmailCredential.get_email_address()
-    password = EmailCredential.get_email_password()
+_TAG_RE = re.compile(r"<[^>]+>")
 
 
-    # Set up the MIME
-    message = MIMEMultipart()
-    message["From"] = sender_email
-    message["To"] = receiver_email
-    message["Subject"] = subject
+def _html_to_text(body: str) -> str:
+    """Crude plain-text alternative for the multipart email (deliverability)."""
+    return html.unescape(_TAG_RE.sub("", body)).strip()
+
+
+def send_email(body, subject, receiver_email, is_html=True, sender=None):
+    """Send a transactional email via Cloudflare Email Service.
+
+    `sender` is the from-address (e.g. welcome@ vs notification@); defaults to
+    the welcome sender. Both current callers pass HTML; we derive a text part
+    for deliverability.
+    """
     if is_html:
-        message.attach(MIMEText(body, "html"))
+        html_body, text_body = body, _html_to_text(body)
     else:
-        message.attach(MIMEText(body, "plain"))
+        html_body, text_body = None, body
 
     try:
-        # Connect to the SMTP server
-        server = smtplib.SMTP(smtp_server, smtp_port)
-        server.starttls()  # Upgrade the connection to a secure encrypted SSL/TLS connection
-        server.login(sender_email, password)
-
-        # Send the email
-        server.sendmail(sender_email, receiver_email, message.as_string())
-        logger.info(f"Email sent successfully to {receiver_email}!")
-
+        client = Cloudflare(api_token=CloudflareEmailCredential.get_token())
+        response = client.email_sending.send(
+            account_id=CloudflareEmailCredential.get_account_id(),
+            from_=sender or CloudflareEmailCredential.get_welcome_from(),
+            to=receiver_email,
+            subject=subject,
+            html=html_body,
+            text=text_body,
+        )
+        logger.info(f"Email sent to {receiver_email}: delivered={getattr(response, 'delivered', None)}")
     except Exception as e:
-        logger.error(f"Error while sending email: {e}")
-
-    finally:
-        # Close the connection to the SMTP server
-        server.quit()
+        logger.error(f"Error while sending email to {receiver_email}: {e}")

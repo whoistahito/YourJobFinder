@@ -10,6 +10,7 @@ from typing import Optional
 
 from db.database_service import UserManager, UserEmailManager
 from email_manager import send_email
+from credential import CloudflareEmailCredential
 from html_render import create_job_card, get_html_template, get_welcome_message
 from logger_utils import create_logger
 from scrapers.google_scraper_service import scrape_google
@@ -33,6 +34,7 @@ def send_welcome_email(user) -> None:
         "Welcome to Your Job Finder! Please Confirm Email",
         user.email,
         is_html=True,
+        sender=CloudflareEmailCredential.get_welcome_from(),
     )
 
 
@@ -81,7 +83,13 @@ def notify_jobs(
 
     html_content = ''.join(create_job_card(job) for job in sorted_jobs)
     html_template = get_html_template(html_content, email, position, location)
-    send_email(html_template, "Found some job opportunities for you!", email, is_html=True)
+    send_email(
+        html_template,
+        "Found some job opportunities for you!",
+        email,
+        is_html=True,
+        sender=CloudflareEmailCredential.get_notification_from(),
+    )
 
 
 def notify_all_confirmed_users() -> None:

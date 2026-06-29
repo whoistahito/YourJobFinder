@@ -224,6 +224,23 @@ wheels = [
 ]
 
 [[package]]
+name = "cloudflare"
+version = "5.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+    { name = "distro" },
+    { name = "httpx" },
+    { name = "pydantic" },
+    { name = "sniffio" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c0/0a/33da74bd52a7a7733b8c29870ed336d023470543ca579af6608286b67a5e/cloudflare-5.4.0.tar.gz", hash = "sha256:863f2a234a7d2cce9f7ff9c4ae0b7e62f39f58504494bc49d9023a213d29aceb", size = 3021495, upload-time = "2026-06-16T20:57:20.557Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c2/bf/20002f7398cb5dc2f289cccd19777aa8869d40d5b01961ccbe8e25e094a6/cloudflare-5.4.0-py3-none-any.whl", hash = "sha256:e53e8f612ec98c5cfdd9f58db2660b729fefc30b1ccbe156000c63b2242aacae", size = 6434049, upload-time = "2026-06-16T20:57:17.582Z" },
+]
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -283,6 +300,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/96/93/682d2b43c1d5f1406ed048f377c0fc9fc8f7b0447a478d5c65ab3d3a66eb/cryptography-46.0.5-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:ced80795227d70549a411a4ab66e8ce307899fad2220ce5ab2f296e687eacde9", size = 4667123, upload-time = "2026-02-10T19:18:15.886Z" },
     { url = "https://files.pythonhosted.org/packages/45/2d/9c5f2926cb5300a8eefc3f4f0b3f3df39db7f7ce40c8365444c49363cbda/cryptography-46.0.5-cp38-abi3-win32.whl", hash = "sha256:02f547fce831f5096c9a567fd41bc12ca8f11df260959ecc7c3202555cc47a72", size = 3010220, upload-time = "2026-02-10T19:18:17.361Z" },
     { url = "https://files.pythonhosted.org/packages/48/ef/0c2f4a8e31018a986949d34a01115dd057bf536905dca38897bacd21fac3/cryptography-46.0.5-cp38-abi3-win_amd64.whl", hash = "sha256:556e106ee01aa13484ce9b0239bca667be5004efb0aabbed28d353df86445595", size = 3467050, upload-time = "2026-02-10T19:18:18.899Z" },
+]
+
+[[package]]
+name = "distro"
+version = "1.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fc/f8/98eea607f65de6527f8a2e8885fc8015d3e6f5775df186e443e0964a11c3/distro-1.9.0.tar.gz", hash = "sha256:2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed", size = 60722, upload-time = "2023-12-24T09:54:32.31Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl", hash = "sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2", size = 20277, upload-time = "2023-12-24T09:54:30.421Z" },
 ]
 
 [[package]]
@@ -504,6 +530,7 @@ dependencies = [
     { name = "cachetools" },
     { name = "certifi" },
     { name = "charset-normalizer" },
+    { name = "cloudflare" },
     { name = "flask" },
     { name = "flask-cors" },
     { name = "flask-migrate" },
@@ -557,6 +584,7 @@ requires-dist = [
     { name = "cachetools", specifier = "==5.5.0" },
     { name = "certifi", specifier = "==2024.12.14" },
     { name = "charset-normalizer", specifier = "==3.4.1" },
+    { name = "cloudflare" },
     { name = "flask" },
     { name = "flask-cors" },
     { name = "flask-migrate" },
