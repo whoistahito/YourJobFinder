@@ -25,11 +25,12 @@ x-app-env: &app-env
 services:
   # Holds the SSH tunnel to the remote Postgres. Listens on 0.0.0.0:5432 inside
   # the compose network; web/migrate connect to it as `ssh-tunnel:5432`.
-  # The OpenSSH private key is passed as the SSH_KEY env var (the raw key text,
-  # paste it into Coolify with the "Multiline" checkbox ON) and written to
-  # /tmp/id_rsa at startup. No host bind mount — Coolify single-file bind mounts
-  # are buggy (mount as a directory); env is the reliable path and survives
-  # redeploys.
+  # The OpenSSH private key is passed as SSH_KEY_B64 (single-line base64 of the
+  # key) and decoded to /tmp/id_rsa at startup. Base64 has no newlines, so it
+  # survives Coolify's env handling intact — raw multi-line keys get flattened
+  # by the .env/compose interpolation and rejected. No host bind mount either:
+  # Coolify single-file bind mounts are buggy (mount as a directory).
+  # Generate with:  base64 -w0 id_ed25519   (macOS: base64 -i id_ed25519 | tr -d '\n')
   ssh-tunnel:
     build:
       context: .
@@ -40,7 +41,7 @@ services:
       SSH_PORT: ${SSH_PORT:-22}
       SSH_DB_HOST: ${SSH_DB_HOST:-w0g84k8wcc8gww00wcw4occ4}      # DB host as seen from the bastion
       SSH_DB_PORT: ${SSH_DB_PORT:-5432}
-      SSH_KEY: ${SSH_KEY:-}
+      SSH_KEY_B64: ${SSH_KEY_B64:-}
       # Retry forever. Default gatetime (30s) makes autossh give up if ssh dies
       # within 30s of start (e.g. bastion/DB not ready at boot) → restart loop.
       AUTOSSH_GATETIME: "0"
@@ -54,11 +55,11 @@ services:
       # service `environment:` above), NOT docker-compose at parse time.
       - |
         set -e
-        [ -n "$$SSH_KEY" ] || { echo "FATAL: SSH_KEY is empty — set it in Coolify (raw OpenSSH private key, Multiline ON)"; exit 1; }
-        printf '%s\n' "$$SSH_KEY" > /tmp/id_rsa && chmod 600 /tmp/id_rsa
+        [ -n "$$SSH_KEY_B64" ] || { echo "FATAL: SSH_KEY_B64 is empty — set it in Coolify: base64 -w0 id_ed25519"; exit 1; }
+        printf %s "$$SSH_KEY_B64" | tr -d '[:space:]' | base64 -d > /tmp/id_rsa && chmod 600 /tmp/id_rsa
         # ponytail: diag only prints line count + the 35-char header marker
-        # (no key material), enough to tell collapsed-newlines from wrong-format.
-        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY is not a valid OpenSSH private key — lines=$(wc -l < /tmp/id_rsa) head=[$(head -c 35 /tmp/id_rsa)]"; exit 1; }
+        # (no key material), enough to tell a bad decode from a wrong-format key.
+        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY_B64 did not decode to a valid OpenSSH key — lines=$(wc -l < /tmp/id_rsa) head=[$(head -c 35 /tmp/id_rsa)]"; exit 1; }
         exec autossh -M 0 -N \
           -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes \
           -o ServerAliveInterval=10 -o ServerAliveCountMax=3 \
