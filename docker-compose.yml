@@ -65,7 +65,9 @@ services:
           -L 0.0.0.0:5432:"$$SSH_DB_HOST":"$$SSH_DB_PORT" \
           "$$SSH_USER@$$SSH_HOST"
     healthcheck:
-      test: ["CMD-SHELL", "nc -z localhost 5432 || exit 1"]
+      # busybox nc has no -z; check the forward's LISTEN socket directly.
+      # 5432 = hex 1538 in /proc/net/tcp.
+      test: ["CMD-SHELL", "grep -q :1538 /proc/net/tcp || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 5
