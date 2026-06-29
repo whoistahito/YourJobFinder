@@ -1,18 +1,16 @@
-# One image, three runtimes (migrate → web + worker), plus a bundled Postgres.
-# Using a managed DB instead? Delete the `db` service + its volume and set DB_HOST.
+# One image, two runtimes (migrate → web), reaching the prod Postgres through an
+# autossh sidecar. The app is oblivious to SSH — it connects to `ssh-tunnel:5432`
+# over the internal network; the sidecar holds the tunnel to the remote DB host.
 #
-# Env: the app reads LOWERCASE names (credential.py / ssh_tunnel.py), so the left
-# side stays lowercase; the ${UPPERCASE:-default} on the right is what you set in
-# Coolify (or a root .env for local). Secrets default to empty.
+# Env: the app reads LOWERCASE names (credential.py); the left side stays
+# lowercase, the ${UPPERCASE:-default} on the right is what you set in Coolify
+# (or a root .env for local). Secrets default to empty.
 x-app-env: &app-env
-  db_host: ${DB_HOST:-db}
+  db_host: ${DB_HOST:-ssh-tunnel}      # the sidecar, not the DB itself
   db_port: ${DB_PORT:-5432}
-  db_name: ${DB_NAME:-jobfinder}
-  db_username: ${DB_USERNAME:-jobfinder}
+  db_name: ${DB_NAME:-postgres}
+  db_username: ${DB_USERNAME:-postgres}
   db_password: ${DB_PASSWORD:-}
-  # ssh_tunnel.py reads ssh_db_port at import and crashes if unset; this dummy
-  # keeps the import alive. Leave SSH_HOST unset → tunnel fails open → direct DB.
-  ssh_db_port: ${SSH_DB_PORT:-5432}
   cloudflare_email_token: ${CLOUDFLARE_EMAIL_TOKEN:-}
   cloudflare_account_id: ${CLOUDFLARE_ACCOUNT_ID:-c5fbc09971701c92572e214f852edea7}
   cloudflare_email_welcome_from: ${CLOUDFLARE_EMAIL_WELCOME_FROM:-welcome@yourjobfinder.website}
@@ -25,28 +23,44 @@ x-app-env: &app-env
   judge_model: ${JUDGE_MODEL:-glm4.7}
 
 services:
-  db:
-    image: postgres:16-alpine
+  # Holds the SSH tunnel to the remote Postgres. Listens on 0.0.0.0:5432 inside
+  # the compose network; web/migrate connect to it as `ssh-tunnel:5432`.
+  # The OpenSSH private key (NOT .ppk) must be mounted at /id_rsa — add it as a
+  # Coolify file mount (or a host bind locally). Never commit the key.
+  ssh-tunnel:
+    image: jnovack/autossh:latest
     environment:
-      POSTGRES_USER: ${DB_USERNAME:-jobfinder}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-}
-      POSTGRES_DB: ${DB_NAME:-jobfinder}
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+      SSH_REMOTE_USER: ${SSH_USER:-root}
+      SSH_REMOTE_HOST: ${SSH_HOST:-46.224.50.199}
+      SSH_REMOTE_PORT: ${SSH_PORT:-22}
+      SSH_TARGET_HOST: ${SSH_DB_HOST:-w0g84k8wcc8gww00wcw4occ4}  # DB host as seen from the bastion
+      SSH_TARGET_PORT: ${SSH_DB_PORT:-5432}
+      SSH_TUNNEL_PORT: 5432          # port the sidecar listens on
+      SSH_MODE: -L                   # local forward
+      SSH_BIND_IP: 0.0.0.0           # so web/migrate can reach it
+      # ponytail: host-key check off — no known_hosts pinned. MITM risk on a
+      # hostile network; pin SSH_KNOWN_HOSTS_FILE if the bastion path isn't trusted.
+      SSH_STRICT_HOST_IP_CHECK: "false"
+    # Mount the OpenSSH private key (mode 600) at /id_rsa. On Coolify: add a
+    # File Mount on this service (content = your OpenSSH key, path = /id_rsa).
+    # Locally, bind it instead:
+    #   volumes:
+    #     - ./ssh/id_rsa:/id_rsa:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-jobfinder} -d ${DB_NAME:-jobfinder}"]
-      interval: 5s
+      test: ["CMD-SHELL", "nc -z localhost 5432 || exit 1"]
+      interval: 10s
       timeout: 3s
       retries: 5
+      start_period: 10s
     restart: unless-stopped
 
-  # Runs once per `up`, applies migrations, exits. web/worker wait for it.
+  # Runs once per `up`, applies migrations, exits. web waits for it.
   migrate:
     build: .
     command: flask db upgrade
     environment: *app-env
     depends_on:
-      db:
+      ssh-tunnel:
         condition: service_healthy
     restart: "no"
 
@@ -77,6 +91,3 @@ services:
 #   Command:   python main.py
 #   Frequency: 45 10 * * *   (or the `daily` shortcut)
 # https://coolify.io/docs/knowledge-base/cron-syntax
-
-volumes:
-  pgdata:

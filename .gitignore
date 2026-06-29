@@ -7,5 +7,11 @@
 /Suggestions.md
 /temp/
 .env
-.env
-!.env
+.env.*
+!.env.example
+# SSH keys for the autossh tunnel — never commit these
+ssh/
+*.ppk
+id_rsa
+id_rsa.pem
+id_ed25519

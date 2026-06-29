@@ -59,7 +59,7 @@
   5. `UserEmailManager.add_sent_email(...)` for each sent job.
 
 ## Configuration / env vars (see `credential.py`)
-- DB (preferred single URL): `db_url` (otherwise built from `db_username`, `db_password`, `db_host`, `db_port`, `db_name`).
+- DB: `db_host`, `db_port`, `db_name`, `db_username`, `db_password` (`credential.get_db_uri()` builds the URI). In prod `db_host=ssh-tunnel` — the app connects to the **autossh sidecar** (`docker-compose.yml`), which forwards to the remote Postgres. The app has no SSH code; the sidecar's tunnel is configured via `SSH_HOST`, `SSH_USER`, `SSH_PORT`, `SSH_DB_HOST`, `SSH_DB_PORT` and an OpenSSH key mounted at `/id_rsa`.
 - Email (Cloudflare Email Service): `cloudflare_email_token`, `cloudflare_account_id`, `cloudflare_email_welcome_from`, `cloudflare_email_notification_from`.
 - Scraper API: `google_scraper_url`, `google_scraper_token`.
 - Job Matcher API: `job_matcher_url`, `job_matcher_token`, `extractor_model`, `judge_model`.

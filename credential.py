@@ -71,19 +71,12 @@ class DatabaseCredential:
 
     @staticmethod
     def get_db_uri():
-        from ssh_tunnel import get_tunnel
-        tunnel = get_tunnel()
-        if tunnel:
-            host = "127.0.0.1"
-            port = tunnel.local_bind_port
-        else:
-            host = DatabaseCredential.get_db_host()
-            port = DatabaseCredential.get_db_port()
-
+        # Direct connect to db_host:db_port. In prod that's the autossh sidecar
+        # (db_host=ssh-tunnel), which forwards to the remote Postgres.
         return "postgresql://%s:%s@%s:%s/%s" % (
             DatabaseCredential.get_db_username(),
             DatabaseCredential.get_db_password(),
-            host,
-            port,
+            DatabaseCredential.get_db_host(),
+            DatabaseCredential.get_db_port(),
             DatabaseCredential.get_db_name(),
         )

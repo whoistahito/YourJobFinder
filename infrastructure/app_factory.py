@@ -1,8 +1,8 @@
 """Application factory — builds the Flask app with DB + routes.
 
-Split out of `app.py` so tests can spin up Flask against an in-memory sqlite
-without triggering `start_ssh_tunnel()` (which needs prod env vars). `app.py`
-now just calls `create_app()` with the prod DB URI.
+Split out of `app.py` so tests can spin up Flask against an in-memory sqlite.
+`app.py` just calls `create_app()` with the prod DB URI (reached via the
+autossh sidecar in prod).
 """
 from __future__ import annotations
 
