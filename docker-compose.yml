@@ -25,33 +25,46 @@ x-app-env: &app-env
 services:
   # Holds the SSH tunnel to the remote Postgres. Listens on 0.0.0.0:5432 inside
   # the compose network; web/migrate connect to it as `ssh-tunnel:5432`.
-  # The OpenSSH private key (NOT .ppk) must be mounted at /id_rsa — add it as a
-  # Coolify file mount (or a host bind locally). Never commit the key.
+  # The OpenSSH private key is injected as a base64 env var (SSH_KEY_B64) and
+  # decoded to /tmp/id_rsa at startup. No host bind mount — Coolify manages it
+  # as a normal secret, and it survives redeploys. Generate the value with:
+  #   base64 -w0 id_rsa        # paste the output into Coolify env SSH_KEY_B64
+  # Use an ed25519 key to keep the value small.
   ssh-tunnel:
-    image: jnovack/autossh:latest
+    image: alpine:3.20
     environment:
-      SSH_REMOTE_USER: ${SSH_USER:-root}
-      SSH_REMOTE_HOST: ${SSH_HOST:-46.224.50.199}
-      SSH_REMOTE_PORT: ${SSH_PORT:-22}
-      SSH_TARGET_HOST: ${SSH_DB_HOST:-w0g84k8wcc8gww00wcw4occ4}  # DB host as seen from the bastion
-      SSH_TARGET_PORT: ${SSH_DB_PORT:-5432}
-      SSH_TUNNEL_PORT: 5432          # port the sidecar listens on
-      SSH_MODE: -L                   # local forward
-      SSH_BIND_IP: 0.0.0.0           # so web/migrate can reach it
-      # ponytail: host-key check off — no known_hosts pinned. MITM risk on a
-      # hostile network; pin SSH_KNOWN_HOSTS_FILE if the bastion path isn't trusted.
-      SSH_STRICT_HOST_IP_CHECK: "false"
-    # Mount the OpenSSH private key (mode 600) at /id_rsa. On Coolify: add a
-    # File Mount on this service (content = your OpenSSH key, path = /id_rsa).
-    # Locally, bind it instead:
-    #   volumes:
-    #     - ./ssh/id_rsa:/id_rsa:ro
+      SSH_HOST: ${SSH_HOST:-46.224.50.199}
+      SSH_USER: ${SSH_USER:-root}
+      SSH_PORT: ${SSH_PORT:-22}
+      SSH_DB_HOST: ${SSH_DB_HOST:-w0g84k8wcc8gww00wcw4occ4}      # DB host as seen from the bastion
+      SSH_DB_PORT: ${SSH_DB_PORT:-5432}
+      SSH_KEY_B64: ${SSH_KEY_B64:-}
+    # ponytail: installs autossh at start (network needed once per restart) —
+    # bake a tiny image if cold-start time matters. StrictHostKeyChecking=no:
+    # MITM risk on a hostile path; pin known_hosts if the bastion isn't trusted.
+    command:
+      - sh
+      - -c
+      # NOTE: $$ escapes the $ so the container shell expands these (from the
+      # service `environment:` above), NOT docker-compose at parse time.
+      - |
+        set -e
+        [ -n "$$SSH_KEY_B64" ] || { echo "FATAL: SSH_KEY_B64 is empty — set it in Coolify (base64 -w0 id_rsa)"; exit 1; }
+        apk add --no-cache autossh openssh-client >/dev/null
+        printf %s "$$SSH_KEY_B64" | tr -d '[:space:]' | base64 -d > /tmp/id_rsa && chmod 600 /tmp/id_rsa
+        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY_B64 did not decode to a valid OpenSSH key"; exit 1; }
+        exec autossh -M 0 -N \
+          -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes \
+          -o ServerAliveInterval=10 -o ServerAliveCountMax=3 \
+          -i /tmp/id_rsa -p "$$SSH_PORT" \
+          -L 0.0.0.0:5432:"$$SSH_DB_HOST":"$$SSH_DB_PORT" \
+          "$$SSH_USER@$$SSH_HOST"
     healthcheck:
       test: ["CMD-SHELL", "nc -z localhost 5432 || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 5
-      start_period: 10s
+      start_period: 40s
     restart: unless-stopped
 
   # Runs once per `up`, applies migrations, exits. web waits for it.
