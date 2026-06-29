@@ -25,23 +25,28 @@ x-app-env: &app-env
 services:
   # Holds the SSH tunnel to the remote Postgres. Listens on 0.0.0.0:5432 inside
   # the compose network; web/migrate connect to it as `ssh-tunnel:5432`.
-  # The OpenSSH private key is injected as a base64 env var (SSH_KEY_B64) and
-  # decoded to /tmp/id_rsa at startup. No host bind mount — Coolify manages it
-  # as a normal secret, and it survives redeploys. Generate the value with:
-  #   base64 -w0 id_rsa        # paste the output into Coolify env SSH_KEY_B64
-  # Use an ed25519 key to keep the value small.
+  # The OpenSSH private key is passed as the SSH_KEY env var (the raw key text,
+  # paste it into Coolify with the "Multiline" checkbox ON) and written to
+  # /tmp/id_rsa at startup. No host bind mount — Coolify single-file bind mounts
+  # are buggy (mount as a directory); env is the reliable path and survives
+  # redeploys.
   ssh-tunnel:
-    image: alpine:3.20
+    build:
+      context: .
+      dockerfile: tunnel.Dockerfile
     environment:
       SSH_HOST: ${SSH_HOST:-46.224.50.199}
       SSH_USER: ${SSH_USER:-root}
       SSH_PORT: ${SSH_PORT:-22}
       SSH_DB_HOST: ${SSH_DB_HOST:-w0g84k8wcc8gww00wcw4occ4}      # DB host as seen from the bastion
       SSH_DB_PORT: ${SSH_DB_PORT:-5432}
-      SSH_KEY_B64: ${SSH_KEY_B64:-}
-    # ponytail: installs autossh at start (network needed once per restart) —
-    # bake a tiny image if cold-start time matters. StrictHostKeyChecking=no:
-    # MITM risk on a hostile path; pin known_hosts if the bastion isn't trusted.
+      SSH_KEY: ${SSH_KEY:-}
+      # Retry forever. Default gatetime (30s) makes autossh give up if ssh dies
+      # within 30s of start (e.g. bastion/DB not ready at boot) → restart loop.
+      AUTOSSH_GATETIME: "0"
+    # ponytail: autossh/openssh baked into tunnel.Dockerfile (no apk at boot).
+    # StrictHostKeyChecking=no: MITM risk on a hostile path; pin known_hosts if
+    # the bastion isn't trusted.
     command:
       - sh
       - -c
@@ -49,10 +54,9 @@ services:
       # service `environment:` above), NOT docker-compose at parse time.
       - |
         set -e
-        [ -n "$$SSH_KEY_B64" ] || { echo "FATAL: SSH_KEY_B64 is empty — set it in Coolify (base64 -w0 id_rsa)"; exit 1; }
-        apk add --no-cache autossh openssh-client >/dev/null
-        printf %s "$$SSH_KEY_B64" | tr -d '[:space:]' | base64 -d > /tmp/id_rsa && chmod 600 /tmp/id_rsa
-        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY_B64 did not decode to a valid OpenSSH key"; exit 1; }
+        [ -n "$$SSH_KEY" ] || { echo "FATAL: SSH_KEY is empty — set it in Coolify (raw OpenSSH private key, Multiline ON)"; exit 1; }
+        printf '%s\n' "$$SSH_KEY" > /tmp/id_rsa && chmod 600 /tmp/id_rsa
+        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY is not a valid OpenSSH private key"; exit 1; }
         exec autossh -M 0 -N \
           -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes \
           -o ServerAliveInterval=10 -o ServerAliveCountMax=3 \
