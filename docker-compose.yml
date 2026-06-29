@@ -25,12 +25,13 @@ x-app-env: &app-env
 services:
   # Holds the SSH tunnel to the remote Postgres. Listens on 0.0.0.0:5432 inside
   # the compose network; web/migrate connect to it as `ssh-tunnel:5432`.
-  # The OpenSSH private key is passed as SSH_KEY_B64 (single-line base64 of the
-  # key) and decoded to /tmp/id_rsa at startup. Base64 has no newlines, so it
-  # survives Coolify's env handling intact — raw multi-line keys get flattened
-  # by the .env/compose interpolation and rejected. No host bind mount either:
-  # Coolify single-file bind mounts are buggy (mount as a directory).
-  # Generate with:  base64 -w0 id_ed25519   (macOS: base64 -i id_ed25519 | tr -d '\n')
+  # The private key is read from a DIRECTORY bind mount: the key lives on the
+  # backend host at /data/jobfinder/id_ed25519 (chmod 600) and the directory is
+  # mounted read-only as /keys. We mount the dir (not the file) on purpose —
+  # Coolify single-FILE bind mounts are buggy (created as directories); dir
+  # mounts work, and this avoids Coolify's env-value truncation that mangled the
+  # key when passed as SSH_KEY_B64. The matching pubkey is in the DB server's
+  # root authorized_keys.
   ssh-tunnel:
     build:
       context: .
@@ -41,10 +42,11 @@ services:
       SSH_PORT: ${SSH_PORT:-22}
       SSH_DB_HOST: ${SSH_DB_HOST:-w0g84k8wcc8gww00wcw4occ4}      # DB host as seen from the bastion
       SSH_DB_PORT: ${SSH_DB_PORT:-5432}
-      SSH_KEY_B64: ${SSH_KEY_B64:-}
       # Retry forever. Default gatetime (30s) makes autossh give up if ssh dies
       # within 30s of start (e.g. bastion/DB not ready at boot) → restart loop.
       AUTOSSH_GATETIME: "0"
+    volumes:
+      - ${SSH_KEY_DIR:-/data/jobfinder}:/keys:ro
     # ponytail: autossh/openssh baked into tunnel.Dockerfile (no apk at boot).
     # StrictHostKeyChecking=no: MITM risk on a hostile path; pin known_hosts if
     # the bastion isn't trusted.
@@ -55,15 +57,11 @@ services:
       # service `environment:` above), NOT docker-compose at parse time.
       - |
         set -e
-        [ -n "$$SSH_KEY_B64" ] || { echo "FATAL: SSH_KEY_B64 is empty — set it in Coolify: base64 -w0 id_ed25519"; exit 1; }
-        printf %s "$$SSH_KEY_B64" | tr -d '[:space:]' | base64 -d > /tmp/id_rsa && chmod 600 /tmp/id_rsa
-        # ponytail: diag only prints line count + the 35-char header marker
-        # (no key material), enough to tell a bad decode from a wrong-format key.
-        ssh-keygen -y -f /tmp/id_rsa >/dev/null 2>&1 || { echo "FATAL: SSH_KEY_B64 did not decode to a valid OpenSSH key — lines=$(wc -l < /tmp/id_rsa) head=[$(head -c 35 /tmp/id_rsa)]"; exit 1; }
+        ssh-keygen -y -f /keys/id_ed25519 >/dev/null 2>&1 || { echo "FATAL: /keys/id_ed25519 missing or not a valid key — put it on the host at \$${SSH_KEY_DIR:-/data/jobfinder}/id_ed25519 (chmod 600)"; exit 1; }
         exec autossh -M 0 -N \
           -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes \
           -o ServerAliveInterval=10 -o ServerAliveCountMax=3 \
-          -i /tmp/id_rsa -p "$$SSH_PORT" \
+          -i /keys/id_ed25519 -p "$$SSH_PORT" \
           -L 0.0.0.0:5432:"$$SSH_DB_HOST":"$$SSH_DB_PORT" \
           "$$SSH_USER@$$SSH_HOST"
     healthcheck:
