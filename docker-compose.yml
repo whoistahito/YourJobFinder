@@ -6,7 +6,10 @@
 # lowercase, the ${UPPERCASE:-default} on the right is what you set in Coolify
 # (or a root .env for local). Secrets default to empty.
 x-app-env: &app-env
-  db_host: ${DB_HOST:-ssh-tunnel}      # the sidecar, not the DB itself
+  db_host: ssh-tunnel                  # always the sidecar — NOT configurable.
+                                       # (Was ${DB_HOST:-...}, but Coolify injects
+                                       # a UI var DB_HOST=db into the container,
+                                       # which broke resolution. Hardcoded.)
   db_port: ${DB_PORT:-5432}
   db_name: ${DB_NAME:-postgres}
   db_username: ${DB_USERNAME:-postgres}
